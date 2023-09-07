@@ -23,7 +23,7 @@
     </header>
   <!-- multistep form -->
 <form id="msform" method="POST" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
-  <!-- progressbar -->
+  <!-- progressbar
   <ul id="progressbar">
     <li class="active">Datos personales</li>
     <li>Datos Academicos</li>
@@ -38,9 +38,9 @@
     <li>Idioma</li>
     <li>Otras habilidades</li>
     <li><a href="closeSesion" style="color: red;">Cerrar sesion</a></li>
-  </ul>
+  </ul> -->
   <!-- fieldsets -->
-  
+  <input type="submit" name="guardar" class="action-button-save" value="Actualizar Datos" style="background-color: orange; font-size: 11px; color: black;">
   <fieldset>
     
     <div class="form-row">
@@ -64,17 +64,33 @@
         <strong>Apellido materno</strong>
 <input type="text" value="<?php echo $dataRegistro['apmaterno'] ?>" class="form-control" name="apmaterno">
     </div>
+    <script>
+        function deleteSp() {
+    var inputs = $("input[type=text]");
+    for (var i = 0; i < inputs.length; i++) {
+        var aux = $(inputs[i]).val().trim();
+        $(inputs[i]).val(aux);
+    }
+}
+function deleteSpmail() {
+    var inputs = $("input[type=email]");
+    for (var i = 0; i < inputs.length; i++) {
+        var aux = $(inputs[i]).val().trim();
+        $(inputs[i]).val(aux);
+    }
+}
+    </script>
     <div class="col-md-3">
         <strong>CURP</strong>
-    <input type="text" value="<?php echo $dataRegistro['curp'] ?>" class="form-control" name="curp" minlength="18" maxlength="18">
+    <input type="text" value="<?php echo $dataRegistro['curp'] ?>" onkeyup="deleteSp();" class="form-control" name="curp" minlength="18" maxlength="18">
     </div>
     <div class="col-md-3">
         <strong>R.F.C</strong>
-    <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" class="form-control" name="rfc">
+    <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" onkeyup="deleteSp();" class="form-control" name="rfc" minlength="13" maxlength="13">
     </div>
     <div class="col-md-3">
         <strong>Correo electronico</strong>
-    <input type="text" value="<?php echo $dataRegistro['correoelectronico'] ?>" class="form-control" name="correo">
+    <input type="email" value="<?php echo $dataRegistro['correoelectronico'] ?>" onkeyup="deleteSpmail();" class="form-control" name="correo">
     </div>
     <div class="col-md-3">
         <strong>Estado</strong>
@@ -1808,7 +1824,7 @@
     </div>
     </div>
     <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="submit" name="guardar" class="action-button-save" value="Actualizar Datos" style="background-color: orange; font-size: 11px; color: black;">
+    
     
   </fieldset>
   

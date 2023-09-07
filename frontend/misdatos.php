@@ -38,7 +38,7 @@
     <li><a href="closeSesion" style="color: red;">Cerrar sesion</a></li>
   </ul>-->
   <!-- fieldsets -->
-  
+  <input type="submit" name="guardar" class="action-button-save" value="Guardar Datos">
   <fieldset>
     
     <div class="form-row">
@@ -1383,7 +1383,6 @@ function deleteSpmail() {
     </div>
     </div>
     <input type="button" name="previous" class="previous action-button" value="Previous" />
-    <input type="submit" name="guardar" class="action-button-save" value="Guardar Datos">
     
   </fieldset>
   
