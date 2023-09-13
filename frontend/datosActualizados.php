@@ -41,6 +41,7 @@
   </ul> -->
   <!-- fieldsets -->
   <input type="submit" name="guardar" class="action-button-save" value="Actualizar Datos" style="background-color: orange; font-size: 11px; color: black;">
+  <a href="closeSesion" style="color: blue;">Cerrar sesion</a>
   <fieldset>
     
     <div class="form-row">
@@ -84,6 +85,31 @@ function deleteSpmail() {
         <strong>CURP</strong>
     <input type="text" value="<?php echo $dataRegistro['curp'] ?>" onkeyup="deleteSp();" class="form-control" name="curp" minlength="18" maxlength="18">
     </div>
+    <div class="form-group col-md-3">
+        <label>Sube tu CURP</label>
+    <input type="file"  class="form-control" name="documentocurp" accept=".pdf" >
+    </div>
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento CURP</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'documentocurp';
+    $path = "documentos/" . $compdomicilio . $curp;
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        while ($archivo = readdir($directorio)) {
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+                }
+
+                ?>
+    </div>
     <div class="col-md-3">
         <strong>R.F.C</strong>
     <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" onkeyup="deleteSp();" class="form-control" name="rfc" minlength="13" maxlength="13">
@@ -114,6 +140,7 @@ function deleteSpmail() {
 
                             echo "<iframe src='documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
                             echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                            echo "<a href='eliminarDocumentacion/eliminarCompDomicilio?domicilio=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
                         }
                     }
                 }

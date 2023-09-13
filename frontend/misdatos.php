@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-
+    <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
+    <link rel="stylesheet" href="iconos/css/all.css?n=1">
 </head>
 
 <body onload="deshabilitaRetroceso()">
@@ -39,6 +40,7 @@
   </ul>-->
   <!-- fieldsets -->
   <input type="submit" name="guardar" class="action-button-save" value="Guardar Datos">
+  <a href="closeSesion" style="color: blue;">Cerrar sesion</a>
   <fieldset>
     
     <div class="form-row">
@@ -84,6 +86,31 @@ function deleteSpmail() {
         <strong>CURP</strong>
     <input type="text" value="<?php echo $dataRegistro['curp'] ?>" class="form-control" onkeyup="deleteSp();" name="curp" minlength="18" maxlength="18">
     </div>
+    <div class="form-group col-md-3">
+        <label>Sube tu CURP</label>
+    <input type="file"  class="form-control" name="documentocurp" accept=".pdf" >
+    </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento CURP</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'documentocurp';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <div class="col-md-3">
         <strong>R.F.C</strong>
     <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" onkeyup="deleteSp();" class="form-control" name="rfc" minlength="13" maxlength="13">
@@ -100,6 +127,27 @@ function deleteSpmail() {
         <strong>Doc. comprobante de domicilio</strong>
     <input type="file"  class="form-control" name="comprobantedomicilio" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Comprobante de domicilio</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'comprobantedomicilio';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <div class="col-md-3">
         <strong>Delegacón</strong>
     <input type="text" value="<?php echo $dataRegistro['municipio'] ?>" class="form-control" name="municipio">
@@ -192,6 +240,27 @@ function deleteSpmail() {
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivomediasuperior" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'comprobante media superior';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <!-- inicia educacion superior -->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Educación Superior</label>
@@ -224,6 +293,27 @@ function deleteSpmail() {
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivosuperior" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'comprobante superior';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistro['numerocedulasuperior'] ?>" class="form-control" name="numerocedulasuperior">
@@ -232,6 +322,27 @@ function deleteSpmail() {
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="archivocedulasuperior" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'cedula superior';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
 <!--PRIMER MAESTRIA-->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Maestria</label>
@@ -264,6 +375,27 @@ function deleteSpmail() {
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivomaestria" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'comprobante maestria';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistro['cedulamaestria'] ?>" class="form-control" name="cedulamaestria">
@@ -272,6 +404,27 @@ function deleteSpmail() {
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="archivomaestriacedula" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'cedula maestria';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <!--SEGUNDA MAESTRIA-->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Segunda Maestria</label>
@@ -304,6 +457,27 @@ function deleteSpmail() {
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivomaestriados" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'comprobante maestria dos';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
     <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistro['cedulamaestriados'] ?>" class="form-control" name="cedulamaestriados">
@@ -312,6 +486,27 @@ function deleteSpmail() {
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="archivomaestriadoscedula" accept=".pdf">
     </div>
+    <!--
+    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+        <strong>Documento Cargado</strong>
+    <?php
+    $curp = $dataRegistro['curp'];
+    $compdomicilio = 'cedula maestria dos';
+                $path = "../reestructuracionpaginawebhraei/documentos/" . $compdomicilio . $curp;
+                if (file_exists($path)) {
+                    $directorio = opendir($path);
+                    while ($archivo = readdir($directorio)) {
+                        if (!is_dir($archivo)) {
+                            echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                            echo "<iframe src='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
+                            echo "<a href='../reestructuracionpaginawebhraei/documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                        }
+                    }
+                }
+
+                ?>
+    </div>-->
   </div>
   <input type="button" name="previous" class="previous action-button" value="Previous" />
     <input type="button" name="next" class="next action-button" value="Next" />
