@@ -19,7 +19,7 @@ $statement = $conexion->prepare('SELECT id_datopersonal,correoelectronico, rfc F
         $validacion = $sql->fetch();
         $actualizo = $validacion['datosActualizados'];
         $validaid = $validacion['id_datopersonal'];
-        
+    
         $conexionDatos = new Conexion();
 
 if($actualizo == 0){
