@@ -4,11 +4,8 @@ require '../claseConexion/conexion.php';
 date_default_timezone_set('America/Mexico_City');
 $DateAndTime = date('Y-m-d', time());
 extract($_POST);
-$sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = :cargodocumento where curp = :curp and fechainicio between '2023-01-31' and '2023-12-31'");
-        $sql->execute(array(
-            ':cargodocumento'=>1,
-            ':curp' =>$curp
-        ));
+$sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where curp = '$curp' and fechainicio between '2023-01-31' and '2023-12-31'");
+        $sql->execute();
 $validarid = $conexionSeleccion->prepare("SELECT curp from datospersonales where curp = :curp");
 $validarid->execute(array(
     ':curp' => $curp
@@ -1218,6 +1215,10 @@ if ($validacurp != '') {
             ':datosActualizados'=>1,
             ':id_datopersonal' =>$id_user
         ));
+        $sql = $conexionSeleccion->prepare("INSERT INTO datoscomplementos(id_postulado) values(:id_postulado)");
+            $sql->execute(array(
+                ':id_postulado' => $id_user
+            ));
         
 
         /*

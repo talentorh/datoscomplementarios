@@ -1,5 +1,6 @@
 <?php
     date_default_timezone_set('America/Mexico_City');    
+    require '../claseConexion/conexion.php';
     $DateAndTime = date('Y-m-d', time());
     extract($_POST);
     $validarid = $conexionSeleccion->prepare("SELECT id_datopersonal from datospersonales where curp = :curp");
@@ -14,6 +15,169 @@
         $conexionSeleccion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conexionSeleccion->setAttribute(PDO::ATTR_AUTOCOMMIT,0);
         $conexionSeleccion->beginTransaction();
+
+        $sql = $conexionSeleccion->prepare("UPDATE datoscomplementos set constanciasat = :constanciasat, regimen = :regimen where id_postulado = :id_postulado");
+            $sql->execute(array(
+                ':constanciasat'=>$actividadeconomica,
+                ':regimen'=>$regimen,
+                ':id_postulado'=>$validaid
+            ));
+            if ($_FILES["documentoactvidadeconomica"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $activeconomica = 'documentoactvidadeconomica';
+                if (in_array($_FILES["documentoactvidadeconomica"]["type"], $permitidos) && $_FILES["documentoactvidadeconomica"]["size"]) {
+    
+                    $ruta = '../documentos/' . $activeconomica . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentoactvidadeconomica"]["name"] = "actividad economica.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoactvidadeconomica"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoactvidadeconomica"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentoactanacimiento"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $actanacimiento = 'documentoactanacimiento';
+                if (in_array($_FILES["documentoactanacimiento"]["type"], $permitidos) && $_FILES["documentoactanacimiento"]["size"]) {
+    
+                    $ruta = '../documentos/' . $actanacimiento . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentoactanacimiento"]["name"] = "acta de nacimiento.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoactanacimiento"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoactanacimiento"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentoine"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $ine = 'documentoine';
+                if (in_array($_FILES["documentoine"]["type"], $permitidos) && $_FILES["documentoine"]["size"]) {
+    
+                    $ruta = '../documentos/' . $ine . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentoine"]["name"] = "acta de nacimiento.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoine"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoine"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentocartilla"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $cartilla = 'documentocartilla';
+                if (in_array($_FILES["documentocartilla"]["type"], $permitidos) && $_FILES["documentocartilla"]["size"]) {
+    
+                    $ruta = '../documentos/' . $cartilla . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentocartilla"]["name"] = "cartilla militar.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentocartilla"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentocartilla"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentofirmaelectonica"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/zip", "application/x-zip-compressed");
+                $firmaelectronica = 'documentofirmaelectonica';
+                if (in_array($_FILES["documentofirmaelectonica"]["type"], $permitidos) && $_FILES["documentofirmaelectonica"]["size"]) {
+    
+                    $ruta = '../documentos/' . $firmaelectronica . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentofirmaelectonica"]["name"] = "firma electronica.rar";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentofirmaelectonica"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentofirmaelectonica"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
+            if ($_FILES["documentoclaveinterbancaria"]["error"] > 0) {
+        
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $claveinter = 'documentoclaveinterbancaria';
+                if (in_array($_FILES["documentoclaveinterbancaria"]["type"], $permitidos) && $_FILES["documentoclaveinterbancaria"]["size"]) {
+    
+                    $ruta = '../documentos/' . $claveinter . $curp . '/';
+                    $archivo = $ruta . $_FILES["documentoclaveinterbancaria"]["name"] = "clave interbancaria.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["documentoclaveinterbancaria"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["documentoclaveinterbancaria"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
     $sql = $conexionSeleccion->prepare("UPDATE datospersonales SET profesion = :profesion, curp =:curp, nombre=:nombre, appaterno=:appaterno, apmaterno=:apmaterno, estado=:estado, delegacion=:delegacion, localidad=:localidad, colonia=:colonia, calle=:calle, numexterior=:numexterior, numinterior=:numinterior, codigopostal=:codigopostal,
     fechanacimiento=:fechanacimiento, entidadnacimiento=:entidadnacimiento, rfc=:rfc, sexo=:sexo, cartanaturalizacion=:cartanaturalizacion, telefonocasa=:telefonocasa, telefonocelular=:telefonocelular, otrotelefono=:otrotelefono, correoelectronico=:correoelectronico, fechaactualizo=:fechaactualizo where id_datopersonal = :id_datopersonal");
         $sql->execute(array(
@@ -1151,7 +1315,7 @@
             ));
         $sql = $conexionSeleccion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados where curp = :curp");
             $sql->execute(array(
-                ':datosActualizados'=>1,
+                ':datosActualizados'=>3,
                 ':curp'=>$curp
             ));
             
