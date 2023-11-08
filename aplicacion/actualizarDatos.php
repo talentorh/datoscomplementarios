@@ -1,5 +1,5 @@
 <?php
-
+error_reporting(0);
 require '../claseConexion/conexion.php';
 date_default_timezone_set('America/Mexico_City');
 $DateAndTime = date('Y-m-d', time());
