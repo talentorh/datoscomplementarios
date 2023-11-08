@@ -75,7 +75,7 @@
 
                 echo "<iframe src='documentos/$acteconomica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$acteconomica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/constanciaFiscal?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -100,7 +100,7 @@
 
                 echo "<iframe src='documentos/$actanacimiento$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$actanacimiento$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarActanacimiento?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -125,7 +125,7 @@
 
                 echo "<iframe src='documentos/$ine$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$ine$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarIne?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -150,7 +150,7 @@
 
                 echo "<iframe src='documentos/$cartilla$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$cartilla$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarCartilla?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -175,7 +175,7 @@
 
                 //echo "<iframe src='documentos/$firmaelectronica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$firmaelectronica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarFirmaElectronica?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -200,7 +200,7 @@
 
                 echo "<iframe src='documentos/$claveinter$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$claveinter$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                //echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarClaveInterbancaria?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -416,11 +416,11 @@ function deleteSpmail() {
     </div>
 
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivomediasuperior" accept=".pdf">
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
-        <strong>Documento certificado</strong>
+        <strong>Documento titulo</strong>
     <?php
     $curp = $dataRegistro['curp'];
     $compdomicilio = 'comprobante media superior';
@@ -474,7 +474,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentosuperior'] ?>" class="form-control" name="documentosuperior">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivosuperior" accept=".pdf">
     </div>
     
@@ -562,7 +562,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentomaestria'] ?>" class="form-control" name="documentomaestria">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivomaestria" accept=".pdf">
     </div>
     
@@ -648,7 +648,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentomaestriados'] ?>" class="form-control" name="documentomaestriados">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivomaestriados" accept=".pdf">
     </div>
     
@@ -743,7 +743,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentorecibeposgrado'] ?>" class="form-control" name="documentorecibeposgrado">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivoposgrado" accept=".pdf">
     </div>
     <div class="col-md-3">
@@ -834,7 +834,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentorecibedoctorado'] ?>" class="form-control" name="documentorecibedoctorado">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivodoctorado" accept=".pdf">
     </div>
     <div class="col-md-3">
@@ -931,7 +931,7 @@ function deleteSpmail() {
     <input type="text" value="<?php echo $dataRegistro['documentorecibealtaesp'] ?>" class="form-control" name="documentorecibealtaesp">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu documento</strong>
+        <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivoaltaesp" accept=".pdf">
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
@@ -1061,9 +1061,8 @@ function deleteSpmail() {
     <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
     <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
   </fieldset>
+<!--
   <fieldset>
-
-  <!-- Estudio Servicio y practicas -->
 
     <div class="form-row">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
@@ -1173,9 +1172,7 @@ function deleteSpmail() {
     <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
     <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
   </fieldset>
-
-<!--certificados -->
-
+-->
   <fieldset>
     <div class="form-row">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">

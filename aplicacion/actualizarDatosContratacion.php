@@ -688,6 +688,7 @@
                 }
             }
         }
+    /*
         $sql= $conexionSeleccion->prepare("UPDATE socialpracticas SET nombreserviciosocial=:nombreserviciosocial, fechainicioservicio=:fechainicioservicio, fechaterminoservicio=:fechaterminoservicio, laboresservicio=:laboresservicio, documentorecibeservicio=:documentorecibeservicio,
         nombrepracticas=:nombrepracticas, fechainiciopracticas=:fechainiciopracticas, fechaterminopracticas=:fechaterminopracticas, laborespracticas=:laborespracticas, documentorecibepracticas=:documentorecibepracticas where id_postulado = :id_postulado"); 
             $sql->execute(array(
@@ -753,6 +754,7 @@
                     }
                 }
             }
+            */
             $sql = $conexionSeleccion->prepare("UPDATE cerficacion SET nombreformacioncertificauno=:nombreformacioncertificauno, nombrecertificacionuno=:nombrecertificacionuno, fechainiciocertificacionuno=:fechainiciocertificacionuno, fechaterminocertificacionuno=:fechaterminocertificacionuno, documentocertificacionuno=:documentocertificacionuno,
         nombreformacioncertificaciondos=:nombreformacioncertificaciondos, nombrecertificaciondos=:nombrecertificaciondos, fechainiciocertificaciondos=:fechainiciocertificaciondos, fechaterminocertificaciondos=:fechaterminocertificaciondos, documentocertificaciondos=:documentocertificaciondos where id_postulado =:id_postulado");
             $sql->execute(array(
