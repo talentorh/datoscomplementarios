@@ -49,6 +49,10 @@
         <label>Datos personales</label>
     </div>
     <div class="col-md-3">
+        <strong>Plaza evaluar</strong>
+    <input type="text" value="<?php echo $dataRegistro['plazaevaluar'] ?>" class="form-control" name="plazaevaluar">
+    </div>
+    <div class="col-md-3">
         <strong>Profesion</strong>
     <input type="text" value="<?php echo $dataRegistro['profesion'] ?>" class="form-control" name="profesion">
     </div>

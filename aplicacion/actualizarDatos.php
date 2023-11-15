@@ -21,8 +21,8 @@ if ($validacurp != '') {
         $conexionSeleccion->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);
         $conexionSeleccion->beginTransaction();
         $sql = $conexionSeleccion->prepare("INSERT INTO datospersonales(profesion, curp, nombre, appaterno, apmaterno, estado, delegacion, localidad, colonia, calle, numexterior, numinterior, codigopostal,
-    fechanacimiento, entidadnacimiento, rfc, sexo, cartanaturalizacion, telefonocasa, telefonocelular, otrotelefono, correoelectronico, fechaactualizo) VALUES(:profesion, :curp,
-    :nombre, :appaterno, :apmaterno, :estado, :delegacion, :localidad, :colonia, :calle, :numexterior, :numinterior, :codigopostal, :fechanacimiento, :entidadnacimiento, :rfc, :sexo, :cartanaturalizacion, :telefonocasa, :telefonocelular, :otrotelefono, :correoelectronico,:fechaactualizo)");
+    fechanacimiento, entidadnacimiento, rfc, sexo, cartanaturalizacion, telefonocasa, telefonocelular, otrotelefono, correoelectronico, fechaactualizo, plazaevaluar) VALUES(:profesion, :curp,
+    :nombre, :appaterno, :apmaterno, :estado, :delegacion, :localidad, :colonia, :calle, :numexterior, :numinterior, :codigopostal, :fechanacimiento, :entidadnacimiento, :rfc, :sexo, :cartanaturalizacion, :telefonocasa, :telefonocelular, :otrotelefono, :correoelectronico,:fechaactualizo,:plazaevaluar)");
         $sql->execute(array(
             ':profesion' => $profesion,
             ':curp' => $curp,
@@ -46,7 +46,8 @@ if ($validacurp != '') {
             ':telefonocelular' => $telefonocelular,
             ':otrotelefono' => $otrotelefono,
             ':correoelectronico' => $correo,
-            ':fechaactualizo' => $DateAndTime
+            ':fechaactualizo' => $DateAndTime,
+            ':plazaevaluar'=>$plazaevaluar
         ));
         /*inicializa edicion de curp*/
         if ($_FILES["documentocurp"]["size"] == 0) {

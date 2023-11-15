@@ -24,7 +24,7 @@ $statement = $conexion->prepare('SELECT id_datopersonal,correoelectronico, rfc F
 
 if($actualizo == 0){
     
-$query = $conexionDatos->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.acceder, datospersonales.puesto, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
+$query = $conexionDatos->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.plazaevaluar,  datospersonales.acceder, datospersonales.puesto, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
 datospersonales.delegacion, datospersonales.localidad, datospersonales.colonia, datospersonales.calle, datospersonales.numexterior, datospersonales.numinterior, datospersonales.codigopostal, 
 datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersonales.rfc, datospersonales.sexo, datospersonales.cartanaturalizacion, datospersonales.telefonocasa, datospersonales.telefonocelular, 
 datospersonales.otrotelefono, datospersonales.correoelectronico, estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
@@ -88,7 +88,7 @@ $dataRegistro= $query->fetch();
     
     }else if($actualizo == 1){
 
-        $query = $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
+        $query = $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.plazaevaluar, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
 datospersonales.delegacion as municipio, datospersonales.localidad, datospersonales.colonia, datospersonales.calle, datospersonales.numexterior, datospersonales.numinterior, datospersonales.codigopostal, 
 datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersonales.rfc, datospersonales.sexo, datospersonales.cartanaturalizacion, datospersonales.telefonocasa, datospersonales.telefonocelular, 
 datospersonales.otrotelefono, datospersonales.correoelectronico, datospersonales.datosActualizados,estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
@@ -144,7 +144,7 @@ $dataRegistro= $query->fetch();
 require 'frontend/datosActualizadosC.php';
     }else if($actualizo == 3){
 
-        $query = $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
+        $query = $conexionSeleccion->prepare("SELECT datospersonales.id_datopersonal as id_principal, datospersonales.plazaevaluar, datospersonales.profesion, datospersonales.curp, datospersonales.rfc as rfcprincipal, datospersonales.nombre, datospersonales.appaterno, datospersonales.apmaterno, datospersonales.estado, 
 datospersonales.delegacion as municipio, datospersonales.localidad, datospersonales.colonia, datospersonales.calle, datospersonales.numexterior, datospersonales.numinterior, datospersonales.codigopostal, 
 datospersonales.fechanacimiento, datospersonales.entidadnacimiento, datospersonales.rfc, datospersonales.sexo, datospersonales.cartanaturalizacion, datospersonales.telefonocasa, datospersonales.telefonocelular, 
 datospersonales.otrotelefono, datospersonales.correoelectronico, datospersonales.datosActualizados,estudiosmediosup.nombreformacionmedia, estudiosmediosup.nombremediasuperior, estudiosmediosup.fechainicio, estudiosmediosup.fechatermino, 
