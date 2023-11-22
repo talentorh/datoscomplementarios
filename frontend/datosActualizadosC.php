@@ -3,8 +3,6 @@
 
 <head>
   <meta charset="UTF-8">
-  
-  <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="apple-mobile-web-app-title" content="CodePen">
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
@@ -18,35 +16,13 @@
 </head>
 
 <body onload="deshabilitaRetroceso()">
-<header style="width: auto; height: auto;  padding: 4px; text-align: center; color: white; font-size: 17px; background: #1072b3; ">
-        <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
-    </header>
   <!-- multistep form -->
 <form id="msform" method="POST" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
-  <!--progressbar 
-  <ul id="progressbar">
-    <li class="active">Datos personales</li>
-    <li>Datos Academicos </li>
-    <li>Posgrado/Especialidad</li>
-    <li>Otros estudios</li>
-    <li>Serv social/Practicas</li>
-    <li>Certificacion</li>
-    <li>Cursos</li>
-    <li>Exp laboral privado</li>
-    <li>Exp laboral publico</li>
-    <li>Produccion cientifica</li>
-    <li>Idioma</li>
-    <li>Otras habilidades</li>
-    <li><a href="closeSesion" style="color: red;">Cerrar sesion</a></li>
-  </ul> -->
-   <!--fieldsets -->
-  <input type="submit" name="guardar" class="action-button-save" value="Actualizar Datos" style="background-color: orange; font-size: 11px; color: black;">
-
-  <a href="closeSesion" style="color: blue;">Cerrar sesion</a>
-  
-  <fieldset>
-    
-    <div class="form-row">
+<div class="container" style="border: 1px solid black; padding: 0px; border-radius: 10px;">
+<header style="width: 100%; height: auto;  padding: 10px; text-align: center; color: white; font-size: 17px; background: #1072b3; border-radius: 10px 10px 0px 0px;">
+        <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
+    </header>
+<div class="form-row" style="padding: 15px;">
         
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Datos personales</label>
@@ -208,17 +184,7 @@ function deleteSpmail() {
         <strong>Otro telefono</strong>
     <input type="text" value="<?php echo $dataRegistro['otrotelefono'] ?>" class="form-control" name="otrotelefono">
     </div>
-    </div>
-
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-
-  <!--Estudios -->
-
-  <fieldset>
-
-    <figure id = "Medias">
-  <div class="form-row" >
+    
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Educación Media Superior</label>
     </div>
@@ -273,11 +239,6 @@ function deleteSpmail() {
 
     ?>
     </div>
-            </div>
-            </figure>
-
-            <figure id="Superior">
-            <div class="form-row" >
                 
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Educación Superior</label>
@@ -361,12 +322,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-            </div>
-            </figure>
             
-            <figure id = "Maestrias" >
-    <!--primer maestria-->
-    <div class="form-row" >
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Maestria</label>
     </div>
@@ -449,9 +405,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-            </figure>
-            <figure id = "Maestria2">
-            <div class="form-row" >
+
     <!--segunda maestria-->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Segunda Maestria</label>
@@ -535,15 +489,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-            </figure>
-  </div>
-  <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
 
-  <fieldset>
-    <figure id="posgrado"> 
-    <div class="form-row">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Posgrado/Especialidad</label>
     </div>
@@ -629,12 +575,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </figure>
-    
-    <!-- Especialidad -->
 
-    <figure id="doctorado">
-    <div class="form-row">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Docotorado/Subespecialidad</label>
     </div>
@@ -721,17 +662,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-    </figure>
-</div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-
-<!-- formulario 4-->
-
-  <fieldset>
-    <div class="form-row">
+   
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Otros estudios/Alta Especialidad</label>
     </div>
@@ -890,15 +821,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-  <fieldset>
-
-  <!-- Estudio Servicio y practicas -->
-
-    <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Servicio social</label>
     </div>
@@ -1001,16 +924,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-
-<!--certificados -->
-
-  <fieldset>
-    <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Certificación</label>
     </div>
@@ -1109,15 +1023,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-
-  <!--Cursos-->
-
-  <fieldset>
-  <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Actualización academica/Primer curso</label>
     </div>
@@ -1274,15 +1180,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-
-  <!--Experienci Laboral-->
-
-  <fieldset>
-    <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Exp laboral sector privado</label>
     </div>
@@ -1563,15 +1461,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;" />
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;" />
-  </fieldset>
 
-<!--Experiencia Laboral  publica -->
-
-  <fieldset>
-  <div class="form-row">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Exp laboral sector publico</label>
     </div>
@@ -1875,12 +1765,7 @@ function deleteSpmail() {
 
     ?>
     </div>
-  </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-  <fieldset>
-  <div class="form-row">
+  
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Producción cientifica(Ultima publicación)</label>
     </div>
@@ -1900,12 +1785,7 @@ function deleteSpmail() {
         <strong>País de publicación</strong>
     <input type="text" value="<?php echo $dataRegistro['paisdepublicacion'] ?>" class="form-control" name="paisdepublicacion">
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow; color: black;"/>
-  </fieldset>
-  <fieldset>
-  <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Idioma</label>
     </div>
@@ -1925,12 +1805,7 @@ function deleteSpmail() {
         <strong>Documento que acredita tu idioma</strong>
     <input type="text" value="<?php echo $dataRegistro['documentoacredita'] ?>" class="form-control" name="documentoacredita">
     </div>
-    </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow;"/>
-    <input type="button" name="next" class="next action-button" value="Next" style="background-color: yellow;"/>
-  </fieldset>
-  <fieldset>
-  <div class="form-row">
+    
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
         <label>Otras habilidades</label>
     </div>
@@ -1939,109 +1814,21 @@ function deleteSpmail() {
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
     </div>
-    <input type="button" name="previous" class="previous action-button" value="Previous" style="background-color: yellow; color: black;"/>
-    
-    
-  </fieldset>
-  
-</form>
-
-<br><br>
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
-<script id="rendered-js" >
-//jQuery time
-var current_fs, next_fs, previous_fs; //fieldsets
-var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
-
-$(".next").click(function () {
-  if (animating) return false;
-  animating = true;
-
-  current_fs = $(this).parent();
-  next_fs = $(this).parent().next();
-
-  //activate next step on progressbar using the index of next_fs
-  $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-  //show the next fieldset
-  next_fs.show();
-  //hide the current fieldset with style
-  current_fs.animate({ opacity: 0 }, {
-    step: function (now, mx) {
-      //as the opacity of current_fs reduces to 0 - stored in "now"
-      //1. scale current_fs down to 80%
-      scale = 1 - (1 - now) * 0.2;
-      //2. bring next_fs from the right(50%)
-      left = now * 50 + "%";
-      //3. increase opacity of next_fs to 1 as it moves in
-      opacity = 1 - now;
-      current_fs.css({
-        'transform': 'scale(' + scale + ')',
-        'position': 'absolute' });
-
-      next_fs.css({ 'left': left, 'opacity': opacity });
-    },
-    duration: 800,
-    complete: function () {
-      current_fs.hide();
-      animating = false;
-    },
-    //this comes from the custom easing plugin
-    easing: 'easeInOutBack' });
-
-});
-
-$(".previous").click(function () {
-  if (animating) return false;
-  animating = true;
-
-  current_fs = $(this).parent();
-  previous_fs = $(this).parent().prev();
-
-  //de-activate current step on progressbar
-  $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-
-  //show the previous fieldset
-  previous_fs.show();
-  //hide the current fieldset with style
-  current_fs.animate({ opacity: 0 }, {
-    step: function (now, mx) {
-      //as the opacity of current_fs reduces to 0 - stored in "now"
-      //1. scale previous_fs from 80% to 100%
-      scale = 0.8 + (1 - now) * 0.2;
-      //2. take current_fs to the right(50%) - from 0%
-      left = (1 - now) * 50 + "%";
-      //3. increase opacity of previous_fs to 1 as it moves in
-      opacity = 1 - now;
-      current_fs.css({ 'left': left });
-      previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
-    },
-    duration: 800,
-    complete: function () {
-      current_fs.hide();
-      animating = false;
-    },
-    //this comes from the custom easing plugin
-    easing: 'easeInOutBack' });
-
-});
-//# sourceURL=pen.js
- function deshabilitaRetroceso(){
-    window.location.hash="no-back-button";
-    window.location.hash="Again-No-back-button" //chrome
-    window.onhashchange=function(){window.location.hash="no-back-button";}
-    
-}
-
-    </script>
-
-<footer style="width: 100%; position: fixed; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center; padding: 1px; margin-top: 20px;">
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+    <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
+    <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
+        </div>
+            
+            <footer style="width: 100%; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center; padding: 1px; margin-top: 20px; border-radius: 0px 0px 10px 10px; ">
         <p>
             ® Hospital Regional de Alta Especialidad de Ixtapaluca, todos los derechos reservados. <br>
             Carr Federal México-Puebla Km. 34.5, Zoquiapan, 56530 Ixtapaluca, Méx.</p>
     </footer>
+    
+</div>
+  
+</form>
+<br>
 </body>
 
 </html>
