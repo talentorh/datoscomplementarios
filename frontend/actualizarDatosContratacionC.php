@@ -295,7 +295,7 @@ function deleteSpmail() {
     </div>
     <div class="col-md-3">
         <strong>Delegacón</strong>
-    <input type="text" value="<?php echo $dataRegistro['municipio'] ?>" class="form-control" name="municipio">
+    <input type="text" value="<?php echo $dataRegistro['delegacion'] ?>" class="form-control" name="municipio">
     </div>
     <div class="col-md-3">
         <strong>Localidad</strong>
@@ -383,21 +383,21 @@ function deleteSpmail() {
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivomediasuperior" accept=".pdf">
     </div>
-    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento certificado</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $compdomicilio = 'comprobante media superior';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = $dataRegistro['nombreformacionmedia'];
+    $path = "documentos/" . $archivoNombre . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCertificado?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$archivoNombre$id/$archivo' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$archivoNombre$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarCertificado?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -502,68 +502,7 @@ $id = $dataRegistro['id_principal'];
 
     ?>
     </div>
-                    <?php endforeach; ?>   
-                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
-        <label>Nivel Superior</label>
-    </div>
-      <div class="form-group col-md-12">
-                    <strong>Agregar licenciatura (Solo numeros)</strong>
-                    <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
-                
-                </div>
-                <script>
-                    document.getElementById("quantity").addEventListener("input", (event) => {
-                        let content = '';
-
-                        const quantity = event.target.value;
-
-                        for (let i = 0; i < quantity; i++) {
-                            content += `<div class="form-row">
-                            <div class="form-group col-md-12">
-                                    <h1 style="font-size:22px; text-align: center;">Información licenciatura ${i +1}</h1>
-                                </div>
-                                <div class="form-group col-md-6">
-                                <label>Nombre de la formación académica ${i +1}</label>
-                                <input type="text" id="nombreformacion[${i}]" name="nombreformacion[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                <label>Nombre de la institución educativa ${i +1}</label>
-                                <input type="text" id="nombreinstitucion[${i}]" name="nombreinstitucion[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-3">
-                                <label>Fecha de inicio ${i +1}</label>
-                                <input type="date" id="fechainicio[${i}]" name="fechainiciosup[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-3">
-                                <label>Fecha termino ${i +1}</label>
-                                <input type="date" id="fechatermino[${i}]" name="fechaterminosup[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-3">
-                                <label>Años cursados ${i +1}</label>
-                                <input type="text" id="tiempocursado[${i}]" name="tiempocursadosup[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-3">
-                                <label>Documento que recibe ${i +1}</label>
-                                <input type="text" id="documentorecibe[${i}]" name="documentorecibe[]" class="form-control">
-                                </div>
-                                <div class="form-group col-md-12">
-                                <label>Numero de cedula ${i +1}</label>
-                                <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
-                            </div>
-                            <div class="col-md-3">
-        <strong>Sube tu documento</strong>
-    <input type="file"  class="form-control" name="documentolicenciatura[]" accept=".pdf">
-    </div>
-                                <div class="col-md-3">
-        <strong>Sube tu cedula</strong>
-    <input type="file"  class="form-control" name="documentocedula[]" accept=".pdf">
-    </div>
-                        </div>`;
-                        }
-                        document.getElementById("divGuests").innerHTML = content;
-                    })
-                </script>
-                <div id="divGuests"></div>      
+                    <?php endforeach; ?>      
                     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -921,10 +860,12 @@ require_once 'claseConexion/conexion.php';
         <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivotituloaltaesp[]" accept=".pdf">
     </div>
+    <!--
     <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistroOtrosEstAltaEsp['numerocedulaespecialidad'] ?>" class="form-control" name="cedulaaltaesp[]">
     </div>
+        -->
     <div class="col-md-3">
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="cedulaAltaEsp[]" accept=".pdf">
@@ -964,7 +905,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
-        <label>Otros estudios 1</label>
+        <label>Otros estudios</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -994,7 +935,7 @@ require_once 'claseConexion/conexion.php';
     <input type="file"  class="form-control" name="archivootrosuno" accept=".pdf">
     </div>
     
-    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento obtenido</strong>
     <?php
     $curp = $dataRegistro['curp'];
@@ -1047,7 +988,7 @@ require_once 'claseConexion/conexion.php';
     <strong>Labores que desempeño</strong>
         <textarea name="laboresservicio" placeholder="Address" class="form-control" rows="7"><?php echo $dataRegistro['laboresservicio'] ?></textarea>
     </div>
-    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento servicio social</strong>
     <?php
     $id = $dataRegistro['id_principal'];
@@ -1098,7 +1039,7 @@ require_once 'claseConexion/conexion.php';
     <strong>Labores que desempeño</strong>
         <textarea name="laborespracticas" placeholder="Address" class="form-control" rows="7"><?php echo $dataRegistro['laborespracticas'] ?></textarea>
     </div>
-    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento practicas profesionales</strong>
     <?php
     $id = $dataRegistro['id_principal'];
@@ -1123,7 +1064,7 @@ require_once 'claseConexion/conexion.php';
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
-    $sql = $conexionSeleccion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
+    $sql = $conexion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
         $sql->execute(array(
             ':id_postulado'=>$id
         ));
@@ -1136,7 +1077,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="col-md-6">
         <strong>Nombre de la institución educativa</strong>
-    <input type="text" value="<?php echo $dataRegistroCertificacion['nombreformacioncertificauno'] ?>" class="form-control" name="nombreformacioncertificauno[]">
+    <input type="text" value="<?php echo $dataRegistroCertificacion['nombreformacioncertificauno'] ?>" class="form-control" name="nombreinstitucioncertificacion[]">
     </div>
     <div class="col-md-6">
         <strong>Especialidad que certifica</strong>
@@ -1170,18 +1111,18 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento certificación</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento certificacion uno';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $archivoNombre = $dataRegistroCertificacion['nombreformacioncertificauno'];
+    $id = $dataRegistro['id_principal'];
+    $path = "documentos/" . $archivoNombre . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaCertificado1?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$archivoNombre$id/$archivo' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$archivoNombre$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminaCertificado1?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }

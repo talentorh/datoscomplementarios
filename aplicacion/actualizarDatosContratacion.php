@@ -887,31 +887,59 @@ $datoOtrosEstudios[] = '("'.$nombreformacionotros.'","' .$nombreotrosestudiosuno
             ':id_postulado' => $id_user
         ));
 
-if($nombreformacioncertificacion != '' and $nombreinstitucioncertificacion != ''){
-
-$arraynombreformacioncertificacion = array_map("htmlspecialchars", $nombreformacioncertificacion);
-$arraynombreinstitucioncertificacion = array_map("htmlspecialchars", $nombreinstitucioncertificacion);
-$arrayfechainiciosupcertificacion = array_map("htmlspecialchars", $fechainiciosupcertificacion);
-$arrayfechaterminosupcertificacion = array_map("htmlspecialchars", $fechaterminosupcertificacion);
-$arraytiempocursadosupcertificacion = array_map("htmlspecialchars", $tiempocursadosupcertificacion);
-$arraymodalidadcertificacion = array_map("htmlspecialchars", $modalidadcertificacion);
-$arraydocumentorecibecertificacion = array_map("htmlspecialchars", $documentorecibecertificacion);
-
-foreach($arraynombreformacioncertificacion as $clavecertificacion => $nombreformacioncertificacion){
-$nombreinstitucioncertificacion = $arraynombreinstitucioncertificacion[$clavecertificacion];
-$fechainiciosupcertificacion = $arrayfechainiciosupcertificacion[$clavecertificacion];
-$fechaterminosupcertificacion = $arrayfechaterminosupcertificacion[$clavecertificacion];
-$tiempocursadosupcertificacion = $arraytiempocursadosupcertificacion[$clavecertificacion];
-$modalidadcertificacion = $arraymodalidadcertificacion[$clavecertificacion];
-$documentorecibecertificacion = $arraydocumentorecibecertificacion[$clavecertificacion];
-$DatoCertificacion[] = '("'.$nombreformacioncertificacion.'","' .$nombreinstitucioncertificacion. '","' .$fechainiciosupcertificacion . '","' .$fechaterminosupcertificacion . '","' .$tiempocursadosupcertificacion . '","' .$modalidadcertificacion . '","' .$documentorecibecertificacion . '","' .$id_user . '")';
+        if($nombrecertificacionuno != '' and $nombreinstitucioncertificacion != ''){
+        
+            $arraynombreformacioncertificacion = array_map("htmlspecialchars", $nombrecertificacionuno);
+            $arraynombreinstitucioncertificacion = array_map("htmlspecialchars", $nombreinstitucioncertificacion);
+            $arrayfechainiciosupcertificacion = array_map("htmlspecialchars", $fechainiciocertificacionuno);
+            $arrayfechaterminosupcertificacion = array_map("htmlspecialchars", $fechaterminocertificacionuno);
+            $arraytiempocursadosupcertificacion = array_map("htmlspecialchars", $tiempocursadocertificacion);
+            $arraymodalidadcertificacion = array_map("htmlspecialchars", $modalidadceertificacion);
+            $arraydocumentorecibecertificacion = array_map("htmlspecialchars", $documentocertificacionuno);
             
-$sql = $conexionSeleccion->prepare("INSERT INTO cerficacion(nombreformacioncertificauno, nombrecertificacionuno, fechainiciocertificacionuno, fechaterminocertificacionuno,tiempocursadosupcertificacion,modalidadcertificacion,
-         documentorecibecertificacion,id_postulado)
-            VALUES " . implode(', ', $DatoCertificacion));
-}
-$sql->execute();
-}
+            foreach($arraynombreformacioncertificacion as $clavecertificacion => $nombrecertificacionuno){
+            $nombreinstitucioncertificacion = $arraynombreinstitucioncertificacion[$clavecertificacion];
+            $fechainiciocertificacionuno = $arrayfechainiciosupcertificacion[$clavecertificacion];
+            $fechaterminocertificacionuno = $arrayfechaterminosupcertificacion[$clavecertificacion];
+            $tiempocursadocertificacion = $arraytiempocursadosupcertificacion[$clavecertificacion];
+            $modalidadceertificacion = $arraymodalidadcertificacion[$clavecertificacion];
+            $documentocertificacionuno = $arraydocumentorecibecertificacion[$clavecertificacion];
+            $DatoCertificacion[] = '("'.$nombreinstitucioncertificacion.'","' .$nombrecertificacionuno. '","' .$fechainiciocertificacionuno . '","' .$fechaterminocertificacionuno . '","' .$tiempocursadocertificacion . '","' .$modalidadceertificacion . '","' .$documentocertificacionuno . '","' .$id_user . '")';
+                        
+            $sql = $conexionSeleccion->prepare("INSERT INTO cerficacion(nombreformacioncertificauno, nombrecertificacionuno, fechainiciocertificacionuno, fechaterminocertificacionuno,tiempocursadosupcertificacion,modalidadcertificacion,
+                     documentorecibecertificacion,id_postulado)
+                        VALUES " . implode(', ', $DatoCertificacion));
+            }
+            $sql->execute();
+            foreach($_FILES["archivocertificacion"]['tmp_name'] as $key => $tmp_name)
+                    {
+                        //condicional si el fuchero existe
+                        if($_FILES["archivocertificacion"]["name"][$key]) {
+                            // Nombres de archivos de temporales
+                            $nombredelarchivo = "Documento certificacion";
+                            $archivonombre = $_POST['nombrecertificacionuno'][$key];
+                            $fuente = $_FILES["archivocertificacion"]["tmp_name"][$key]; 
+                            
+                            $carpeta = '../documentos/' .$archivonombre.$id_user. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+                            
+                            if(!file_exists($carpeta)){
+                                mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+                            }
+                            
+                            $dir=opendir($carpeta);
+                            $target_path = $carpeta.'/'.$nombredelarchivo.'.pdf'; //indicamos la ruta de destino de los archivos
+                            
+                    
+                            if(file_exists($carpeta)) {	
+                                move_uploaded_file($fuente, $target_path);
+                                
+                                } else {	
+                                echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+                            }
+                            closedir($dir); //Cerramos la conexion con la carpeta destino
+                        }
+                    }
+            }
 
         $sql = $conexionSeleccion->prepare("INSERT INTO explaboralpublico(empresauno, cbx_dependenciauno, puestoempresauno, tipopuestouno, empresadirecionuno, telcontactouno, extencionuno, jefedirectouno, motivoseparacionuno, funcionespricipalesuno, fechainiciouno, fechaterminouno, 
             empresados,cbx_dependenciados,puestoempresados,tipopuestodos,empresadirecdos, telcontactodos,extenciondos,jefedirectodos,motivoseparaciondos,funcionespricipalesdos,fechainicidos,fechaterminodos,

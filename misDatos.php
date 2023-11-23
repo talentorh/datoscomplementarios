@@ -180,6 +180,9 @@ require 'frontend/actualizarDatosContratacionC.php';
 }else{
 
 }
-    header('location: index');
+    //header('location: index');
+    
+}else{
+    require 'index.php';
 }
 ?>
