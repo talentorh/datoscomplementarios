@@ -886,18 +886,18 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento servicio social</strong>
     <?php
-    $curp = $dataRegistro['curp'];
+    $id = $dataRegistro['id_principal'];
     $compdomicilio = 'documento servicio social';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $path = "documentos/" . $compdomicilio . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminardoSer?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$compdomicilio$id/$archivo' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminardoSer?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
@@ -937,18 +937,18 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento practicas profesionales</strong>
     <?php
-    $curp = $dataRegistro['curp'];
+    $id = $dataRegistro['id_principal'];
     $compdomicilio = 'documento practicas profesionales';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $path = "documentos/" . $compdomicilio . $id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarPracticasP?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$compdomicilio$id/$archivo' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarPracticasP?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     }
