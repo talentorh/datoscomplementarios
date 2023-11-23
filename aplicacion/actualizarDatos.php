@@ -1125,7 +1125,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                     $compdomicilio = 'documento servicio social';
                     if (in_array($_FILES["archivoservsocial"]["type"], $permitidos) && $_FILES["archivoservsocial"]["size"]) {
         
-                        $ruta = '../documentos/' . $compdomicilio . $curp . '/';
+                        $ruta = '../documentos/' . $compdomicilio . $id_user . '/';
                         $archivo = $ruta . $_FILES["archivoservsocial"]["name"] = "comprobante servicio social.pdf";
         
         
@@ -1147,7 +1147,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                     $compdomicilio = 'documento practicas profesionales';
                     if (in_array($_FILES["archivopracticas"]["type"], $permitidos) && $_FILES["archivopracticas"]["size"]) {
         
-                        $ruta = '../documentos/' . $compdomicilio . $curp . '/';
+                        $ruta = '../documentos/' . $compdomicilio . $id_user . '/';
                         $archivo = $ruta . $_FILES["archivopracticas"]["name"] = "comprobante practicas profesionales.pdf";
         
         
