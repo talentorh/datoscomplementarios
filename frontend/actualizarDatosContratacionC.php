@@ -45,21 +45,20 @@
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Constancia</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $acteconomica = 'documentoactvidadeconomica';
-    $path = "documentos/" . $acteconomica . $curp;
+    $id = $dataRegistro['id_principal'];
+    $acteconomica = 'actividad economica';
+    $path = "documentos/".$id.'/'.$acteconomica.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$acteconomica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$acteconomica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/constanciaFiscal?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$acteconomica.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$id/$acteconomica.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='eliminarDocumentacion/constanciaFiscal?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -70,21 +69,20 @@
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Acta de nacimiento</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $actanacimiento = 'documentoactanacimiento';
-    $path = "documentos/" . $actanacimiento . $curp;
+    $id = $dataRegistro['id_principal'];
+    $actanacimiento = 'acta de nacimiento';
+    $path = "documentos/" .$id.'/'.$actanacimiento.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$actanacimiento$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$actanacimiento$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarActanacimiento?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$actanacimiento.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$id/$actanacimiento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarActanacimiento?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -96,20 +94,19 @@
         <strong>INE</strong>
     <?php
     $curp = $dataRegistro['id_principal'];
-    $ine = 'documentoine';
-    $path = "documentos/" . $ine . $curp;
+    $ine = 'ine';
+    $path = "documentos/" .$id.'/'.$ine.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$ine$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$ine$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<iframe src='documentos/$id/$ine.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$id/$ine.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
                 echo "<a href='eliminarDocumentacion/eliminarIne?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -120,21 +117,20 @@
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Cartilla</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $cartilla = 'documentocartilla';
-    $path = "documentos/" . $cartilla . $curp;
+    $id = $dataRegistro['id_principal'];
+    $cartilla = 'cartilla militar';
+    $path = "documentos/".$id.'/'.$cartilla.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$cartilla$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$cartilla$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<iframe src='documentos/$id/$cartilla.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$id/$cartilla.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
                 echo "<a href='eliminarDocumentacion/eliminarCartilla?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -145,22 +141,20 @@
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Firma electronica</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $firmaelectronica = 'documentofirmaelectonica';
-    $path = "documentos/" . $firmaelectronica . $curp;
+    $id= $dataRegistro['id_principal'];
+    $firmaelectronica = 'firma electronica';
+    $path = "documentos/" .$id.'/'.$firmaelectronica.'.rar';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
                 //echo "<iframe src='documentos/$firmaelectronica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$firmaelectronica$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
+                echo "<a href='documentos/$id/$firmaelectronica.rar' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
                 echo "<a href='eliminarDocumentacion/eliminarFirmaElectronica?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-6">
@@ -170,21 +164,20 @@
     <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Clave interbancaria</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $claveinter = 'documentoclaveinterbancaria';
-    $path = "documentos/" . $claveinter . $curp;
+    $id = $dataRegistro['id_principal'];
+    $claveinter = 'clave interbancaria';
+    $path = "documentos/" .$id.'/'.$claveinter.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$claveinter$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
-                echo "<a href='documentos/$claveinter$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
+                echo "<iframe src='documentos/$id/$claveinter.pdf' class='form-control' style='height: 150px;'></iframe>";
+                echo "<a href='documentos/$id/$claveinter.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
                 echo "<a href='eliminarDocumentacion/eliminarClaveInterbancaria?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -235,20 +228,20 @@ function deleteSpmail() {
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento CURP</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $compdomicilio = 'documentocurp';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $curp = 'comprobante curp';
+    $path = "documentos/" .$id."/".$curp.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+                echo "<div data='" . $path . "/" . $curp . "'><a href='" . $path . "/" . $curp . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCurp?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$curp.pdf' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$curp.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarCurp?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
-        }
+        
     }
 
     ?>
@@ -275,21 +268,20 @@ function deleteSpmail() {
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Comprobante de domicilio</strong>
     <?php
-    $curp = $dataRegistro['id_principal'];
-    $compdomicilio = 'comprobantedomicilio';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $compdomicilio = 'comprobante de domicilio';
+    $path = "documentos/" .$id."/".$compdomicilio.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+                echo "<div data='" . $path . "/" . $compdomicilio . "'><a href='" . $path . "/" . $compdomicilio . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCompDomicilio?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$compdomicilio.pdf' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$compdomicilio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarCompDomicilio?id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -387,20 +379,19 @@ function deleteSpmail() {
         <strong>Documento certificado</strong>
     <?php
     $id = $dataRegistro['id_principal'];
-    $archivoNombre = $dataRegistro['nombreformacionmedia'];
-    $path = "documentos/" . $archivoNombre . $id;
+    $archivoNombre = "Certificado media superior";
+    $path = "documentos/" .$id."/".$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivoNombre$id/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivoNombre$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCertificado?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -432,6 +423,63 @@ function deleteSpmail() {
                     <label>Documento que recibe</label>
                     <input type="text" id="documentotecnico" name="documentotecnico" value="<?php echo $dataRegistro['documentotecnico'] ?>" autocomplete="off" class="form-control">
         </div>
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <label>Nivel postecnico</label>
+            </div>
+  <div class="form-group col-md-12">
+                    <strong>Agregar postecnico (Solo numeros)</strong>
+                    <input type="number" id="quantityp" name="numpostecnico" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantityp").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity = event.target.value;
+
+                        for (let i = 0; i < quantity; i++) {
+                            content += `<div class="form-row">
+                                    <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información postecnico ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionPostecnico[${i}]" name="nombreformacionPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionPostecnico[${i}]" name="nombreinstitucionPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupPostecnico[${i}]" name="fechainiciosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupPostecnico[${i}]" name="fechaterminosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadosupPostecnico[${i}]" name="tiempocursadosupPostecnico[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibePostecnico[${i}]" name="documentorecibePostecnico[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                    <strong>Sube tu documento</strong>
+                                    <input type="file"  class="form-control" id="documentotitulopostecnico[${i}]" name="documentotitulopostecnico[]" accept=".pdf">
+                                    </div>
+                                    <div class="col-md-3">
+                                    <strong>Sube tu cedula</strong>
+                                    <input type="file"  class="form-control" id="documentocedulapostecnico[${i}]" name="documentocedulapostecnico[]" accept=".pdf">
+                                    </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuestsp").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuestsp"></div>
         <?php
 $id = $dataRegistro['id_principal'];
     require_once 'claseConexion/conexion.php';
@@ -484,25 +532,105 @@ $id = $dataRegistro['id_principal'];
                                     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistropostecnico['nombreformacionpostecnico'];
+    $archivonombre = 'Titulo postecnico'.' '.$dataRegistropostecnico['nombreformacionpostecnico'];
     $id_user = $dataRegistro['id_principal'];
-    $path = 'documentos/'.$archivonombre.$id_user. '/';
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='200' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCedSuperior?titulo=$archivonombre&id=$id_user&archivo=$archivo'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
+    
 
     ?>
     </div>
-                    <?php endforeach; ?>      
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento cedula</strong>
+    <?php
+    $archivonombre = 'Cedula postecnico'.' '.$dataRegistropostecnico['nombreformacionpostecnico'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    
+
+    ?>
+    </div>
+                    <?php endforeach; ?>   
+                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        <label>Nivel Superior</label>
+    </div>
+      <div class="form-group col-md-12">
+                    <strong>Agregar licenciatura (Solo numeros)</strong>
+                    <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                
+                </div>
+                <script>
+                    document.getElementById("quantity").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity = event.target.value;
+
+                        for (let i = 0; i < quantity; i++) {
+                            content += `<div class="form-row">
+                            <div class="form-group col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información licenciatura ${i +1}</h1>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacion[${i}]" name="nombreformacion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucion[${i}]" name="nombreinstitucion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainicio[${i}]" name="fechainiciosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechatermino[${i}]" name="fechaterminosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursado[${i}]" name="tiempocursadosup[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibe[${i}]" name="documentorecibe[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedula[${i}]" name="numerocedula[]" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+        <strong>Sube tu documento</strong>
+    <input type="file"  class="form-control" name="documentolicenciatura[]" accept=".pdf">
+    </div>
+                                <div class="col-md-3">
+        <strong>Sube tu cedula</strong>
+    <input type="file"  class="form-control" name="documentocedula[]" accept=".pdf">
+    </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests").innerHTML = content;
+                    })
+                </script>
+                <div id="divGuests"></div>      
                     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -559,28 +687,108 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistroe['nombreformacionsuperior'];
+    $archivonombre = 'Titulo licenciatura'.' '.$dataRegistroe['nombreformacionsuperior'];
     $id_user = $dataRegistro['id_principal'];
-    $path = 'documentos/'.$archivonombre.$id_user. '/';
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='200' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCedSuperior?titulo=$archivonombre&id=$id_user&archivo=$archivo'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
+
+    ?>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento cedula</strong>
+    <?php
+    $archivonombre = 'Cedula licenciatura'.' '.$dataRegistroe['nombreformacionsuperior'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
 
     ?>
     </div>
     
        
     <?php endforeach; ?>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        <label>Agregar Maestria</label>
+    </div>
+<div class="form-group col-md-12">
+                    <strong>Agregar maestria (Solo numeros)</strong>
+                    <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity2").addEventListener("input", (event) => {
+                        let content = '';
 
+                        const quantity2 = event.target.value;
+
+                        for (let i = 0; i < quantity2; i++) {
+                            content += `<div class="form-row">
+                                    <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información maestria ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionmaestria[${i}]" name="nombreformacionmaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombremaestria[${i}]" name="nombremaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciomaestria[${i}]" name="fechainiciomaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminomaestria[${i}]" name="fechaterminomaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadomaestria[${i}]" name="tiempocursadomaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentomaestria[${i}]" name="documentomaestria[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="text" id="cedulamaestria[${i}]" name="cedulamaestria[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+        <strong>Sube tu titulo</strong>
+    <input type="file" id="documentotitulomaestria[${i}]" class="form-control" name="documentotitulomaestria[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu cedula</strong>
+    <input type="file" id="documentocedulamaestria[${i}]" class="form-control" name="documentocedulamaestria[]" accept=".pdf">
+    </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests2").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests2"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -635,29 +843,113 @@ require_once 'claseConexion/conexion.php';
     <input type="file"  class="form-control" name="documentocedulamaestria[]" accept=".pdf">
     </div>
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documentos</strong>
+        <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistroMaestria['nombreformacionmaestria'];
+    $archivonombre = 'Titulo maestria'.' '.$dataRegistroMaestria['nombreformacionmaestria'];
     $id_user = $dataRegistro['id_principal'];
-    $path = "documentos/" . $archivonombre . $id_user;
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarComMae1?curp=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
+
+    ?>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento cedula</strong>
+    <?php
+    $archivonombre = 'Cedula maestria'.' '.$dataRegistroMaestria['nombreformacionmaestria'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
 
     ?>
     </div>
     
     <?php endforeach; ?>
-    <!--segunda maestria-->
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Agregar Posgrado/Especialidad</h3>
+</div>
+    <div class="form-group col-md-12">
+                    <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
+                    <input type="number" id="quantity3" name="posgrados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity3").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity3 = event.target.value;
+
+                        for (let i = 0; i < quantity3; i++) {
+                            content += `<div class="form-row">
+                                    <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información posgrado/especialidad ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformacionposgradoespecialidad[${i}]" name="nombreformacionposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucionposgradoespecialidad[${i}]" name="nombreinstitucionposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupposgradoespecialidad[${i}]" name="fechainiciosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupposgradoespecialidad[${i}]" name="fechaterminosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadosupposgradoespecialidad[${i}]" name="tiempocursadosupposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Unidad hospitalaria ${i +1}</label>
+                                <input type="text" id="unidadhospitalariaposgradoespecialidad[${i}]" name="unidadhospitalariaposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibeposgradoespecialidad[${i}]" name="documentorecibeposgradoespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="int" id="numerocedulaposgradoespecialidad[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+        <strong>Sube tu titulo</strong>
+    <input type="file" id="archivotituloposgrado[${i}]" class="form-control" name="archivotituloposgrado[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu cedula</strong>
+    <input type="file" id="archivocedulaposgrado[${i}]" class="form-control" name="archivocedulaposgrado[]" accept=".pdf">
+    </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests3").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests3"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';  
@@ -715,28 +1007,110 @@ require_once 'claseConexion/conexion.php';
     </div>
     
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documentos</strong>
+        <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistroEspecialidad['nombreformacionacademica'];
+    $archivonombre = 'Titulo posgrado'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
     $id_user = $dataRegistro['id_principal'];
-    $path = "documentos/" . $archivonombre . $id_user;
+    $path = "documentos/" . $id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarPosgrado?curp=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento cedula</strong>
+    <?php
+    $archivonombre = 'Cedula posgrado'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" . $id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    ?>
+    </div>
+<?php endforeach; ?>  
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Agregar Doctorado/Subespecialidad</h3>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar doctorado (Solo numeros)</strong>
+                    <input type="number" id="quantity4" name="doctorados" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity4").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity4 = event.target.value;
+
+                        for (let i = 0; i < quantity4; i++) {
+                            content += `<div class="form-row">
+                                <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información doctorado ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación académica ${i +1}</label>
+                                <input type="text" id="nombreformaciondoctorado[${i}]" name="nombreformaciondoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstituciondoctorado[${i}]" name="nombreinstituciondoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupdoctorado[${i}]" name="fechainiciosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupdoctorado[${i}]" name="fechaterminosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadosupdoctorado[${i}]" name="tiempocursadosupdoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Unidad hospitalaria ${i +1}</label>
+                                <input type="int" id="unidadhospitalariadoctorado[${i}]" name="unidadhospitalariadoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibedoctorado[${i}]" name="documentorecibedoctorado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Numero de cedula ${i +1}</label>
+                                <input type="text" id="numeroceduladoctorado[${i}]" name="numeroceduladoctorado[]" class="form-control">
+                              </div>
+                              <div class="col-md-3">
+        <strong>Sube tu titulo</strong>
+    <input type="file" id="archivotitulodoctorado[${i}]" class="form-control" name="archivotitulodoctorado[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu cedula</strong>
+    <input type="file" id="archivoceduladoctorado[${i}]" class="form-control" name="archivoceduladoctorado[]" accept=".pdf">
+    </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests4").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests4"></div>
     
-    <?php endforeach; ?>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -795,25 +1169,103 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistroDoctorado['nombreformaciondoctorado'];
+    $archivonombre = 'Titulo doctorado'.' '.$dataRegistroDoctorado['nombreformaciondoctorado'];
     $id_user = $dataRegistro['id_principal'];
-    $path = "documentos/" . $archivonombre . $id_user;
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaComDoc?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
+    ?>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Cedula titulo</strong>
+    <?php
+    $archivonombre = 'Cedula doctorado'.' '.$dataRegistroDoctorado['nombreformaciondoctorado'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
     ?>
     </div>
     <?php endforeach; ?>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Agregar Estudios Alta especialidad</h3>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar Estudios Alta especialidad (Solo numeros)</strong>
+                    <input type="number" id="quantity7" name="otrosestudios" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity7").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity7 = event.target.value;
+
+                        for (let i = 0; i < quantity7; i++) {
+                            content += `<div class="form-row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información Estudios Alta especialidad ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación ${i +1}</label>
+                                <input type="text" id="nombreformacionaltaesp[${i}]" name="nombreformacionaltaesp[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombrealtaespecialidad[${i}]" name="nombrealtaespecialidad[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Unidad hospitalaria ${i +1}</label>
+                                <input type="text" id="unidadhospaltaesp[${i}]" name="unidadhospaltaesp[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainicioaltaesp[${i}]" name="fechainicioaltaesp[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminoaltaesp[${i}]" name="fechaterminoaltaesp[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Años cursados ${i +1}</label>
+                                <input type="text" id="tiempocursadoaltaesp[${i}]" name="tiempocursadoaltaesp[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibealtaesp[${i}]" name="documentorecibealtaesp[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+        <strong>Sube tu titulo</strong>
+    <input type="file" id="archivotituloaltaesp[${i}]" class="form-control" name="archivotituloaltaesp[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu cedula</strong>
+    <input type="file" id="cedulaAltaEsp[${i}]" class="form-control" name="cedulaAltaEsp[]" accept=".pdf">
+    </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests7").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests7"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -826,7 +1278,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
-        <label>Otros estudios/Alta Especialidad</label>
+        <label>Estudios Alta Especialidad</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -860,39 +1312,103 @@ require_once 'claseConexion/conexion.php';
         <strong>Sube tu titulo</strong>
     <input type="file"  class="form-control" name="archivotituloaltaesp[]" accept=".pdf">
     </div>
-    <!--
     <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistroOtrosEstAltaEsp['numerocedulaespecialidad'] ?>" class="form-control" name="cedulaaltaesp[]">
     </div>
-        -->
     <div class="col-md-3">
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="cedulaAltaEsp[]" accept=".pdf">
     </div>
 
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documento obtenido</strong>
+        <strong>Documento titulo</strong>
     <?php
-    $archivonombre = $dataRegistroOtrosEstAltaEsp['nombreformacionaltaesp'];
+    $archivonombre = 'Titulo alta especialidad'.' '.$dataRegistroOtrosEstAltaEsp['nombreformacionaltaesp'];
     $id_user = $dataRegistro['id_principal'];
-    $path = "documentos/" . $archivonombre . $id_user;
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivonombre$id_user/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivonombre$id_user/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaComproEspecialidad?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
+    ?>
+    </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento cedula</strong>
+    <?php
+    $archivonombre = 'Cedula alta especialidad'.' '.$dataRegistroOtrosEstAltaEsp['nombreformacionaltaesp'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
     ?>
     </div>
     <?php endforeach; ?>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Agregar Otros estudios</h3>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar otros estudios (Solo numeros)</strong>
+                    <input type="number" id="quantity8" name="otrosestudios" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity8").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity8 = event.target.value;
+
+                        for (let i = 0; i < quantity8; i++) {
+                            content += `<div class="form-row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información otros estudios ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la formación ${i +1}</label>
+                                <input type="text" id="nombreformacionotros[${i}]" name="nombreformacionotros[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreotrosestudiosuno[${i}]" name="nombreotrosestudiosuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciootrosestudiosuno[${i}]" name="fechainiciootrosestudiosuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminootrosestudiosuno[${i}]" name="fechaterminootrosestudiosuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentorecibeestudiosuno[${i}]" name="documentorecibeestudiosuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+        <strong>Sube tu documento</strong>
+    <input type="file" id="archivootrosuno[${i}]" class="form-control" name="archivootrosuno[]" accept=".pdf">
+    </div>
+                        </div>`;
+                        }
+                        document.getElementById("divGuests8").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests8"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -905,7 +1421,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
-        <label>Otros estudios</label>
+        <label>Otros estudios </label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -932,27 +1448,26 @@ require_once 'claseConexion/conexion.php';
     
     <div class="col-md-3">
         <strong>Sube tu documento</strong>
-    <input type="file"  class="form-control" name="archivootrosuno" accept=".pdf">
+    <input type="file"  class="form-control" name="archivootrosuno[]" accept=".pdf">
     </div>
     
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento obtenido</strong>
-    <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'comprobante otro estudio';
-    $path = "documentos/" . $compdomicilio . $curp;
+        <?php
+    $archivoNombre = 'Documento otros estudios'.' '.$dataRegistroOtrosEst['nombreformacionotros'];
+    $id = $dataRegistro['id_principal'];
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaotroEs1?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -992,20 +1507,19 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento servicio social</strong>
     <?php
     $id = $dataRegistro['id_principal'];
-    $compdomicilio = 'documento servicio social';
-    $path = "documentos/" . $compdomicilio . $id;
+    $ArchivoNombre = 'Documento servicio social';
+    $path = "documentos/".$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$id/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminardoSer?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
@@ -1043,28 +1557,89 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento practicas profesionales</strong>
     <?php
     $id = $dataRegistro['id_principal'];
-    $compdomicilio = 'documento practicas profesionales';
-    $path = "documentos/" . $compdomicilio . $id;
+    $archivoNombre = 'Documento practicas profesionales';
+    $path = "documentos/".$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$id/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarPracticasP?curp=$curp'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
-    
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Agregar Certificaciones</h3>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar certificación (Solo numeros)</strong>
+                    <input type="number" id="quantity6" name="certificaciones" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity6").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity6 = event.target.value;
+
+                        for (let i = 0; i < quantity6; i++) {
+                            content += `<div class="form-row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información certificación ${i +1}</h1>
+                                </div>
+                            <div class="form-group col-md-6">
+                                <label>Nombre de la certificación ${i +1}</label>
+                                <input type="text" id="nombrecertificacionuno[${i}]" name="nombrecertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucioncertificacion[${i}]" name="nombreinstitucioncertificacion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciocertificacionuno[${i}]" name="fechainiciocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminocertificacionuno[${i}]" name="fechaterminocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas ${i +1}</label>
+                                <input type="text" id="tiempocursadocertificacion[${i}]" name="tiempocursadocertificacion[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad ${i +1}</label>
+                                <select name="modalidadceertificacion[]" id="modalidadceertificacion[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-12">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentocertificacionuno[${i}]" name="documentocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+        <strong>Sube tu documento</strong>
+    <input type="file" id="archivocertificacion[${i}]" class="form-control" name="archivocertificacion[]" accept=".pdf">
+    </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests6").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests6"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
-    $sql = $conexion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
+    $sql = $conexionSeleccion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
         $sql->execute(array(
             ':id_postulado'=>$id
         ));
@@ -1080,7 +1655,7 @@ require_once 'claseConexion/conexion.php';
     <input type="text" value="<?php echo $dataRegistroCertificacion['nombreformacioncertificauno'] ?>" class="form-control" name="nombreinstitucioncertificacion[]">
     </div>
     <div class="col-md-6">
-        <strong>Especialidad que certifica</strong>
+        <strong>Nombre de la certificación</strong>
     <input type="text" value="<?php echo $dataRegistroCertificacion['nombrecertificacionuno'] ?>" class="form-control" name="nombrecertificacionuno[]">
     </div>
     <div class="col-md-3">
@@ -1092,13 +1667,18 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroCertificacion['fechaterminocertificacionuno'] ?>" class="form-control" name="fechaterminocertificacionuno[]">
     </div>
     <div class="col-md-3">
-        <strong>Tiempo cursado</strong>
-    <input type="date" value="<?php echo $dataRegistroCertificacion['tiempocursadosupcertificacion'] ?>" class="form-control" name="tiempocursadocertificacion[]">
+        <strong>Total de horas</strong>
+    <input type="text" value="<?php echo $dataRegistroCertificacion['tiempocursadosupcertificacion'] ?>" class="form-control" name="tiempocursadocertificacion[]">
     </div>
-    <div class="col-md-3">
-        <strong>Modalidad</strong>
-    <input type="date" value="<?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?>" class="form-control" name="modalidadceertificacion[]">
-    </div>
+    <div class="form-group col-md-3">
+    <strong>Modalidad</strong>
+                                <select name="modalidadceertificacion[]" id="modalidadceertificacion" class="form-control">
+                                    <option value="<?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?>"><?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?></option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
     <div class="col-md-3">
         <strong>Documento que acredita</strong>
     <input type="text" value="<?php echo $dataRegistroCertificacion['documentorecibecertificacion'] ?>" class="form-control" name="documentocertificacionuno[]">
@@ -1108,28 +1688,101 @@ require_once 'claseConexion/conexion.php';
         <strong>Sube tu documento</strong>
     <input type="file"  class="form-control" name="archivocertificacion[]" accept=".pdf">
     </div>
-    <div class="col-md-3" style="border: 1px solid #F0F0F0;">
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
         <strong>Documento certificación</strong>
     <?php
-    $archivoNombre = $dataRegistroCertificacion['nombreformacioncertificauno'];
+    $archivoNombre = 'Documento certificacion'.' '.$dataRegistroCertificacion['nombrecertificacionuno'];
     $id = $dataRegistro['id_principal'];
-    $path = "documentos/" . $archivoNombre . $id;
+    $path = "documentos/".$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$archivoNombre$id/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$archivoNombre$id/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaCertificado1?curp=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
 
     ?>
     </div>
     <?php endforeach; ?>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <h3 style="text-align: center;">Exp. laboral sector privado</h3>
+    </div>
+<div class="form-group col-md-12">
+                    <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
+                    <input type="number" id="quantity9" name="explaboral" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity9").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity9 = event.target.value;
+
+                        for (let i = 0; i < quantity9; i++) {
+                            content += `<div class="form-row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información Exp. laboral sector privado ${i +1}</h1>
+                                </div>
+
+      <div class="form-group col-md-6">
+        <label>Nombre de la empresa</label>
+        <input type="text" class="form-control" autocomplete="off" id="nombrelaboralprivada[]" name="nombrelaboralprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Tipo de puesto</label>
+        <input type="text" class="form-control" autocomplete="off" id="tipopuestoprivada[]" name="tipopuestoprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Dirección de la empresa</label>
+        <input type="text" class="form-control" autocomplete="off" id="direccionempresaprivada[]" name="direccionempresaprivada[]">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Teléfono de contacto</label>
+        <input type="text" class="form-control" autocomplete="off" id="telefonoempresaprivada[]" name="telefonoempresaprivada[]">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Extensión</label>
+        <input type="text" class="form-control" autocomplete="off" id="extencionempresaprivada[]" name="extencionempresaprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Nombre de su jefe directo</label>
+        <input type="text" class="form-control" autocomplete="off" id="nombrejefeprivada[]" name="nombrejefeprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Motivo de su sepación</label>
+        <input type="text" class="form-control" autocomplete="off" id="motivoseparacionprivada[]" name="motivoseparacionprivada[]">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Funciones principales</label>
+        <textarea rows="4" class="form-control" autocomplete="off" id="funcionesprivada[]" name="funcionesprivada[]"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fecha de inicio de labores</label>
+        <input type="date" class="form-control" autocomplete="off" id="fechainicioprivada[]" name="fechainicioprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fecha término de labores</label>
+        <input type="date" class="form-control" autocomplete="off" id="fechaterminoprivada[]" name="fechaterminoprivada[]">
+      </div>
+      <div class="col-md-3">
+        <strong>Sube tu documento 1</strong>
+    <input type="file"  class="form-control" name="archivoexplaboralprivadoone1[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu documento 2</strong>
+    <input type="file"  class="form-control" name="archivoexplaboralprivadotwo1[]" accept=".pdf">
+    </div>
+      </div>`;
+                        }
+                        document.getElementById("divGuests9").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests9"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -1198,43 +1851,39 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral primero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'Documento exp laboral privada 1'.$dataRegistroExpLaboPrivado['nombrelaboralprivada'];
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExperiencia1?curp=$curp'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral primero 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'Documento exp laboral privada 2'.$dataRegistroExpLaboPrivado['nombrelaboralprivada'];
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExperiencia1_2?curp=$curp'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <?php endforeach; ?>
@@ -1301,43 +1950,39 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico primero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico primero 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub1?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico primero 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico primero 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub1_2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
@@ -1402,43 +2047,39 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico segundo 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico segundo 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico segundo 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico segundo 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub2_2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
@@ -1503,43 +2144,39 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico tercero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico tercero 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaExpPub3?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico tercero 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico tercero 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eiminarExpPub3_3?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
   
