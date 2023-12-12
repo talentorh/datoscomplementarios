@@ -62,7 +62,7 @@ include("claseConexion/conexion.php");
         
         ':correoelectronico' => $correo,
         ':rfc'=>$password,
-        ':acceder'=>1
+        ':acceder'=>3
     ));
 
     $resultado = $statement->fetch();
