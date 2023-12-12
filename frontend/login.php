@@ -57,12 +57,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     
 include("claseConexion/conexion.php");
 
-    $statement = $conexionSeleccion->prepare('SELECT correoelectronico, rfc FROM datospersonales WHERE correoelectronico= :correoelectronico AND rfc = :rfc and acceder = :acceder');
+    $statement = $conexionSeleccion->prepare('SELECT correoelectronico, rfc FROM datospersonales WHERE correoelectronico= :correoelectronico AND rfc = :rfc');
     $statement->execute(array(
         
         ':correoelectronico' => $correo,
         ':rfc'=>$password,
-        ':acceder'=>3
+
     ));
 
     $resultado = $statement->fetch();
