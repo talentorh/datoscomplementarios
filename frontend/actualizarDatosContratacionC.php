@@ -2471,7 +2471,28 @@ $(document).ready(function(){
         </div>
     </div>  
 </div>
+<script>
+            $('input[type="file"]').on('change', function() {
+                var ext = $(this).val().split('.').pop();
+                if ($(this).val() != '') {
+                    if (ext == "pdf") {
 
+                        if ($(this)[0].files[0].size > 5048576) {
+                            console.log("El documento excede el tamaño máximo");
+                            alert('¡Precaución! Se solicita un archivo no mayor a 5MB. Por favor verifica.');
+
+                            $(this).val('');
+                        } else {
+                            $("#alerta").hide();
+                        }
+                    } else {
+                        $(this).val('');
+                        alert("Extensión no permitida: " + ext);
+                    }
+                }
+            });
+        </script>
+        <div id="alerta"></div>
 </form>
 </body>
 
