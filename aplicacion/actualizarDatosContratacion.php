@@ -1363,19 +1363,26 @@ error_reporting(0);
                 ':curp'=>$curp
             ));
             
-        $validatransac = $conexionSeleccion->commit();
-
-        if($validatransac != false) {
-            echo "<script>alert('Modificacion de datos exitosa');
-    </script>";
-    header('location: ../misDatos');
-    }
-    }catch(Exception $e) {
-    $conexionSeleccion->rollBack();
-    echo "<script>alert('Error al modificar tus datos');
-    </script>";
-    header('location: ../misDatos');
-    }
+            $validatransac = $conexionSeleccion->commit();
+            if($validatransaccion != false){
+                echo "<script>Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Tus datos han sido enviados exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                })</script>";
+            }
+            } catch (Exception $e) {
+                $conexionSeleccion->rollBack();
+                echo "<script>Swal.fire({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Error al enviar tus datos',
+                    showConfirmButton: false,
+                    timer: 1500
+                })</script>";
+            }
         
     
     ?> 

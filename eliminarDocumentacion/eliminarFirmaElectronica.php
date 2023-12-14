@@ -1,11 +1,10 @@
 <?php
-$curp = $_GET['curp'];
-$firmaelectronica = 'documentofirmaelectonica';
-$ar = '../documentos/'.$firmaelectronica.$curp;
-    foreach(glob($ar."/*.*") as $archivos_carpeta) 
-        { 
-            unlink($archivos_carpeta);     
-    }
+$id = $_GET['id'];
+$titulo = $_GET['titulo'].'.rar';
+$ar = '../documentos/'.$id.'/'.$titulo;
+    
+            unlink($ar);     
+    
     echo "<script>alert('Documento eliminado');
     window.history.back();</script>";
 ?>

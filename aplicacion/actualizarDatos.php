@@ -46,6 +46,206 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                     ':fechaactualizo' => $DateAndTime,
                     ':plazaevaluar'=>$plazaevaluar
                 ));
+                if ($_FILES["avisoconfidencialidad"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'avisoconfidencialidad';
+                    if (in_array($_FILES["avisoconfidencialidad"]["type"], $permitidos) && $_FILES["avisoconfidencialidad"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["avisoconfidencialidad"]["name"] = "avisoconfidencialidad.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["avisoconfidencialidad"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["integraciondeantiguedad"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'integraciondeantiguedad';
+                    if (in_array($_FILES["integraciondeantiguedad"]["type"], $permitidos) && $_FILES["integraciondeantiguedad"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["integraciondeantiguedad"]["name"] = "integraciondeantiguedad.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["integraciondeantiguedad"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["noconflictodeinteres"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'noconflictodeinteres';
+                    if (in_array($_FILES["noconflictodeinteres"]["type"], $permitidos) && $_FILES["noconflictodeinteres"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["noconflictodeinteres"]["name"] = "noconflictodeinteres.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["noconflictodeinteres"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["paraocpuacion"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'paraocpuacion';
+                    if (in_array($_FILES["paraocpuacion"]["type"], $permitidos) && $_FILES["paraocpuacion"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["paraocpuacion"]["name"] = "paraocpuacion.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["paraocpuacion"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["noempleo"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'noempleo';
+                    if (in_array($_FILES["noempleo"]["type"], $permitidos) && $_FILES["noempleo"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["noempleo"]["name"] = "noempleo.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["noempleo"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["consentimiento"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'consentimiento';
+                    if (in_array($_FILES["consentimiento"]["type"], $permitidos) && $_FILES["consentimiento"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["consentimiento"]["name"] = "consentimiento.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["consentimiento"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["otroempleo"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'otroempleo';
+                    if (in_array($_FILES["otroempleo"]["type"], $permitidos) && $_FILES["otroempleo"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["otroempleo"]["name"] = "otroempleo.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["otroempleo"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
+                if ($_FILES["protecciondatos"]["error"] > 0) {
+                    
+                } else {
+        
+                    $permitidos = array("application/pdf");
+                    $compdomicilio = 'protecciondatos';
+                    if (in_array($_FILES["protecciondatos"]["type"], $permitidos) && $_FILES["protecciondatos"]["size"]) {
+        
+                        $ruta = '../documentos/'.$id_user . '/';
+                        $archivo = $ruta . $_FILES["protecciondatos"]["name"] = "protecciondatos.pdf";
+        
+        
+                        if (!file_exists($ruta)) {
+                            mkdir($ruta);
+                        }
+        
+                        if (!file_exists($archivo)) {
+        
+                            $resultado = @move_uploaded_file($_FILES["protecciondatos"]["tmp_name"], $archivo);
+                        } else {
+                        }
+                        
+                    }
+                    
+                }
                 /*inicializa edicion de curp*/
                 if ($_FILES["documentocurp"]["error"] > 0) {
                     
@@ -1029,7 +1229,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                         }
                         
                         $dir=opendir($carpeta);
-                        $target_path = $carpeta.'/'.$nombredelarchivo.''.'.pdf'; //indicamos la ruta de destino de los archivos
+                        $target_path = $carpeta.'/'.$nombredelarchivo.' '.$archivonombre.'.pdf'; //indicamos la ruta de destino de los archivos
                         
                 
                         if(file_exists($carpeta)) {	
@@ -1048,7 +1248,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                         // Nombres de archivos de temporales
                         $nombredelarchivo = "Documento exp laboral privada 2";
                         $archivonombre = $_POST['nombrelaboralprivada'][$key];
-                        $fuente = $_FILES["archivoexplaboralprivadotwo1"]["tmp_name"][$key]; 
+                        $fuente = $_FILES["archivoexplaboralprivadotwo1"]["tmp_name"][$key];
                         
                         $carpeta = '../documentos/' .$id_user. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
                         
@@ -1057,7 +1257,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                         }
                         
                         $dir=opendir($carpeta);
-                        $target_path = $carpeta.'/'.$nombredelarchivo.''.'.pdf'; //indicamos la ruta de destino de los archivos
+                        $target_path = $carpeta.'/'.$nombredelarchivo.' '.$archivonombre.'.pdf'; //indicamos la ruta de destino de los archivos
                         
                 
                         if(file_exists($carpeta)) {	
@@ -1190,9 +1390,6 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                     }
                 }
         
-               
-                
-       
         $sql = $conexionSeleccion->prepare("UPDATE datospersonales set datosActualizados = :datosActualizados where id_datopersonal = :id_datopersonal");
         $sql->execute(array(
             ':datosActualizados'=>1,
@@ -1203,20 +1400,24 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                 ':id_postulado' => $id_user
             ));
             
-
-        
-        $validatransac = $conexionSeleccion->commit();
-
-        if ($validatransac != false) {
-            echo "<script>alert('Tus datos han sido actualizados satisfactoriamente');
-</script>";
-            header('location: ../misDatos');
+$validatransac = $conexionSeleccion->commit();
+        if($validatransaccion != false){
+            echo "<script>Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Tus datos han sido enviados exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            })</script>";
         }
-    } catch (Exception $e) {
-        echo $e;
-        $conexionSeleccion->rollBack();
-        echo "<script>alert('Error al actualizar tus datos');
-</script>";
-       // header('location: ../misDatos');
-    }
-
+        } catch (Exception $e) {
+            $conexionSeleccion->rollBack();
+            echo "<script>Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Error al enviar tus datos',
+                showConfirmButton: false,
+                timer: 1500
+            })</script>";
+        }
+        

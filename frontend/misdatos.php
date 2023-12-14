@@ -2,28 +2,163 @@
 <html lang="en" >
 
 <head>
-  <meta charset="UTF-8">
-
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="apple-mobile-web-app-title" content="CodePen">
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
     <link rel="canonical" href="https://codepen.io/atakan/pen/nPOZZR">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
+    <link rel="stylesheet" href="iconos/css/all.css?n=1">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
     
 </head>
 <body onload="deshabilitaRetroceso()">
   <!-- multistep form -->
-<form id="msform" method="POST" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
-<div class="container" style="border: 1px solid black; padding: 0px; border-radius: 10px;">
-<header style="width: 100%; height: auto;  padding: 10px; text-align: center; color: white; font-size: 17px; background: #1072b3; border-radius: 10px 10px 0px 0px;">
+<form id="msform2" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
+<div style="border: 1px solid #EEEDD4; padding: 0px; border-radius: 10px;">
+<header style="width: 100%; height: auto;  padding: 5px; text-align: center; color: white; font-size: 25px; background: #1072b3;">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
-<div class="form-row" style="padding: 15px;">
-        
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <style>
+        .graficos3 {
+        display: grid;
+  gap: 1rem;
+  grid-auto-rows: 13rem;
+  grid-template-columns: repeat(auto-fill, minmax(90rem, 1fr));
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 10px;
+}
+    .graficos2 {
+        display: grid;
+  gap: 1rem;
+  grid-auto-rows: 30rem;
+  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 10px;
+}
+.graff {
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 10px 5px 5px #ABAAAA;
+  border-radius: 10px;
+  border-radius: 0.8rem;
+  color: #333;
+  cursor: pointer;
+  
+}
+.graff:hover {
+    box-shadow: 10px 10px 5px blue;
+}
+.graficos2::-webkit-scrollbar{
+  width: 8px;
+  background-color: #2546b8;
+  border-radius: 20px;
+}
+.graficos2::-webkit-scrollbar:window-inactive {
+  display: none;
+}
+.graficos2::-webkit-scrollbar-thumb  {
+  background-color: #09C;
+  border-radius: 6px;
+}
+</style>
+<script>
+                $("#msform2").on("submit", function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(document.getElementById("msform2"));
+                    formData.append("dato", "valor");
+                    $.ajax({
+                        url: "aplicacion/actualizarDatos.php",
+                        type: "post",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function(objeto) {
+                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                        },
+                        success: function(data) {
+                            $("#mensaje").html(data);
+                            setTimeout(function() {
+                                window.location.href = 'misDatos';
+                            }, 1500);
+
+                        }
+                    })
+                })
+            </script>
+<div class="graficos3">
+    <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <label>Formatos para descargar</label>
+    </div>
+        <?php
+            echo "<div class='form-row'><div class='col-md-3'><label>Aviso de confidencialidad</label><a href='formatos/AVISO DE CONFIDENCIALIDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Aviso de confidencialidad</a></div>";
+            echo "<div class='col-md-3'><label>Cédula de integración de antigüedad</label><a href='formatos/CÉDULA_DE_INTEGRACIÓN_DE_ANTIGÜEDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cédula de integración de antigüedad</a></div>";
+            echo "<div class='col-md-3'><label>Declaración de no conflicto de interés</label><a href='formatos/DECLARACIÓN_DE_NO_CONFLICTO_DE_INTERÉS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración de no conflicto de interés</a></div>";
+            echo "<div class='col-md-3'><label>Declaración para ocupación</label><a href='formatos/DECLARACIÓN_PARA_OCUPACIÓN.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración para ocupación</a></div>";
+            echo "<div class='col-md-3'><label>Documento de no empleo</label><a href='formatos/DOCUMENTO DE NO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento de no empleo</a></div>";
+            echo "<div class='col-md-3'><label>Formato consentimiento</label><a href='formatos/FORMATO DE CONSENTIMIENTO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato consentimiento</a></div>";
+            echo "<div class='col-md-3'><label>Formato datos de otro empleo</label><a href='formatos/FORMATO DE DATOS DE OTRO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato datos de otro empleo</a></div>";
+            echo "<div class='col-md-3'><label>Formato de aviso de protección de datos</label><a href='formatos/FORMATO_DE_AVISO_DE_PROTECCIÓN_DE_DATOS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato de aviso de protección de datos</a></div></div>";
+        ?>
+    </div>
+</div>
+<div class="graficos3">
+    <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <label>Sube los formatos debidamente llenados</label>
+    </div>
+    <div class="form-row">
+    <div class="form-group col-md-3">
+        <label>Aviso de confidencialidad</label>
+    <input type="file"  class="form-control" name="avisoconfidencialidad" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Cédula de integración de antigüedad</label>
+    <input type="file"  class="form-control" name="integraciondeantiguedad" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Declaración de no conflicto de interés</label>
+    <input type="file"  class="form-control" name="noconflictodeinteres" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Declaración para ocupación</label>
+    <input type="file"  class="form-control" name="paraocpuacion" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Documento de no empleo</label>
+    <input type="file"  class="form-control" name="noempleo" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Formato consentimiento</label>
+    <input type="file"  class="form-control" name="consentimiento" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Formato datos de otro empleo</label>
+    <input type="file"  class="form-control" name="otroempleo" accept=".pdf" required>
+    </div>
+    <div class="form-group col-md-3">
+        <label>Formato de aviso de protección de datos</label>
+    <input type="file"  class="form-control" name="protecciondatos" accept=".pdf" required>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="graficos2">
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Datos personales</label>
     </div>
 
@@ -190,8 +325,12 @@ function deleteSpmail() {
         <strong>Otro telefono</strong>
     <input type="text" value="<?php echo $dataRegistro['otrotelefono'] ?>" class="form-control" name="otrotelefono">
     </div>
-
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+    
+</div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Educación Media Superior</label>
     </div>
     <div class="col-md-6">
@@ -245,7 +384,11 @@ function deleteSpmail() {
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel tecnico</label>
             </div>
 
@@ -273,7 +416,11 @@ function deleteSpmail() {
                     <label>Documento que recibe</label>
                     <input type="text" id="documentotecnico" name="documentotecnico" value="<?php echo $dataRegistro['documentotecnico'] ?>" autocomplete="off" class="form-control">
         </div>
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <h3 style="text-align: center;">Nivel postecnico</h3>
 </div>
   <div class="col-md-12">
@@ -344,7 +491,7 @@ $id = $dataRegistro['id_principal'];
 
     ?>
 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Postecnico</label>
             </div>
                                 
@@ -402,7 +549,11 @@ $id = $dataRegistro['id_principal'];
     ?>
     </div>
                     <?php endforeach; ?>   
-                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Nivel Superior</label>
     </div>
       <div class="form-group col-md-12">
@@ -475,7 +626,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     <!-- inicia educacion superior -->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Educación Superior</label>
     </div>
     <div class="col-md-6">
@@ -540,7 +691,11 @@ require_once 'claseConexion/conexion.php';
     
        
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Agregar Maestria</label>
     </div>
 <div class="form-group col-md-12">
@@ -615,7 +770,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 <!--PRIMER MAESTRIA-->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Maestria</label>
     </div>
     <div class="col-md-6">
@@ -678,7 +833,11 @@ require_once 'claseConexion/conexion.php';
     </div>
     
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Posgrado/Especialidad</h3>
 </div>
     <div class="form-group col-md-12">
@@ -756,7 +915,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Posgrado/Especialidad</label>
     </div>
     <div class="col-md-6">
@@ -823,7 +982,11 @@ require_once 'claseConexion/conexion.php';
     </div>
     
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Doctorado/Subespecialidad</h3>
 </div>
 <div class="form-group col-md-12">
@@ -872,8 +1035,8 @@ require_once 'claseConexion/conexion.php';
                                 <div class="form-group col-md-6">
                                 <label>Numero de cedula ${i +1}</label>
                                 <input type="text" id="numeroceduladoctorado[${i}]" name="numeroceduladoctorado[]" class="form-control">
-                              </div>
-                              <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
         <strong>Sube tu titulo</strong>
     <input type="file" id="archivotitulodoctorado[${i}]" class="form-control" name="archivotitulodoctorado[]" accept=".pdf">
     </div>
@@ -899,7 +1062,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroDoctorado):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Docotorado/Subespecialidad</label>
     </div>
     <div class="col-md-6">
@@ -965,7 +1128,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Estudios Alta especialidad</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1037,7 +1204,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEstAltaEsp):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Estudios Alta Especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1103,7 +1270,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Otros estudios</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1163,7 +1334,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEst):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Otros estudios</label>
     </div>
     <div class="col-md-6">
@@ -1216,8 +1387,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Servicio social</label>
     </div>
     <div class="col-md-6">
@@ -1268,7 +1442,11 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Practicas profesionales</label>
     </div>
     <div class="col-md-6">
@@ -1319,7 +1497,11 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Certificaciones</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1393,7 +1575,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroCertificacion):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Certificación</label>
     </div>
     <div class="col-md-6">
@@ -1456,6 +1638,84 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
+</div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <h3 style="text-align: center;">Exp. laboral sector privado</h3>
+    </div>
+<div class="form-group col-md-12">
+                    <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
+                    <input type="number" id="quantity9" name="explaboral" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity9").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity9 = event.target.value;
+
+                        for (let i = 0; i < quantity9; i++) {
+                            content += `<div class="form-row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información Exp. laboral sector privado ${i +1}</h1>
+                                </div>
+
+      <div class="form-group col-md-6">
+        <label>Nombre de la empresa</label>
+        <input type="text" class="form-control" autocomplete="off" id="nombrelaboralprivada[]" name="nombrelaboralprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Tipo de puesto</label>
+        <input type="text" class="form-control" autocomplete="off" id="tipopuestoprivada[]" name="tipopuestoprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Dirección de la empresa</label>
+        <input type="text" class="form-control" autocomplete="off" id="direccionempresaprivada[]" name="direccionempresaprivada[]">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Teléfono de contacto</label>
+        <input type="text" class="form-control" autocomplete="off" id="telefonoempresaprivada[]" name="telefonoempresaprivada[]">
+      </div>
+      <div class="form-group col-md-3">
+        <label>Extensión</label>
+        <input type="text" class="form-control" autocomplete="off" id="extencionempresaprivada[]" name="extencionempresaprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Nombre de su jefe directo</label>
+        <input type="text" class="form-control" autocomplete="off" id="nombrejefeprivada[]" name="nombrejefeprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Motivo de su sepación</label>
+        <input type="text" class="form-control" autocomplete="off" id="motivoseparacionprivada[]" name="motivoseparacionprivada[]">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Funciones principales</label>
+        <textarea rows="4" class="form-control" autocomplete="off" id="funcionesprivada[]" name="funcionesprivada[]"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fecha de inicio de labores</label>
+        <input type="date" class="form-control" autocomplete="off" id="fechainicioprivada[]" name="fechainicioprivada[]">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Fecha término de labores</label>
+        <input type="date" class="form-control" autocomplete="off" id="fechaterminoprivada[]" name="fechaterminoprivada[]">
+      </div>
+      <div class="col-md-3">
+        <strong>Sube tu documento 1</strong>
+    <input type="file"  class="form-control" name="archivoexplaboralprivadoone1[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Sube tu documento 2</strong>
+    <input type="file"  class="form-control" name="archivoexplaboralprivadotwo1[]" accept=".pdf">
+    </div>
+      </div>`;
+                        }
+                        document.getElementById("divGuests9").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests9"></div>
     <?php
 $id = $dataRegistro['id_principal'];
 require_once 'claseConexion/conexion.php';
@@ -1468,7 +1728,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector privado</label>
     </div>
     <div class="col-md-6">
@@ -1524,17 +1784,17 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral primero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $explaboraluno = 'Documento exp laboral privada 1';
+    $path = "documentos/" .$id;
     if (file_exists($path)) {
         $directorio = opendir($path);
         while ($archivo = readdir($directorio)) {
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<iframe src='documentos/$id/$explaboraluno.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$explaboraluno.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
                 echo "<a href='eliminarDocumentacion/eliminarExperiencia1?curp=$curp'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
@@ -1546,7 +1806,7 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento exp laboral 2</strong>
     <?php
     $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral primero 2';
+    $compdomicilio = 'Documento exp laboral privada 2';
     $path = "documentos/" . $compdomicilio . $curp;
     if (file_exists($path)) {
         $directorio = opendir($path);
@@ -1564,25 +1824,83 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <script>
+    $(document).ready(function(){
+    $("#cbx_empresaone").change(function () {
+        $("#cbx_empresaone option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciaone").html(data);
+            });            
+        });
+    })
+});
+
+$(document).ready(function(){
+    $("#cbx_empresados").change(function () {
+        $("#cbx_empresados option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciados").html(data);
+            });            
+        });
+    })
+});
+
+$(document).ready(function(){
+    $("#cbx_empresatres").change(function () {
+        $("#cbx_empresatres option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciatres").html(data);
+            });            
+        });
+    })
+});
+  </script>  
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico</label>
     </div>
-    <div class="col-md-6">
-        <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresauno'] ?>" class="form-control" name="empresaone">
-    </div>
-    <div class="col-md-6">
-        <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciauno'] ?>" class="form-control" name="cbx_dependenciaone">
-    </div>
+    <div class="form-group col-md-6">
+        <label>Secretaría de Estado</label>
+        <select name="cbx_empresaone" id="cbx_empresaone" class="form-control">
+          <option value="<?php echo $dataRegistro['empresauno'] ?>"><?php echo $dataRegistro['empresauno'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Unidad responsable</label>
+        <select name="cbx_dependenciaone" id="cbx_dependenciaone" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciauno'] ?>"><?php echo $dataRegistro['cbx_dependenciauno'] ?></option>
+        </select>
+      </div>
+
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
     <input type="text" value="<?php echo $dataRegistro['puestoempresauno'] ?>" class="form-control" name="puestoempresauno">
     </div>
     <div class="col-md-3">
-        <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestouno'] ?>" class="form-control" name="empresa">
+    <strong>Tipo de puesto</strong>
+    <select name="empresa" id="empresa" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestouno'] ?>"><?php echo $dataRegistro['tipopuestouno'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -1627,55 +1945,66 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico primero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico primero 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub1?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico primero 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico primero 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub1_2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresados'] ?>" class="form-control" name="cbx_empresados">
+        <select name="cbx_empresados" id="cbx_empresados" class="form-control">
+          <option value="<?php echo $dataRegistro['empresados'] ?>"><?php echo $dataRegistro['empresados'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-6">
         <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciados'] ?>" class="form-control" name="cbx_dependenciados">
+        <select name="cbx_dependenciados" id="cbx_dependenciados" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciados'] ?>"><?php echo $dataRegistro['cbx_dependenciados'] ?></option>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
@@ -1683,7 +2012,16 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="col-md-3">
         <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestodos'] ?>" class="form-control" name="tipopuestodos">
+        <select name="tipopuestodos" id="tipopuestodos" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestodos'] ?>"><?php echo $dataRegistro['tipopuestodos'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -1728,55 +2066,66 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico segundo 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico segundo 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico segundo 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico segundo 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExpPub2_2?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresatres'] ?>" class="form-control" name="cbx_empresatres">
+        <select name="cbx_empresatres" id="cbx_empresatres" class="form-control">
+          <option value="<?php echo $dataRegistro['empresatres'] ?>"><?php echo $dataRegistro['empresatres'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-6">
-        <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciatres'] ?>" class="form-control" name="cbx_dependenciatres">
+    <strong>Unidad responsable</strong>
+        <select name="cbx_dependenciatres" id="cbx_dependenciatres" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciatres'] ?>"><?php echo $dataRegistro['cbx_dependenciatres'] ?></option>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
@@ -1784,7 +2133,16 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="col-md-3">
         <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestotres'] ?>" class="form-control" name="tipopuestotres">
+        <select name="tipopuestotres" id="tipopuestotres" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestotres'] ?>"><?php echo $dataRegistro['tipopuestotres'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -1829,47 +2187,46 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 1</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico tercero 1';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $ArchivoNombre = 'exp laboral publico tercero 1';
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminaExpPub3?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'documento exp laboral publico tercero 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'exp laboral publico tercero 2';
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eiminarExpPub3_3?curp=$curp'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
-    </div>
-  
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+    </div>  
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Producción cientifica(Ultima publicación)</label>
     </div>
     <div class="col-md-6">
@@ -1888,8 +2245,11 @@ require_once 'claseConexion/conexion.php';
         <strong>País de publicación</strong>
     <input type="text" value="<?php echo $dataRegistro['paisdepublicacion'] ?>" class="form-control" name="paisdepublicacion">
     </div>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Idioma</label>
     </div>
     <div class="col-md-6">
@@ -1908,8 +2268,11 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento que acredita tu idioma</strong>
     <input type="text" value="<?php echo $dataRegistro['documentoacredita'] ?>" class="form-control" name="documentoacredita">
     </div>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+</div>
+<div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Otras habilidades</label>
     </div>
     <div class="col-md-12">
@@ -1917,20 +2280,33 @@ require_once 'claseConexion/conexion.php';
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+    <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 0px;">
     <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
     <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
         </div>
-            
-            <footer style="width: 100%; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center; padding: 1px; margin-top: 20px; border-radius: 0px 0px 10px 10px; ">
-        <p>
-            ® Hospital Regional de Alta Especialidad de Ixtapaluca, todos los derechos reservados. <br>
-            Carr Federal México-Puebla Km. 34.5, Zoquiapan, 56530 Ixtapaluca, Méx.</p>
-    </footer>
-    
 </div>
-  
 </form>
+<script>
+            $('input[type="file"]').on('change', function() {
+                var ext = $(this).val().split('.').pop();
+                if ($(this).val() != '') {
+                    if (ext == "pdf") {
+
+                        if ($(this)[0].files[0].size > 5048576) {
+                            console.log("El documento excede el tamaño máximo");
+                            alert('¡Precaución! Se solicita un archivo no mayor a 5MB. Por favor verifica.');
+
+                            $(this).val('');
+                        } else {
+                            $("#mensaje").hide();
+                        }
+                    } else {
+                        $(this).val('');
+                        alert("Extensión no permitida: " + ext);
+                    }
+                }
+            });
+        </script>
 </body>
 
 </html>

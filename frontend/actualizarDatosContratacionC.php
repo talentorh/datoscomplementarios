@@ -2,31 +2,100 @@
 <html lang="en" >
 
 <head>
-  <meta charset="UTF-8">
- 
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="apple-mobile-web-app-title" content="CodePen">
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
     <link rel="canonical" href="https://codepen.io/atakan/pen/nPOZZR">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="iconos/css/all.min.css?n=1">
     <link rel="stylesheet" href="iconos/css/all.css?n=1">
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js"></script>
 
 </head>
 
 <body onload="deshabilitaRetroceso()">
   <!-- multistep form -->
-  <form id="msform" method="POST" action="aplicacion/actualizarDatosContratacion" enctype="multipart/form-data">
-  <div class="container" style="border: 1px solid black; padding: 0px; border-radius: 10px;">
-<header style="width: 100%; height: auto;  padding: 10px; text-align: center; color: white; font-size: 17px; background: #1072b3; border-radius: 10px 10px 0px 0px;">
+  <style>
+    .graficos2 {
+        display: grid;
+  gap: 1rem;
+  grid-auto-rows: 30rem;
+  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+  margin-top: 0px;
+  margin-left: 0px;
+  padding: 10px;
+}
+.graff {
+  overflow-y: auto;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  box-shadow: 10px 5px 5px #ABAAAA;
+  border-radius: 10px;
+  border-radius: 0.8rem;
+  color: #333;
+  cursor: pointer;
+  
+}
+.graff:hover {
+    box-shadow: 10px 10px 5px blue;
+}
+.graficos2::-webkit-scrollbar{
+  width: 8px;
+  background-color: #2546b8;
+  border-radius: 20px;
+}
+.graficos2::-webkit-scrollbar:window-inactive {
+  display: none;
+}
+.graficos2::-webkit-scrollbar-thumb  {
+  background-color: #09C;
+  border-radius: 6px;
+}
+
+</style>
+<div id="mensaje"></div>
+  <form id="msform3" enctype="multipart/form-data">
+  <div style="border: 1px solid black; padding: 0px; border-radius: 10px;">
+<header style="width: 100%; height: auto;  padding: 3px; text-align: center; color: white; font-size: 25px; background: #1072b3; ">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
-<div class="form-row" style="padding: 15px;">
+    <script>
+                $("#msform3").on("submit", function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(document.getElementById("msform3"));
+                    formData.append("dato", "valor");
+                    $.ajax({
+                        url: "aplicacion/actualizarDatosContratacion.php",
+                        type: "post",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        beforeSend: function(objeto) {
+                            $('#mensaje').html('<div id="mensaje" style="position: fixed;  top: 0px; left: 0px;  width: 100%; height: 100%; z-index: 9999;  opacity: .7; background: url(imagenes/loader.gif) 50% 50% no-repeat rgb(249,249,249);"><br/></div>');
+                        },
+                        success: function(data) {
+                            $("#mensaje").html(data);
+                            setTimeout(function() {
+                                window.location.href = 'misDatos';
+                            }, 1500);
+
+                        }
+                    })
+                })
+            </script>
+<div class="graficos2">
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
 
 <input type="hidden" value="<?php echo $dataRegistro['id_principal'] ?>" class="form-control" name="id_user"> 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
             <label>Constancia de Situación Fiscal (SAT)</label>
         </div>
         <div class="col-md-6">
@@ -56,7 +125,7 @@
 
                 echo "<iframe src='documentos/$id/$acteconomica.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$acteconomica.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/constanciaFiscal?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$acteconomica&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -80,7 +149,7 @@
 
                 echo "<iframe src='documentos/$id/$actanacimiento.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$actanacimiento.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarActanacimiento?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$actanacimiento&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -104,7 +173,7 @@
 
                 echo "<iframe src='documentos/$id/$ine.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$ine.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarIne?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$ine&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -128,7 +197,7 @@
 
                 echo "<iframe src='documentos/$id/$cartilla.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$cartilla.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCartilla?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$cartilla&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -152,7 +221,7 @@
 
                 //echo "<iframe src='documentos/$firmaelectronica$curp/$archivo' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$firmaelectronica.rar' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar' class='fas fa-file-archive' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarFirmaElectronica?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarFirmaElectronica?titulo=$firmaelectronica&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
     ?>
@@ -175,14 +244,17 @@
 
                 echo "<iframe src='documentos/$id/$claveinter.pdf' class='form-control' style='height: 150px;'></iframe>";
                 echo "<a href='documentos/$id/$claveinter.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf' style='font-size: 25px;'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarClaveInterbancaria?curp=$curp'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$claveinter&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
     ?>
     </div>
-        
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;  ">
         <label>Datos personales</label>
     </div>
     <div class="col-md-3">
@@ -239,7 +311,7 @@ function deleteSpmail() {
 
                 echo "<iframe src='documentos/$id/$curp.pdf' class='form-control'></iframe>";
                 echo "<a href='documentos/$id/$curp.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCurp?id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$curp&id=$id'> <i title='Eliminar Archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         
     }
@@ -279,7 +351,7 @@ function deleteSpmail() {
 
                 echo "<iframe src='documentos/$id/$compdomicilio.pdf' class='form-control'></iframe>";
                 echo "<a href='documentos/$id/$compdomicilio.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarCompDomicilio?id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$compdomicilio&id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
@@ -341,8 +413,11 @@ function deleteSpmail() {
         <strong>Otro telefono</strong>
     <input type="text" value="<?php echo $dataRegistro['otrotelefono'] ?>" class="form-control" name="otrotelefono">
     </div>
-
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Educación Media Superior</label>
     </div>
     <div class="col-md-6">
@@ -379,7 +454,7 @@ function deleteSpmail() {
         <strong>Documento certificado</strong>
     <?php
     $id = $dataRegistro['id_principal'];
-    $archivoNombre = "Certificado media superior";
+    $archivoNombre = 'Certificado media superior';
     $path = "documentos/" .$id."/".$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
@@ -389,13 +464,17 @@ function deleteSpmail() {
 
                 echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
                 echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivoNombre&id=$id'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel tecnico</label>
             </div>
 
@@ -423,7 +502,11 @@ function deleteSpmail() {
                     <label>Documento que recibe</label>
                     <input type="text" id="documentotecnico" name="documentotecnico" value="<?php echo $dataRegistro['documentotecnico'] ?>" autocomplete="off" class="form-control">
         </div>
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel postecnico</label>
             </div>
   <div class="form-group col-md-12">
@@ -493,7 +576,7 @@ $id = $dataRegistro['id_principal'];
 
     ?>
 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Postecnico</label>
             </div>
                                 
@@ -570,7 +653,11 @@ $id = $dataRegistro['id_principal'];
     ?>
     </div>
                     <?php endforeach; ?>   
-                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Nivel Superior</label>
     </div>
       <div class="form-group col-md-12">
@@ -643,7 +730,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     <!-- inicia educacion superior -->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Educación Superior</label>
     </div>
     <div class="col-md-6">
@@ -727,7 +814,11 @@ require_once 'claseConexion/conexion.php';
     
        
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Agregar Maestria</label>
     </div>
 <div class="form-group col-md-12">
@@ -802,7 +893,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 <!--PRIMER MAESTRIA-->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Maestria</label>
     </div>
     <div class="col-md-6">
@@ -884,7 +975,11 @@ require_once 'claseConexion/conexion.php';
     </div>
     
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Posgrado/Especialidad</h3>
 </div>
     <div class="form-group col-md-12">
@@ -962,7 +1057,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Posgrado/Especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1045,7 +1140,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
 <?php endforeach; ?>  
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Doctorado/Subespecialidad</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1122,7 +1221,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroDoctorado):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Docotorado/Subespecialidad</label>
     </div>
     <div class="col-md-6">
@@ -1205,7 +1304,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Estudios Alta especialidad</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1277,7 +1380,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEstAltaEsp):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Estudios Alta Especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1360,7 +1463,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Otros estudios</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1420,7 +1527,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEst):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Otros estudios </label>
     </div>
     <div class="col-md-6">
@@ -1472,8 +1579,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Servicio social</label>
     </div>
     <div class="col-md-6">
@@ -1523,7 +1633,11 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Practicas profesionales</label>
     </div>
     <div class="col-md-6">
@@ -1573,7 +1687,11 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Agregar Certificaciones</h3>
 </div>
 <div class="form-group col-md-12">
@@ -1647,7 +1765,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroCertificacion):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Certificación</label>
     </div>
     <div class="col-md-6">
@@ -1709,7 +1827,11 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+        </div>
+    </div>
+    <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <h3 style="text-align: center;">Exp. laboral sector privado</h3>
     </div>
 <div class="form-group col-md-12">
@@ -1795,7 +1917,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector privado</label>
     </div>
     <div class="col-md-6">
@@ -1887,25 +2009,84 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <?php endforeach; ?>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function(){
+    $("#cbx_empresaone").change(function () {
+        $("#cbx_empresaone option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciaone").html(data);
+            });            
+        });
+    })
+});
+
+$(document).ready(function(){
+    $("#cbx_empresados").change(function () {
+        $("#cbx_empresados option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciados").html(data);
+            });            
+        });
+    })
+});
+
+$(document).ready(function(){
+    $("#cbx_empresatres").change(function () {
+        $("#cbx_empresatres option:selected").each(function () {
+            id_catalogo = $(this).val();
+            $.post("includes/getDependencias.php", { id_catalogo: id_catalogo }, function(data){
+                $("#cbx_dependenciatres").html(data);
+            });            
+        });
+    })
+});
+  </script>  
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico</label>
     </div>
-    <div class="col-md-6">
-        <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresauno'] ?>" class="form-control" name="empresaone">
-    </div>
-    <div class="col-md-6">
-        <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciauno'] ?>" class="form-control" name="cbx_dependenciaone">
-    </div>
+    <div class="form-group col-md-6">
+        <label>Secretaría de Estado</label>
+        <select name="cbx_empresaone" id="cbx_empresaone" class="form-control">
+          <option value="<?php echo $dataRegistro['empresauno'] ?>"><?php echo $dataRegistro['empresauno'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Unidad responsable</label>
+        <select name="cbx_dependenciaone" id="cbx_dependenciaone" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciauno'] ?>"><?php echo $dataRegistro['cbx_dependenciauno'] ?></option>
+        </select>
+      </div>
+
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
     <input type="text" value="<?php echo $dataRegistro['puestoempresauno'] ?>" class="form-control" name="puestoempresauno">
     </div>
     <div class="col-md-3">
-        <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestouno'] ?>" class="form-control" name="empresa">
+    <strong>Tipo de puesto</strong>
+    <select name="empresa" id="empresa" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestouno'] ?>"><?php echo $dataRegistro['tipopuestouno'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -1985,16 +2166,31 @@ require_once 'claseConexion/conexion.php';
         }
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+  </div>
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresados'] ?>" class="form-control" name="cbx_empresados">
+        <select name="cbx_empresados" id="cbx_empresados" class="form-control">
+          <option value="<?php echo $dataRegistro['empresados'] ?>"><?php echo $dataRegistro['empresados'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-6">
         <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciados'] ?>" class="form-control" name="cbx_dependenciados">
+        <select name="cbx_dependenciados" id="cbx_dependenciados" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciados'] ?>"><?php echo $dataRegistro['cbx_dependenciados'] ?></option>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
@@ -2002,7 +2198,16 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="col-md-3">
         <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestodos'] ?>" class="form-control" name="tipopuestodos">
+        <select name="tipopuestodos" id="tipopuestodos" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestodos'] ?>"><?php echo $dataRegistro['tipopuestodos'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -2082,16 +2287,31 @@ require_once 'claseConexion/conexion.php';
         }
     ?>
     </div>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+  </div>
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector publico tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
-    <input type="text" value="<?php echo $dataRegistro['empresatres'] ?>" class="form-control" name="cbx_empresatres">
+        <select name="cbx_empresatres" id="cbx_empresatres" class="form-control">
+          <option value="<?php echo $dataRegistro['empresatres'] ?>"><?php echo $dataRegistro['empresatres'] ?></option>
+          <?php
+          
+          $query = $conexionSeleccion->prepare("SELECT id_catalogo, nombreramo FROM catalogoramos");
+          $query->execute();
+          while ($row = $query->fetch()) { ?>
+            <option value="<?php echo $row['id_catalogo']; ?>"><?php echo $row['nombreramo']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-6">
-        <strong>Unidad responsable</strong>
-    <input type="text" value="<?php echo $dataRegistro['cbx_dependenciatres'] ?>" class="form-control" name="cbx_dependenciatres">
+    <strong>Unidad responsable</strong>
+        <select name="cbx_dependenciatres" id="cbx_dependenciatres" class="form-control">
+        <option value="<?php echo $dataRegistro['cbx_dependenciatres'] ?>"><?php echo $dataRegistro['cbx_dependenciatres'] ?></option>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Nombre del puesto</strong>
@@ -2099,7 +2319,16 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="col-md-3">
         <strong>Tipo de puesto</strong>
-    <input type="text" value="<?php echo $dataRegistro['tipopuestotres'] ?>" class="form-control" name="tipopuestotres">
+        <select name="tipopuestotres" id="tipopuestotres" class="form-control">
+    <option value="<?php echo $dataRegistro['tipopuestotres'] ?>"><?php echo $dataRegistro['tipopuestotres'] ?></option>
+
+          <?php
+          $resultado = $conexionSeleccion->prepare("SELECT * FROM tipopuesto");
+          $resultado->execute();
+          while ($row = $resultado->fetch()) { ?>
+            <option value="<?php echo $row['id_tipopuesto']; ?>"><?php echo $row['descripcionpuesto']; ?></option>
+          <?php } ?>
+        </select>
     </div>
     <div class="col-md-3">
         <strong>Dirección de la institución</strong>
@@ -2179,8 +2408,11 @@ require_once 'claseConexion/conexion.php';
         }
     ?>
     </div>
-  
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+  </div>
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Producción cientifica(Ultima publicación)</label>
     </div>
     <div class="col-md-6">
@@ -2199,8 +2431,11 @@ require_once 'claseConexion/conexion.php';
         <strong>País de publicación</strong>
     <input type="text" value="<?php echo $dataRegistro['paisdepublicacion'] ?>" class="form-control" name="paisdepublicacion">
     </div>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div>
+  </div>
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Idioma</label>
     </div>
     <div class="col-md-6">
@@ -2219,28 +2454,24 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento que acredita tu idioma</strong>
     <input type="text" value="<?php echo $dataRegistro['documentoacredita'] ?>" class="form-control" name="documentoacredita">
     </div>
-    
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: black;">
+        </div> 
+  </div>
+  <div class="graff">
+        <div class="form-row" style="padding: 25px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Otras habilidades</label>
     </div>
     <div class="col-md-12">
         <strong>Otras habilidades</strong>
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
-    </div>
     <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
     <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
     <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
         </div>
-            
-            <footer style="width: 100%; background: #1072b3; height: auto; bottom: 0; color: white;  text-align: center; padding: 1px; margin-top: 20px; border-radius: 0px 0px 10px 10px; ">
-        <p>
-            ® Hospital Regional de Alta Especialidad de Ixtapaluca, todos los derechos reservados. <br>
-            Carr Federal México-Puebla Km. 34.5, Zoquiapan, 56530 Ixtapaluca, Méx.</p>
-    </footer>
-    
+    </div>  
 </div>
-  
+
 </form>
 </body>
 
