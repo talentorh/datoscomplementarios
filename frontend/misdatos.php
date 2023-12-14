@@ -2279,13 +2279,12 @@ $(document).ready(function(){
         <strong>Otras habilidades</strong>
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
-    </div>
     <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 0px;">
     <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
     <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
         </div>
+    </div>
 </div>
-</form>
 <script>
             $('input[type="file"]').on('change', function() {
                 var ext = $(this).val().split('.').pop();
@@ -2298,7 +2297,7 @@ $(document).ready(function(){
 
                             $(this).val('');
                         } else {
-                            $("#mensaje").hide();
+                            $("#alerta").hide();
                         }
                     } else {
                         $(this).val('');
@@ -2307,6 +2306,7 @@ $(document).ready(function(){
                 }
             });
         </script>
+        <div id="alerta"></div>
+</form>
 </body>
-
 </html>
