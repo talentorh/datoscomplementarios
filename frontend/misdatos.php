@@ -99,9 +99,8 @@
                     })
                 })
             </script>
-<div class="graficos3">
     <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
         <label>Formatos para descargar</label>
     </div>
         <?php
@@ -115,42 +114,41 @@
             echo "<div class='col-md-3'><label>Formato de aviso de protección de datos</label><a href='formatos/FORMATO_DE_AVISO_DE_PROTECCIÓN_DE_DATOS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato de aviso de protección de datos</a></div></div>";
         ?>
     </div>
-</div>
-<div class="graficos3">
-    <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+
+<div class="graff">
+    <div class='form-row'>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
         <label>Sube los formatos debidamente llenados</label>
     </div>
-    <div class="form-row">
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Aviso de confidencialidad</label>
     <input type="file"  class="form-control" name="avisoconfidencialidad" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Cédula de integración de antigüedad</label>
     <input type="file"  class="form-control" name="integraciondeantiguedad" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Declaración de no conflicto de interés</label>
     <input type="file"  class="form-control" name="noconflictodeinteres" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Declaración para ocupación</label>
     <input type="file"  class="form-control" name="paraocpuacion" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Documento de no empleo</label>
     <input type="file"  class="form-control" name="noempleo" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Formato consentimiento</label>
     <input type="file"  class="form-control" name="consentimiento" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Formato datos de otro empleo</label>
     <input type="file"  class="form-control" name="otroempleo" accept=".pdf" required>
     </div>
-    <div class="form-group col-md-3">
+    <div class="col-md-3">
         <label>Formato de aviso de protección de datos</label>
     <input type="file"  class="form-control" name="protecciondatos" accept=".pdf" required>
     </div>
@@ -1819,42 +1817,38 @@ require_once 'claseConexion/conexion.php';
         <strong>Documento exp laboral 1</strong>
     <?php
     $id = $dataRegistro['id_principal'];
-    $explaboraluno = 'Documento exp laboral privada 1';
-    $path = "documentos/" .$id;
+    $ArchivoNombre = 'Documento exp laboral privada 1'.' '.$dataRegistroExpLaboPrivado['nombrelaboralprivada'];
+    $path = "documentos/" .$id.'/'.$ArchivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$id/$explaboraluno.pdf' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$id/$explaboraluno.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExperiencia1?curp=$curp'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$ArchivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$ArchivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$ArchivoNombre'> <i title='Eliminar archivo 1' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
         <strong>Documento exp laboral 2</strong>
     <?php
-    $curp = $dataRegistro['curp'];
-    $compdomicilio = 'Documento exp laboral privada 2';
-    $path = "documentos/" . $compdomicilio . $curp;
+    $id = $dataRegistro['id_principal'];
+    $archivoNombre = 'Documento exp laboral privada 2'.' '.$dataRegistroExpLaboPrivado['nombrelaboralprivada'];
+    $path = "documentos/" .$id.'/'.$archivoNombre.'.pdf';
     if (file_exists($path)) {
         $directorio = opendir($path);
-        while ($archivo = readdir($directorio)) {
+        $archivo = readdir($directorio);
             if (!is_dir($archivo)) {
                 echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
 
-                echo "<iframe src='documentos/$compdomicilio$curp/$archivo' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$compdomicilio$curp/$archivo' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarExperiencia1_2?curp=$curp'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo 2' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
-    }
-
     ?>
     </div>
     <?php endforeach; ?>
@@ -1897,7 +1891,7 @@ $(document).ready(function(){
 });
   </script>  
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico</label>
+        <label>Exp laboral sector público</label>
     </div>
     <div class="form-group col-md-6">
         <label>Secretaría de Estado</label>
@@ -2019,7 +2013,7 @@ $(document).ready(function(){
 <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico segundo</label>
+        <label>Exp laboral sector público segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2140,7 +2134,7 @@ $(document).ready(function(){
 <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico tercero</label>
+        <label>Exp laboral sector público tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2313,11 +2307,12 @@ $(document).ready(function(){
         <strong>Otras habilidades</strong>
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
-    <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 0px;">
+    <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
     <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
     <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
         </div>
     </div>
+</div>
 </div>
 <script>
             $('input[type="file"]').on('change', function() {

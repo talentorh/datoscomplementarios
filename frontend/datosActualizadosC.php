@@ -25,24 +25,15 @@
     label {
             color: black;
         }
-    .graficos3 {
-        display: grid;
-  gap: 1rem;
-  grid-auto-rows: 15rem;
-  grid-template-columns: repeat(auto-fill, minmax(90rem, 1fr));
-  margin-top: 0px;
-  margin-left: 0px;
-  padding: 10px;
-}
-    .graficos2 {
-        display: grid;
-  gap: 1rem;
-  grid-auto-rows: 30rem;
-  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
-  margin-top: 0px;
-  margin-left: 0px;
-  padding: 10px;
-}
+.graficos2 {
+    display: grid;
+    gap: 1rem;
+    grid-auto-rows: 30rem;
+    grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 10px;
+    }
 .graff {
   overflow-y: auto;
   padding: 1rem;
@@ -107,7 +98,7 @@
                     })
                 })
             </script>
-<div class="graficos3">
+
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Formatos para descargar</label>
@@ -123,9 +114,8 @@
             echo "<div class='col-md-3'><label>Formato de aviso de protección de datos</label><a href='formatos/FORMATO_DE_AVISO_DE_PROTECCIÓN_DE_DATOS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato de aviso de protección de datos</a></div></div>";
         ?>
     </div>
-</div>
-<div class="graficos3">
-    <div class="graff">
+
+<div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Sube los formatos que descargaste, debidamente llenados</label>
     </div>
@@ -162,11 +152,10 @@
         <label>Formato de aviso de protección de datos</label>
     <input type="file"  class="form-control" name="protecciondatos" accept=".pdf" >
     </div>
-    </div>
-    </div>
 </div>
-<div class="graficos3">
-    <div class="graff">
+</div>
+
+<div class="graff" style="height: 50vh; ">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Formatos cargados</label>
     </div>
@@ -322,7 +311,6 @@
 
     ?>
     </div>
-</div>
 <div class="graficos2">
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
@@ -507,7 +495,7 @@ function deleteSpmail() {
     <input type="date" value="<?php echo $dataRegistro['fechainicio'] ?>" class="form-control" name="fechainicio">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistro['fechatermino'] ?>" class="form-control" name="fechatermino">
     </div>
     <div class="col-md-3">
@@ -635,7 +623,7 @@ function deleteSpmail() {
                                 <input type="date" id="fechainiciosupPostecnico[${i}]" name="fechainiciosupPostecnico[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
-                                <label>Fecha termino ${i +1}</label>
+                                <label>Fecha término ${i +1}</label>
                                 <input type="date" id="fechaterminosupPostecnico[${i}]" name="fechaterminosupPostecnico[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
@@ -691,7 +679,7 @@ $id = $dataRegistro['id_principal'];
                                     <input type="date" id="fechainiciosupPostecnico" name="fechainiciosupPostecnico[]" value="<?php echo $dataRegistropostecnico['fechainiciosuppostecnico'] ?>" class="form-control">
                                     </div>
                                     <div class="form-group col-md-3">
-                                    <label>Fecha termino</label>
+                                    <label>Fecha término</label>
                                     <input type="date" id="fechaterminosupPostecnico" name="fechaterminosupPostecnico[]" value="<?php echo $dataRegistropostecnico['fechaterminosuppostecnico'] ?>" class="form-control">
                                     </div>
                                     <div class="form-group col-md-3">
@@ -758,7 +746,7 @@ $id = $dataRegistro['id_principal'];
                     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Nivel superior</label>
     </div>
-      <div class="form-group col-md-12">
+        <div class="form-group col-md-12">
                     <strong>Agregar licenciatura (Solo numeros)</strong>
                     <input type="number" id="quantity" name="numlicenciaturas" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 
@@ -832,11 +820,11 @@ require_once 'claseConexion/conexion.php';
         <label>Educación superior</label>
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la formacion</strong>
+        <strong>Nombre de la formación</strong>
     <input type="text" value="<?php echo $dataRegistroe['nombreformacionsuperior'] ?>" class="form-control" name="nombreformacion[]">
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la institucion</strong>
+        <strong>Nombre de la institución</strong>
     <input type="text" value="<?php echo $dataRegistroe['nombresuperior'] ?>" class="form-control" name="nombreinstitucion[]">
     </div>
     <div class="col-md-3">
@@ -844,7 +832,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroe['fechasuperiorinicio'] ?>" class="form-control" name="fechainiciosup[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroe['fechasuperiortermino'] ?>" class="form-control" name="fechaterminosup[]">
     </div>
     <div class="col-md-3">
@@ -1300,7 +1288,7 @@ require_once 'claseConexion/conexion.php';
                                 <input type="date" id="fechainiciosupdoctorado[${i}]" name="fechainiciosupdoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
-                                <label>Fecha termino ${i +1}</label>
+                                <label>Fecha término ${i +1}</label>
                                 <input type="date" id="fechaterminosupdoctorado[${i}]" name="fechaterminosupdoctorado[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
@@ -1366,7 +1354,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroDoctorado['fechainiciodoctorado'] ?>" class="form-control" name="fechainiciosupdoctorado[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroDoctorado['fechaterminodoctorado'] ?>" class="form-control" name="fechaterminosupdoctorado[]">
     </div>
     <div class="col-md-3">
@@ -1468,7 +1456,7 @@ require_once 'claseConexion/conexion.php';
                                 <input type="date" id="fechainicioaltaesp[${i}]" name="fechainicioaltaesp[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
-                                <label>Fecha termino ${i +1}</label>
+                                <label>Fecha término ${i +1}</label>
                                 <input type="date" id="fechaterminoaltaesp[${i}]" name="fechaterminoaltaesp[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
@@ -1623,7 +1611,7 @@ require_once 'claseConexion/conexion.php';
                                 <input type="date" id="fechainiciootrosestudiosuno[${i}]" name="fechainiciootrosestudiosuno[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-6">
-                                <label>Fecha termino ${i +1}</label>
+                                <label>Fecha término ${i +1}</label>
                                 <input type="date" id="fechaterminootrosestudiosuno[${i}]" name="fechaterminootrosestudiosuno[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-12">
@@ -1669,7 +1657,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroOtrosEst['fechainiciootrosestudiosuno'] ?>" class="form-control" name="fechainiciootrosestudiosuno[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroOtrosEst['fechaterminootrosestudiosuno'] ?>" class="form-control" name="fechaterminootrosestudiosuno[]">
     </div>
     
@@ -1721,7 +1709,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistro['fechainicioservicio'] ?>" class="form-control" name="fechainicioservicio">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistro['fechaterminoservicio'] ?>" class="form-control" name="fechaterminoservicio">
     </div>
     
@@ -1775,7 +1763,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistro['fechainiciopracticas'] ?>" class="form-control" name="fechainiciopracticas">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistro['fechaterminopracticas'] ?>" class="form-control" name="fechaterminopracticas">
     </div>
     
@@ -1847,7 +1835,7 @@ require_once 'claseConexion/conexion.php';
                                 <input type="date" id="fechainiciocertificacionuno[${i}]" name="fechainiciocertificacionuno[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
-                                <label>Fecha termino ${i +1}</label>
+                                <label>Fecha término ${i +1}</label>
                                 <input type="date" id="fechaterminocertificacionuno[${i}]" name="fechaterminocertificacionuno[]" class="form-control">
                                 </div>
                                 <div class="form-group col-md-3">
@@ -1906,7 +1894,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroCertificacion['fechainiciocertificacionuno'] ?>" class="form-control" name="fechainiciocertificacionuno[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroCertificacion['fechaterminocertificacionuno'] ?>" class="form-control" name="fechaterminocertificacionuno[]">
     </div>
     <div class="col-md-3">
@@ -2174,7 +2162,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector publico</label>
+        <label>Exp laboral sector público</label>
     </div>
     <div class="form-group col-md-6">
         <label>Secretaría de Estado</label>
@@ -2296,7 +2284,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector publico segundo</label>
+        <label>Exp laboral sector público segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2417,7 +2405,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector publico tercero</label>
+        <label>Exp laboral sector público tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
