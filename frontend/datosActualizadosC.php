@@ -22,6 +22,9 @@
 <body onload="deshabilitaRetroceso()">
 <!-- multistep form -->
 <style>
+    label {
+            color: black;
+        }
     .graficos3 {
         display: grid;
   gap: 1rem;
@@ -124,7 +127,7 @@
 <div class="graficos3">
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Sube los formatos debidamente llenados</label>
+        <label>Sube los formatos que descargaste, debidamente llenados</label>
     </div>
     <div class="form-row">
     <div class="form-group col-md-3">
@@ -489,7 +492,7 @@ function deleteSpmail() {
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Educación Media Superior</label>
+        <label>Educación media superior</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -729,7 +732,7 @@ $id = $dataRegistro['id_principal'];
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
                     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Nivel Superior</label>
+        <label>Nivel superior</label>
     </div>
       <div class="form-group col-md-12">
                     <strong>Agregar licenciatura (Solo numeros)</strong>
@@ -802,7 +805,7 @@ require_once 'claseConexion/conexion.php';
     ?>
     <!-- inicia educacion superior -->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Educación Superior</label>
+        <label>Educación superior</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -890,10 +893,10 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Agregar Maestria</label>
+        <label>Agregar maestría</label>
     </div>
 <div class="form-group col-md-12">
-                    <strong>Agregar maestria (Solo numeros)</strong>
+                    <strong>Agregar maestría (Solo numeros)</strong>
                     <input type="number" id="quantity2" name="maestrias" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -965,14 +968,14 @@ require_once 'claseConexion/conexion.php';
     ?>
 <!--PRIMER MAESTRIA-->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Maestria</label>
+        <label>Maestría</label>
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la formacion</strong>
+        <strong>Nombre de la formación</strong>
     <input type="text" value="<?php echo $dataRegistroMaestria['nombreformacionmaestria'] ?>" class="form-control" name="nombreformacionmaestria[]">
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la institucion</strong>
+        <strong>Nombre de la institución</strong>
     <input type="text" value="<?php echo $dataRegistroMaestria['nombremaestria'] ?>" class="form-control" name="nombremaestria[]">
     </div>
     <div class="col-md-3">
@@ -980,7 +983,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroMaestria['fechamaestriainicio'] ?>" class="form-control" name="fechainiciomaestria[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroMaestria['fechamaestriatermino'] ?>" class="form-control" name="fechaterminomaestria[]">
     </div>
     <div class="col-md-3">
@@ -992,7 +995,7 @@ require_once 'claseConexion/conexion.php';
     <input type="text" value="<?php echo $dataRegistroMaestria['documentomaestria'] ?>" class="form-control" name="documentomaestria[]">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu titulo</strong>
+        <strong>Sube tu título</strong>
     <input type="file"  class="form-control" name="documentotitulomaestria[]" accept=".pdf">
     </div>
     
@@ -1005,7 +1008,7 @@ require_once 'claseConexion/conexion.php';
     <input type="file"  class="form-control" name="documentocedulamaestria[]" accept=".pdf">
     </div>
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documento titulo</strong>
+        <strong>Documento título</strong>
     <?php
     $archivonombre = 'Titulo maestria'.' '.$dataRegistroMaestria['nombreformacionmaestria'];
     $id_user = $dataRegistro['id_principal'];
@@ -1051,7 +1054,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Posgrado/Especialidad</h3>
+    <label style="text-align: center;">Agregar posgrado/especialidad</label>
 </div>
     <div class="form-group col-md-12">
                     <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
@@ -1132,11 +1135,11 @@ require_once 'claseConexion/conexion.php';
         <label>Posgrado/Especialidad</label>
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la formacion</strong>
+        <strong>Nombre de la formación</strong>
     <input type="text" value="<?php echo $dataRegistroEspecialidad['nombreformacionacademica'] ?>" class="form-control" name="nombreformacionposgradoespecialidad[]">
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la institucion</strong>
+        <strong>Nombre de la institución</strong>
     <input type="text" value="<?php echo $dataRegistroEspecialidad['nombreinstitucion'] ?>" class="form-control" name="nombreinstitucionposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
@@ -1148,7 +1151,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroEspecialidad['fechainicioespecialidad'] ?>" class="form-control" name="fechainiciosupposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroEspecialidad['fechaterminoespecialidad'] ?>" class="form-control" name="fechaterminosupposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
@@ -1160,7 +1163,7 @@ require_once 'claseConexion/conexion.php';
     <input type="text" value="<?php echo $dataRegistroEspecialidad['documentorecibeespecialidad'] ?>" class="form-control" name="documentorecibeposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu titulo</strong>
+        <strong>Sube tu título</strong>
     <input type="file"  class="form-control" name="archivotituloposgrado[]" accept=".pdf">
     </div>
     <div class="col-md-3">
@@ -1173,7 +1176,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documento titulo</strong>
+        <strong>Documento título</strong>
     <?php
     $archivonombre = 'Titulo posgrado'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
     $id_user = $dataRegistro['id_principal'];
@@ -1216,7 +1219,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Doctorado/Subespecialidad</h3>
+    <label style="text-align: center;">Agregar doctorado/subespecialidad</label>
 </div>
 <div class="form-group col-md-12">
                     <strong>Agregar doctorado (Solo numeros)</strong>
@@ -1296,11 +1299,11 @@ require_once 'claseConexion/conexion.php';
         <label>Docotorado/Subespecialidad</label>
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la formacion</strong>
+        <strong>Nombre de la formación</strong>
     <input type="text" value="<?php echo $dataRegistroDoctorado['nombreformaciondoctorado'] ?>" class="form-control" name="nombreformaciondoctorado[]">
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la institucion</strong>
+        <strong>Nombre de la institución</strong>
     <input type="text" value="<?php echo $dataRegistroDoctorado['nombreinstituciondoctorado'] ?>" class="form-control" name="nombreinstituciondoctorado[]">
     </div>
     <div class="col-md-3">
@@ -1324,7 +1327,7 @@ require_once 'claseConexion/conexion.php';
     <input type="text" value="<?php echo $dataRegistroDoctorado['documentorecibedoctorado'] ?>" class="form-control" name="documentorecibedoctorado[]">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu titulo</strong>
+        <strong>Sube tu título</strong>
     <input type="file"  class="form-control" name="archivotitulodoctorado[]" accept=".pdf">
     </div>
     <div class="col-md-3">
@@ -1356,7 +1359,7 @@ require_once 'claseConexion/conexion.php';
     ?>
     </div>
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Cedula titulo</strong>
+        <strong>Cedula título</strong>
     <?php
     $archivonombre = 'Cedula doctorado'.' '.$dataRegistroDoctorado['nombreformaciondoctorado'];
     $id_user = $dataRegistro['id_principal'];
@@ -1380,10 +1383,10 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Estudios Alta especialidad</h3>
+    <label style="text-align: center;">Agregar estudios alta especialidad</label>
 </div>
 <div class="form-group col-md-12">
-                    <strong>Agregar Estudios Alta especialidad (Solo numeros)</strong>
+                    <label>Agregar estudios alta especialidad (Solo numeros)</label>
                     <input type="number" id="quantity7" name="otrosestudios" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -1452,14 +1455,14 @@ require_once 'claseConexion/conexion.php';
 
     ?>
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Estudios Alta Especialidad</label>
+        <label>Estudios alta especialidad</label>
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la formacion</strong>
+        <strong>Nombre de la formación</strong>
     <input type="text" value="<?php echo $dataRegistroOtrosEstAltaEsp['nombreformacionaltaesp'] ?>" class="form-control" name="nombreformacionaltaesp[]">
     </div>
     <div class="col-md-6">
-        <strong>Nombre de la institucion</strong>
+        <strong>Nombre de la institución</strong>
     <input type="text" value="<?php echo $dataRegistroOtrosEstAltaEsp['nombrealtaespecialidad'] ?>" class="form-control" name="nombrealtaespecialidad[]">
     </div>
     <div class="col-md-3">
@@ -1471,7 +1474,7 @@ require_once 'claseConexion/conexion.php';
     <input type="date" value="<?php echo $dataRegistroOtrosEstAltaEsp['fechainicioaltaesp'] ?>" class="form-control" name="fechainicioaltaesp[]">
     </div>
     <div class="col-md-3">
-        <strong>Fecha de termino</strong>
+        <strong>Fecha de término</strong>
     <input type="date" value="<?php echo $dataRegistroOtrosEstAltaEsp['fechaterminoaltaesp'] ?>" class="form-control" name="fechaterminoaltaesp[]">
     </div>
     <div class="col-md-3">
@@ -1539,10 +1542,10 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Otros estudios</h3>
+    <label style="text-align: center;">Agregar otros estudios</label>
 </div>
 <div class="form-group col-md-12">
-                    <strong>Agregar otros estudios (Solo numeros)</strong>
+                    <label>Agregar otros estudios (Solo numeros)</label>
                     <input type="number" id="quantity8" name="otrosestudios" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -1763,10 +1766,10 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Certificaciones</h3>
+    <label style="text-align: center;">Agregar certificaciones</label>
 </div>
 <div class="form-group col-md-12">
-                    <strong>Agregar certificación (Solo numeros)</strong>
+                    <label>Agregar certificación (Solo numeros)</label>
                     <input type="number" id="quantity6" name="certificaciones" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
                 </div>
                 <script>
@@ -1903,7 +1906,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Exp. laboral sector privado</h3>
+    <label style="text-align: center;">Exp. laboral sector privado</label>
     </div>
 <div class="form-group col-md-12">
                     <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>

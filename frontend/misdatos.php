@@ -26,6 +26,9 @@
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
     <style>
+        label {
+            color: black;
+        }
         .graficos3 {
         display: grid;
   gap: 1rem;
