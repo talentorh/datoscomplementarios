@@ -66,6 +66,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["avisoconfidencialidad"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["avisoconfidencialidad"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -91,6 +92,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["integraciondeantiguedad"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["integraciondeantiguedad"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -116,6 +118,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["noconflictodeinteres"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["noconflictodeinteres"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -141,6 +144,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["paraocpuacion"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["paraocpuacion"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -166,6 +170,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["noempleo"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["noempleo"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -191,6 +196,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["consentimiento"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["consentimiento"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -216,6 +222,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["otroempleo"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["otroempleo"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -241,6 +248,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["protecciondatos"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["protecciondatos"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -267,6 +275,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["documentocurp"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["documentocurp"]["tmp_name"], $archivo);
                         }
                         
                     }
@@ -293,10 +302,11 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         
                             $resultado = @move_uploaded_file($_FILES["comprobantedomicilio"]["tmp_name"], $archivo);
                         } else {
+                            $resultado = @move_uploaded_file($_FILES["comprobantedomicilio"]["tmp_name"], $archivo);
                         }
                         
                     }
-                   
+                
                 }
                 $sql = $conexionSeleccion->prepare("SELECT id_datopersonal from datospersonales where curp = :curp");
                 $sql->execute(array(
@@ -336,6 +346,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                 
                                     $resultado = @move_uploaded_file($_FILES["archivomediasuperior"]["tmp_name"], $archivo);
                                 } else {
+                                    $resultado = @move_uploaded_file($_FILES["archivomediasuperior"]["tmp_name"], $archivo);
                                 }
                             }
                         }
@@ -350,6 +361,32 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                 ':documentotecnico' => $documentotecnico,
                 ':id_empleado' => $id_user
             ));
+            if ($_FILES["archivotecnico"]["error"] > 0) {
+                    
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $compdomicilio = 'Titulo tecnico';
+                if (in_array($_FILES["archivotecnico"]["type"], $permitidos) && $_FILES["archivotecnico"]["size"]) {
+    
+                    $ruta = '../documentos/'.$id_user . '/';
+                    $archivo = $ruta . $_FILES["archivotecnico"]["name"] = "Titulo tecnico.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (!file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["archivotecnico"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["archivotecnico"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
             if($nombreformacionPostecnico != '' and $nombreinstitucionPostecnico != ''){
                 $arraynombreformacionPostecnico = array_map("htmlspecialchars", $nombreformacionPostecnico);
                 $arraynombreinstitucionPostecnico = array_map("htmlspecialchars", $nombreinstitucionPostecnico);
@@ -645,6 +682,34 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
                         $nombredelarchivo = "Cedula posgrado";
                         $archivonombre = $_POST['nombreformacionposgradoespecialidad'][$key];
                         $fuente = $_FILES["archivocedulaposgrado"]["tmp_name"][$key]; 
+                        
+                        $carpeta = '../documentos/' .$id_user. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
+                        
+                        if(!file_exists($carpeta)){
+                            mkdir($carpeta) or die("Hubo un error al crear el directorio de almacenamiento");	
+                        }
+                        
+                        $dir=opendir($carpeta);
+                        $target_path = $carpeta.'/'.$nombredelarchivo.' '.$archivonombre.'.pdf'; //indicamos la ruta de destino de los archivos
+                        
+                
+                        if(file_exists($carpeta)) {	
+                            move_uploaded_file($fuente, $target_path);
+                            
+                            } else {	
+                            echo "Se ha producido un error, por favor revise los archivos e intentelo de nuevo.<br>";
+                        }
+                        closedir($dir); //Cerramos la conexion con la carpeta destino
+                    }
+                }
+                foreach($_FILES["certificadoconsejo"]['tmp_name'] as $key => $tmp_name)
+                {
+                    //condicional si el fuchero existe
+                    if($_FILES["certificadoconsejo"]["name"][$key]) {
+                        // Nombres de archivos de temporales
+                        $nombredelarchivo = "Certificado consejo";
+                        $archivonombre = $_POST['nombreformacionposgradoespecialidad'][$key];
+                        $fuente = $_FILES["certificadoconsejo"]["tmp_name"][$key]; 
                         
                         $carpeta = '../documentos/' .$id_user. '/'; //Declaramos el nombre de la carpeta que guardara los archivos
                         

@@ -109,7 +109,7 @@
             </script>
 <div class="graficos3">
     <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Formatos para descargar</label>
     </div>
         <?php
@@ -126,7 +126,7 @@
 </div>
 <div class="graficos3">
     <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Sube los formatos que descargaste, debidamente llenados</label>
     </div>
     <div class="form-row">
@@ -167,7 +167,7 @@
 </div>
 <div class="graficos3">
     <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Formatos cargados</label>
     </div>
     <?php
@@ -327,7 +327,7 @@
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
         
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Datos personales</label>
     </div>
     <input type="hidden" value="<?php echo $dataRegistro['id_principal'] ?>" class="form-control" name="id_user">
@@ -548,7 +548,7 @@ function deleteSpmail() {
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label>Nivel tecnico</label>
             </div>
 
@@ -575,12 +575,36 @@ function deleteSpmail() {
                 <div class="col-md-3">
                     <label>Documento que recibe</label>
                     <input type="text" id="documentotecnico" name="documentotecnico" value="<?php echo $dataRegistro['documentotecnico'] ?>" autocomplete="off" class="form-control">
-        </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sube tu documento</label>
+                    <input type="file" id="archivotecnico" name="archivotecnico" class="form-control">
+                </div>
+                <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+<strong>Documento cargado</strong>
+    <?php
+    $archivonombre = 'Titulo tecnico';
+    $id_user = $dataRegistro['id_principal'];
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    
+
+    ?>
+    </div>
         </div>
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label>Nivel postecnico</label>
             </div>
   <div class="form-group col-md-12">
@@ -650,7 +674,7 @@ $id = $dataRegistro['id_principal'];
 
     ?>
 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Postecnico</label>
             </div>
                                 
@@ -687,7 +711,7 @@ $id = $dataRegistro['id_principal'];
                                     <input type="file"  class="form-control" name="documentocedulapostecnico[]" accept=".pdf">
                                     </div>
                                     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
-        <strong>Documento titulo</strong>
+<strong>Documento titulo</strong>
     <?php
     $archivonombre = 'Titulo postecnico'.' '.$dataRegistropostecnico['nombreformacionpostecnico'];
     $id_user = $dataRegistro['id_principal'];
@@ -731,7 +755,7 @@ $id = $dataRegistro['id_principal'];
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+                    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Nivel superior</label>
     </div>
       <div class="form-group col-md-12">
@@ -804,7 +828,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
     <!-- inicia educacion superior -->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Educación superior</label>
     </div>
     <div class="col-md-6">
@@ -892,7 +916,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Agregar maestría</label>
     </div>
 <div class="form-group col-md-12">
@@ -967,7 +991,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 <!--PRIMER MAESTRIA-->
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Maestría</label>
     </div>
     <div class="col-md-6">
@@ -1053,7 +1077,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Agregar posgrado/especialidad</label>
 </div>
     <div class="form-group col-md-12">
@@ -1103,13 +1127,17 @@ require_once 'claseConexion/conexion.php';
                                 <label>Numero de cedula ${i +1}</label>
                                 <input type="int" id="numerocedulaposgradoespecialidad[${i}]" name="numerocedulaposgradoespecialidad[]" class="form-control">
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
         <strong>Sube tu titulo</strong>
     <input type="file" id="archivotituloposgrado[${i}]" class="form-control" name="archivotituloposgrado[]" accept=".pdf">
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <strong>Sube tu cedula</strong>
     <input type="file" id="archivocedulaposgrado[${i}]" class="form-control" name="archivocedulaposgrado[]" accept=".pdf">
+    </div>
+    <div class="col-md-4">
+        <strong>Certificado del consejo</strong>
+    <input type="file" id="certificadoconsejo[${i}]" class="form-control" name="certificadoconsejo[]" accept=".pdf">
     </div>
                             
                         </div>`;
@@ -1131,7 +1159,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Posgrado/Especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1163,16 +1191,20 @@ require_once 'claseConexion/conexion.php';
     <input type="text" value="<?php echo $dataRegistroEspecialidad['documentorecibeespecialidad'] ?>" class="form-control" name="documentorecibeposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
-        <strong>Sube tu título</strong>
-    <input type="file"  class="form-control" name="archivotituloposgrado[]" accept=".pdf">
-    </div>
-    <div class="col-md-3">
         <strong>Numero de cedula</strong>
     <input type="text" value="<?php echo $dataRegistroEspecialidad['numerocedulaespecialidad'] ?>" class="form-control" name="numerocedulaposgradoespecialidad[]">
     </div>
     <div class="col-md-3">
+        <strong>Sube tu título</strong>
+    <input type="file"  class="form-control" name="archivotituloposgrado[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="archivocedulaposgrado[]" accept=".pdf">
+    </div>
+    <div class="col-md-3">
+        <strong>Certificado del consejo</strong>
+    <input type="file" id="certificadoconsejo" class="form-control" name="certificadoconsejo[]" accept=".pdf">
     </div>
     
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
@@ -1213,12 +1245,31 @@ require_once 'claseConexion/conexion.php';
         }
     ?>
     </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Certificado del consejo</strong>
+    <?php
+    $archivonombre = 'Certificado consejo'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" . $id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    ?>
+    </div>
 <?php endforeach; ?>  
         </div>
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Agregar doctorado/subespecialidad</label>
 </div>
 <div class="form-group col-md-12">
@@ -1267,8 +1318,8 @@ require_once 'claseConexion/conexion.php';
                                 <div class="form-group col-md-6">
                                 <label>Numero de cedula ${i +1}</label>
                                 <input type="text" id="numeroceduladoctorado[${i}]" name="numeroceduladoctorado[]" class="form-control">
-                              </div>
-                              <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
         <strong>Sube tu titulo</strong>
     <input type="file" id="archivotitulodoctorado[${i}]" class="form-control" name="archivotitulodoctorado[]" accept=".pdf">
     </div>
@@ -1295,7 +1346,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroDoctorado):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Docotorado/Subespecialidad</label>
     </div>
     <div class="col-md-6">
@@ -1382,7 +1433,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Agregar estudios alta especialidad</label>
 </div>
 <div class="form-group col-md-12">
@@ -1454,7 +1505,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEstAltaEsp):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Estudios alta especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1541,7 +1592,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Agregar otros estudios</label>
 </div>
 <div class="form-group col-md-12">
@@ -1601,7 +1652,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEst):
 
     ?>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Otros estudios </label>
     </div>
     <div class="col-md-6">
@@ -1657,7 +1708,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Servicio social</label>
     </div>
     <div class="col-md-6">
@@ -1711,7 +1762,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Practicas profesionales</label>
     </div>
     <div class="col-md-6">
@@ -1765,7 +1816,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Agregar certificaciones</label>
 </div>
 <div class="form-group col-md-12">
@@ -1839,7 +1890,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroCertificacion):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Certificación</label>
     </div>
     <div class="col-md-6">
@@ -1905,7 +1956,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
     <label style="text-align: center;">Exp. laboral sector privado</label>
     </div>
 <div class="form-group col-md-12">
@@ -1991,7 +2042,7 @@ require_once 'claseConexion/conexion.php';
 
     ?>
 
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Exp laboral sector privado</label>
     </div>
     <div class="col-md-6">
@@ -2122,7 +2173,7 @@ $(document).ready(function(){
   </script>  
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Exp laboral sector publico</label>
     </div>
     <div class="form-group col-md-6">
@@ -2244,7 +2295,7 @@ $(document).ready(function(){
   </div>
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Exp laboral sector publico segundo</label>
     </div>
     <div class="col-md-6">
@@ -2365,7 +2416,7 @@ $(document).ready(function(){
   </div>
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Exp laboral sector publico tercero</label>
     </div>
     <div class="col-md-6">
@@ -2486,7 +2537,7 @@ $(document).ready(function(){
   </div>
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Producción cientifica(Ultima publicación)</label>
     </div>
     <div class="col-md-6">

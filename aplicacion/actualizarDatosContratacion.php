@@ -317,6 +317,32 @@ error_reporting(0);
                 ':documentotecnico' => $documentotecnico,
                 ':id_empleado' => $id_user
             ));
+            if ($_FILES["archivotecnico"]["error"] > 0) {
+                    
+            } else {
+    
+                $permitidos = array("application/pdf");
+                $compdomicilio = 'Titulo tecnico';
+                if (in_array($_FILES["archivotecnico"]["type"], $permitidos) && $_FILES["archivotecnico"]["size"]) {
+    
+                    $ruta = '../documentos/'.$id_user . '/';
+                    $archivo = $ruta . $_FILES["archivotecnico"]["name"] = "Titulo tecnico.pdf";
+    
+    
+                    if (!file_exists($ruta)) {
+                        mkdir($ruta);
+                    }
+    
+                    if (!file_exists($archivo)) {
+    
+                        $resultado = @move_uploaded_file($_FILES["archivotecnico"]["tmp_name"], $archivo);
+                    } else {
+                        $resultado = @move_uploaded_file($_FILES["archivotecnico"]["tmp_name"], $archivo);
+                    }
+                    
+                }
+                
+            }
             if($nombreformacionPostecnico != '' and $nombreinstitucionPostecnico != ''){
                 $arraynombreformacionPostecnico = array_map("htmlspecialchars", $nombreformacionPostecnico);
                 $arraynombreinstitucionPostecnico = array_map("htmlspecialchars", $nombreinstitucionPostecnico);

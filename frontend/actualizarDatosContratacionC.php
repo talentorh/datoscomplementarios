@@ -22,6 +22,9 @@
 <body onload="deshabilitaRetroceso()">
   <!-- multistep form -->
   <style>
+    label {
+            color: black;
+        }
     .graficos2 {
         display: grid;
   gap: 1rem;
@@ -62,7 +65,7 @@
 </style>
 <div id="mensaje"></div>
   <form id="msform3" enctype="multipart/form-data">
-  <div style="border: 1px solid black; padding: 0px; border-radius: 10px;">
+  <div style="border: 1px solid black; padding: 0px; border-radius: 0px;">
 <header style="width: 100%; height: auto;  padding: 3px; text-align: center; color: white; font-size: 25px; background: #1072b3; ">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
@@ -96,7 +99,7 @@
 
 <input type="hidden" value="<?php echo $dataRegistro['id_principal'] ?>" class="form-control" name="id_user"> 
         <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-            <label>Constancia de Situación Fiscal (SAT)</label>
+            <label>Documentación complementaria</label>
         </div>
         <div class="col-md-6">
         <strong>Actividad economica</strong>
@@ -474,7 +477,7 @@ function deleteSpmail() {
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: balck; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel tecnico</label>
             </div>
 
@@ -501,12 +504,36 @@ function deleteSpmail() {
                 <div class="col-md-3">
                     <label>Documento que recibe</label>
                     <input type="text" id="documentotecnico" name="documentotecnico" value="<?php echo $dataRegistro['documentotecnico'] ?>" autocomplete="off" class="form-control">
-        </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Sube tu documento</label>
+                    <input type="file" id="archivotecnico" name="archivotecnico" class="form-control">
+                </div>
+                <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+<strong>Documento cargado</strong>
+    <?php
+    $archivonombre = 'Titulo tecnico';
+    $id_user = $dataRegistro['id_principal'];
+    $path = 'documentos/'.$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='200' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?titulo=$archivonombre&id=$id_user'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    
+
+    ?>
+    </div>
         </div>
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: black; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel postecnico</label>
             </div>
   <div class="form-group col-md-12">
@@ -576,7 +603,7 @@ $id = $dataRegistro['id_principal'];
 
     ?>
 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+        <div class="col-md-12" style="text-align: center; font-size: 25px; color: black; background-color: #DCDCDB; padding: 5px;">
         <label>Postecnico</label>
             </div>
                                 
@@ -980,7 +1007,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Posgrado/Especialidad</h3>
+    <label style="text-align: center;">Agregar Posgrado/Especialidad</label>
 </div>
     <div class="form-group col-md-12">
                     <strong>Agregar posgrado/especialidad (Solo numeros)</strong>
@@ -1036,6 +1063,10 @@ require_once 'claseConexion/conexion.php';
     <div class="col-md-3">
         <strong>Sube tu cedula</strong>
     <input type="file" id="archivocedulaposgrado[${i}]" class="form-control" name="archivocedulaposgrado[]" accept=".pdf">
+    </div>
+    <div class="col-md-4">
+        <strong>Certificado del consejo</strong>
+    <input type="file" id="certificadoconsejo[${i}]" class="form-control" name="certificadoconsejo[]" accept=".pdf">
     </div>
                             
                         </div>`;
@@ -1100,6 +1131,10 @@ require_once 'claseConexion/conexion.php';
         <strong>Sube tu cedula</strong>
     <input type="file"  class="form-control" name="archivocedulaposgrado[]" accept=".pdf">
     </div>
+    <div class="col-md-3">
+        <strong>Certificado del consejo</strong>
+    <input type="file" id="certificadoconsejo" class="form-control" name="certificadoconsejo[]" accept=".pdf">
+    </div>
     
     <div class="col-md-12" style="border: 1px solid #F0F0F0;">
         <strong>Documento titulo</strong>
@@ -1139,13 +1174,32 @@ require_once 'claseConexion/conexion.php';
         }
     ?>
     </div>
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Certificado del consejo</strong>
+    <?php
+    $archivonombre = 'Certificado consejo'.' '.$dataRegistroEspecialidad['nombreformacionacademica'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" . $id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id_user&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    ?>
+    </div>
 <?php endforeach; ?>  
         </div>
     </div>
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Doctorado/Subespecialidad</h3>
+    <label style="text-align: center;">Agregar Doctorado/Subespecialidad</label>
 </div>
 <div class="form-group col-md-12">
                     <strong>Agregar doctorado (Solo numeros)</strong>
@@ -1309,7 +1363,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Estudios Alta especialidad</h3>
+    <label style="text-align: center;">Agregar Estudios Alta especialidad</label>
 </div>
 <div class="form-group col-md-12">
                     <strong>Agregar Estudios Alta especialidad (Solo numeros)</strong>
@@ -1468,7 +1522,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Otros estudios</h3>
+    <label style="text-align: center;">Agregar Otros estudios</label>
 </div>
 <div class="form-group col-md-12">
                     <strong>Agregar otros estudios (Solo numeros)</strong>
@@ -1692,7 +1746,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Agregar Certificaciones</h3>
+    <label style="text-align: center;">Agregar Certificaciones</label>
 </div>
 <div class="form-group col-md-12">
                     <strong>Agregar certificación (Solo numeros)</strong>
@@ -1832,7 +1886,7 @@ require_once 'claseConexion/conexion.php';
     <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <h3 style="text-align: center;">Exp. laboral sector privado</h3>
+    <label style="text-align: center;">Exp. laboral sector privado</label>
     </div>
 <div class="form-group col-md-12">
                     <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
