@@ -3,7 +3,6 @@
 
 <head>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <meta name="apple-mobile-web-app-title" content="CodePen">
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
     <link rel="canonical" href="https://codepen.io/atakan/pen/nPOZZR">
@@ -20,32 +19,34 @@
 </head>
 <body onload="deshabilitaRetroceso()">
   <!-- multistep form -->
-<form id="msform2" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
-<div style="border: 1px solid #EEEDD4; padding: 0px; border-radius: 10px;">
-<header style="width: 100%; height: auto;  padding: 5px; text-align: center; color: white; font-size: 25px; background: #1072b3;">
+  <header style="width: 100%; height: auto;  padding: 1px; text-align: center; color: white; font-size: 25px; background: #1072b3;">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
+<form id="msform2" action="aplicacion/actualizarDatos" enctype="multipart/form-data">
+<div class="container" style="margin-top: 10px; padding: 0px; border-radius: 10px;">
+
     <style>
+
         label {
             color: black;
         }
         .graficos3 {
         display: grid;
   gap: 1rem;
-  grid-auto-rows: 13rem;
-  grid-template-columns: repeat(auto-fill, minmax(90rem, 1fr));
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   margin-top: 0px;
   margin-left: 0px;
   padding: 10px;
 }
     .graficos2 {
-        display: grid;
+    display: grid;
   gap: 1rem;
-  grid-auto-rows: 30rem;
-  grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   margin-top: 0px;
   margin-left: 0px;
-  padding: 10px;
+  padding: 0px;
 }
 .graff {
   overflow-y: auto;
@@ -60,19 +61,7 @@
   
 }
 .graff:hover {
-    box-shadow: 10px 10px 5px blue;
-}
-.graficos2::-webkit-scrollbar{
-  width: 8px;
-  background-color: #2546b8;
-  border-radius: 20px;
-}
-.graficos2::-webkit-scrollbar:window-inactive {
-  display: none;
-}
-.graficos2::-webkit-scrollbar-thumb  {
-  background-color: #09C;
-  border-radius: 6px;
+    box-shadow: 5px 5px 5px blue;
 }
 </style>
 <script>
@@ -99,76 +88,23 @@
                     })
                 })
             </script>
-    <div class="graff">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
-        <label>Formatos para descargar</label>
-    </div>
-        <?php
-            echo "<div class='form-row'><div class='col-md-3'><label>Aviso de confidencialidad</label><a href='formatos/AVISO DE CONFIDENCIALIDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Aviso de confidencialidad</a></div>";
-            echo "<div class='col-md-3'><label>Cédula de integración de antigüedad</label><a href='formatos/CÉDULA_DE_INTEGRACIÓN_DE_ANTIGÜEDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cédula de integración de antigüedad</a></div>";
-            echo "<div class='col-md-3'><label>Declaración de no conflicto de interés</label><a href='formatos/DECLARACIÓN_DE_NO_CONFLICTO_DE_INTERÉS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración de no conflicto de interés</a></div>";
-            echo "<div class='col-md-3'><label>Declaración para ocupación</label><a href='formatos/DECLARACIÓN_PARA_OCUPACIÓN.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración para ocupación</a></div>";
-            echo "<div class='col-md-3'><label>Documento de no empleo</label><a href='formatos/DOCUMENTO DE NO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento de no empleo</a></div>";
-            echo "<div class='col-md-3'><label>Formato consentimiento</label><a href='formatos/FORMATO DE CONSENTIMIENTO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato consentimiento</a></div>";
-            echo "<div class='col-md-3'><label>Formato datos de otro empleo</label><a href='formatos/FORMATO DE DATOS DE OTRO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato datos de otro empleo</a></div>";
-            echo "<div class='col-md-3'><label>Formato de aviso de protección de datos</label><a href='formatos/FORMATO_DE_AVISO_DE_PROTECCIÓN_DE_DATOS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato de aviso de protección de datos</a></div></div>";
-        ?>
-    </div>
 
-<div class="graff">
-    <div class='form-row'>
-    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
-        <label>Sube los formatos debidamente llenados</label>
-    </div>
-    <div class="col-md-3">
-        <label>Aviso de confidencialidad</label>
-    <input type="file"  class="form-control" name="avisoconfidencialidad" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Cédula de integración de antigüedad</label>
-    <input type="file"  class="form-control" name="integraciondeantiguedad" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Declaración de no conflicto de interés</label>
-    <input type="file"  class="form-control" name="noconflictodeinteres" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Declaración para ocupación</label>
-    <input type="file"  class="form-control" name="paraocpuacion" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Documento de no empleo</label>
-    <input type="file"  class="form-control" name="noempleo" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Formato consentimiento</label>
-    <input type="file"  class="form-control" name="consentimiento" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Formato datos de otro empleo</label>
-    <input type="file"  class="form-control" name="otroempleo" accept=".pdf" required>
-    </div>
-    <div class="col-md-3">
-        <label>Formato de aviso de protección de datos</label>
-    <input type="file"  class="form-control" name="protecciondatos" accept=".pdf" required>
-    </div>
-    </div>
-    </div>
-</div>
 
 <div class="graficos2">
+
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label>Información personal</label>
+    </div>
+        <div class="row" style="padding: 15px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 2px;">
         <label>Datos personales</label>
     </div>
 
     <input type="hidden" value="<?php echo $dataRegistro['id_principal'] ?>" class="form-control" name="id_user">
     
-    <div class="col-md-3">
-        <strong>Plaza evaluar</strong>
-    <input type="text" value="<?php echo $dataRegistro['plazaevaluar'] ?>" class="form-control" name="plazaevaluar">
-    </div>
+    <input type="hidden" value="<?php echo $dataRegistro['plazaevaluar'] ?>" class="form-control" name="plazaevaluar">
+    
     <div class="col-md-3">
         <strong>Profesion</strong>
     <input type="text" value="<?php echo $dataRegistro['profesion'] ?>" class="form-control" name="profesion">
@@ -205,6 +141,7 @@ function deleteSpmail() {
         <strong>CURP</strong>
     <input type="text" value="<?php echo $dataRegistro['curp'] ?>" onkeyup="deleteSp();" class="form-control" name="curp" minlength="18" maxlength="18">
     </div>
+    <!--
     <div class="form-group col-md-3">
         <label>Sube tu CURP</label>
     <input type="file"  class="form-control" name="documentocurp" accept=".pdf" >
@@ -230,6 +167,7 @@ function deleteSpmail() {
 
     ?>
     </div>
+-->
     <div class="col-md-3">
         <strong>R.F.C</strong>
     <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" onkeyup="deleteSp();" class="form-control" name="rfc" minlength="13" maxlength="13">
@@ -238,11 +176,11 @@ function deleteSpmail() {
         <strong>Correo electronico</strong>
     <input type="email" value="<?php echo $dataRegistro['correoelectronico'] ?>" onkeyup="deleteSpmail();" class="form-control" name="correo">
     </div>
+    <!--
     <div class="col-md-3">
         <strong>Estado</strong>
     <input type="text" value="<?php echo $dataRegistro['estado'] ?>" class="form-control" name="estado">
     </div>
-
 
     <div class="col-md-3">
         <strong>Doc. comprobante de domicilio</strong>
@@ -270,6 +208,7 @@ function deleteSpmail() {
 
     ?>
     </div>
+
     <div class="col-md-3">
         <strong>Delegacón</strong>
     <input type="text" value="<?php echo $dataRegistro['municipio'] ?>" class="form-control" name="municipio">
@@ -298,6 +237,7 @@ function deleteSpmail() {
         <strong>C.P</strong>
     <input type="text" value="<?php echo $dataRegistro['codigopostal'] ?>" class="form-control" name="codigopostal">
     </div>
+-->
     <div class="col-md-3">
         <strong>Fecha de nacimiento</strong>
     <input type="date" value="<?php echo $dataRegistro['fechanacimiento'] ?>" class="form-control" name="fechanacimiento">
@@ -330,9 +270,12 @@ function deleteSpmail() {
 </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Educación Media Superior</label>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label>Información academica</label>
+    </div>
+        <div class="row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 2px;">
+        <label>Medio superior</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -365,7 +308,7 @@ function deleteSpmail() {
     <input type="file"  class="form-control" name="archivomediasuperior" accept=".pdf">
     </div>
     <div class="col-md-3" style="border: 1px solid #F0F0F0;">
-        <strong>Documento certificado</strong>
+        <strong>Ver documento cargado</strong>
     <?php
     $curp = $dataRegistro['id_principal'];
     $compdomicilio = 'comprobante media superior';
@@ -388,7 +331,7 @@ function deleteSpmail() {
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label>Nivel tecnico</label>
             </div>
@@ -444,7 +387,7 @@ function deleteSpmail() {
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
         <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label style="text-align: center;">Nivel postecnico</label>
 </div>
@@ -460,7 +403,7 @@ function deleteSpmail() {
                         const quantity = event.target.value;
 
                         for (let i = 0; i < quantity; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                                 <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información postecnico ${i +1}</h1>
                                 </div>
@@ -577,7 +520,7 @@ $id = $dataRegistro['id_principal'];
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
                     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Nivel Superior</label>
     </div>
@@ -593,7 +536,7 @@ $id = $dataRegistro['id_principal'];
                         const quantity = event.target.value;
 
                         for (let i = 0; i < quantity; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                             <div class="form-group col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información licenciatura ${i +1}</h1>
                                 </div>
@@ -652,7 +595,7 @@ require_once 'claseConexion/conexion.php';
     ?>
     <!-- inicia educacion superior -->
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Educación Superior</label>
+        <label>Superior</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la formacion</strong>
@@ -719,7 +662,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Agregar Maestria</label>
     </div>
@@ -734,7 +677,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity2 = event.target.value;
 
                         for (let i = 0; i < quantity2; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                                     <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información maestria ${i +1}</h1>
                                 </div>
@@ -861,7 +804,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Posgrado/Especialidad</label>
 </div>
@@ -876,7 +819,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity3 = event.target.value;
 
                         for (let i = 0; i < quantity3; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                                     <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información posgrado/especialidad ${i +1}</h1>
                                 </div>
@@ -1017,7 +960,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Doctorado/Subespecialidad</label>
 </div>
@@ -1032,7 +975,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity4 = event.target.value;
 
                         for (let i = 0; i < quantity4; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                                 <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información doctorado ${i +1}</h1>
                                 </div>
@@ -1163,7 +1106,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Estudios Alta especialidad</label>
 </div>
@@ -1178,7 +1121,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity7 = event.target.value;
 
                         for (let i = 0; i < quantity7; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                             <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información Estudios Alta especialidad ${i +1}</h1>
                                 </div>
@@ -1305,7 +1248,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Otros estudios</label>
 </div>
@@ -1320,7 +1263,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity8 = event.target.value;
 
                         for (let i = 0; i < quantity8; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                             <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información otros estudios ${i +1}</h1>
                                 </div>
@@ -1422,7 +1365,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Servicio social</label>
     </div>
@@ -1477,7 +1420,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Practicas profesionales</label>
     </div>
@@ -1532,7 +1475,7 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Certificaciones</label>
 </div>
@@ -1547,7 +1490,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity6 = event.target.value;
 
                         for (let i = 0; i < quantity6; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                             <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información certificación ${i +1}</h1>
                                 </div>
@@ -1673,7 +1616,7 @@ require_once 'claseConexion/conexion.php';
 </div>
 </div>
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Exp. laboral sector privado</label>
     </div>
@@ -1688,7 +1631,7 @@ require_once 'claseConexion/conexion.php';
                         const quantity9 = event.target.value;
 
                         for (let i = 0; i < quantity9; i++) {
-                            content += `<div class="form-row">
+                            content += `<div class="row">
                             <div class="col-md-12">
                                     <h1 style="font-size:22px; text-align: center;">Información Exp. laboral sector privado ${i +1}</h1>
                                 </div>
@@ -1855,7 +1798,7 @@ require_once 'claseConexion/conexion.php';
         </div>
 </div>
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <script>
     $(document).ready(function(){
     $("#cbx_empresaone").change(function () {
@@ -2011,7 +1954,7 @@ $(document).ready(function(){
         </div>
 </div>
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector público segundo</label>
     </div>
@@ -2132,7 +2075,7 @@ $(document).ready(function(){
         </div>
 </div>
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Exp laboral sector público tercero</label>
     </div>
@@ -2252,54 +2195,66 @@ $(document).ready(function(){
     </div>  
         </div>
 </div>
+
+
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Producción cientifica(Ultima publicación)</label>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
+        <label>Formatos para descargar</label>
     </div>
-    <div class="col-md-6">
-        <strong>Nombre del artículo o publicación</strong>
-    <input type="text" value="<?php echo $dataRegistro['nombrepublicacion'] ?>" class="form-control" name="nombrepublicacion">
+        <?php
+            echo "<div class='row'><div class='col-md-3'><label>Aviso de confidencialidad</label><a href='formatos/AVISO DE CONFIDENCIALIDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Aviso de confidencialidad</a></div>";
+            echo "<div class='col-md-3'><label>Cédula de integración de antigüedad</label><a href='formatos/CÉDULA_DE_INTEGRACIÓN_DE_ANTIGÜEDAD.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Cédula de integración de antigüedad</a></div>";
+            echo "<div class='col-md-3'><label>Declaración de no conflicto de interés</label><a href='formatos/DECLARACIÓN_DE_NO_CONFLICTO_DE_INTERÉS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración de no conflicto de interés</a></div>";
+            echo "<div class='col-md-3'><label>Declaración para ocupación</label><a href='formatos/DECLARACIÓN_PARA_OCUPACIÓN.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Declaración para ocupación</a></div>";
+            echo "<div class='col-md-3'><label>Documento de no empleo</label><a href='formatos/DOCUMENTO DE NO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Documento de no empleo</a></div>";
+            echo "<div class='col-md-3'><label>Formato consentimiento</label><a href='formatos/FORMATO DE CONSENTIMIENTO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato consentimiento</a></div>";
+            echo "<div class='col-md-3'><label>Formato datos de otro empleo</label><a href='formatos/FORMATO DE DATOS DE OTRO EMPLEO.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato datos de otro empleo</a></div>";
+            echo "<div class='col-md-3'><label>Formato de aviso de protección de datos</label><a href='formatos/FORMATO_DE_AVISO_DE_PROTECCIÓN_DE_DATOS.pdf' target='_blank' class='form-control'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i>Formato de aviso de protección de datos</a></div></div>";
+        ?>
     </div>
-    <div class="col-md-6">
-        <strong>Año de publiación</strong>
-    <input type="text" value="<?php echo $dataRegistro['tiempopublicacion'] ?>" class="form-control" name="tiempopublicacion">
+
+<div class="graff">
+    <div class='row'>
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #DCDCDB; padding: 5px;">
+        <label>Sube los formatos debidamente llenados</label>
     </div>
     <div class="col-md-3">
-        <strong>Publicado en..</strong>
-    <input type="text" value="<?php echo $dataRegistro['publicadoen'] ?>" class="form-control" name="publicadoen">
+        <label>Aviso de confidencialidad</label>
+    <input type="file"  class="form-control" name="avisoconfidencialidad" accept=".pdf" required>
     </div>
     <div class="col-md-3">
-        <strong>País de publicación</strong>
-    <input type="text" value="<?php echo $dataRegistro['paisdepublicacion'] ?>" class="form-control" name="paisdepublicacion">
+        <label>Cédula de integración de antigüedad</label>
+    <input type="file"  class="form-control" name="integraciondeantiguedad" accept=".pdf" required>
     </div>
-        </div>
+    <div class="col-md-3">
+        <label>Declaración de no conflicto de interés</label>
+    <input type="file"  class="form-control" name="noconflictodeinteres" accept=".pdf" required>
+    </div>
+    <div class="col-md-3">
+        <label>Declaración para ocupación</label>
+    <input type="file"  class="form-control" name="paraocpuacion" accept=".pdf" required>
+    </div>
+    <div class="col-md-3">
+        <label>Documento de no empleo</label>
+    <input type="file"  class="form-control" name="noempleo" accept=".pdf" required>
+    </div>
+    <div class="col-md-3">
+        <label>Formato consentimiento</label>
+    <input type="file"  class="form-control" name="consentimiento" accept=".pdf" required>
+    </div>
+    <div class="col-md-3">
+        <label>Formato datos de otro empleo</label>
+    <input type="file"  class="form-control" name="otroempleo" accept=".pdf" required>
+    </div>
+    <div class="col-md-3">
+        <label>Formato de aviso de protección de datos</label>
+    <input type="file"  class="form-control" name="protecciondatos" accept=".pdf" required>
+    </div>
+    </div>
+    </div>
 </div>
 <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Idioma</label>
-    </div>
-    <div class="col-md-6">
-        <strong>Idioma</strong>
-    <input type="text" value="<?php echo $dataRegistro['nombreidioma'] ?>" class="form-control" name="nombreidioma">
-    </div>
-    <div class="col-md-6">
-        <strong>Nivel</strong>
-    <input type="text" value="<?php echo $dataRegistro['nivel'] ?>" class="form-control" name="nivel">
-    </div>
-    <div class="col-md-3">
-        <strong>Dominio</strong>
-    <input type="text" value="<?php echo $dataRegistro['niveldedominio'] ?>" class="form-control" name="niveldedominio">
-    </div>
-    <div class="col-md-3">
-        <strong>Documento que acredita tu idioma</strong>
-    <input type="text" value="<?php echo $dataRegistro['documentoacredita'] ?>" class="form-control" name="documentoacredita">
-    </div>
-        </div>
-</div>
-<div class="graff">
-        <div class="form-row" style="padding: 25px;">
+        <div class="row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Otras habilidades</label>
     </div>
