@@ -1700,7 +1700,7 @@ require_once 'claseConexion/conexion.php';
     </div>
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <label style="text-align: center;">Exp. laboral sector privado</label>
+    <label style="text-align: center;">Sector privado</label>
     </div>
 <div class="form-group col-md-12">
                     <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
@@ -1786,7 +1786,7 @@ require_once 'claseConexion/conexion.php';
     ?>
 
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector privado</label>
+        <label>Sector privado</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la empresa</strong>
@@ -1916,7 +1916,7 @@ $(document).ready(function(){
 });
   </script>  
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector público</label>
+        <label>Sector público</label>
     </div>
     <div class="form-group col-md-6">
         <label>Secretaría de Estado</label>
@@ -2038,7 +2038,7 @@ $(document).ready(function(){
 <div class="graff">
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector público segundo</label>
+        <label>Sector público segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2159,7 +2159,7 @@ $(document).ready(function(){
 <div class="graff">
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector público tercero</label>
+        <label>Sector público tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>

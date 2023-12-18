@@ -20,6 +20,9 @@
 </head>
 
 <body onload="deshabilitaRetroceso()">
+<header style="width: 100%; height: auto;  padding: 3px; text-align: center; color: white; font-size: 25px; background: #1072b3; ">
+        <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
+    </header>
   <!-- multistep form -->
   <style>
     label {
@@ -66,9 +69,7 @@
 <div id="mensaje"></div>
   <form id="msform3" enctype="multipart/form-data">
   <div class="container" style="padding: 0px; border-radius: 0px;">
-<header style="width: 100%; height: auto;  padding: 3px; text-align: center; color: white; font-size: 25px; background: #1072b3; ">
-        <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
-    </header>
+
     <script>
                 $("#msform3").on("submit", function(e) {
                     e.preventDefault();
@@ -1963,9 +1964,12 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label>Experiencia laboral</label>
+    </div>
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-    <label style="text-align: center;">Exp. laboral sector privado</label>
+    <label style="text-align: center;">Sector privado</label>
     </div>
 <div class="form-group col-md-12">
                     <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
@@ -2051,7 +2055,7 @@ require_once 'claseConexion/conexion.php';
     ?>
 
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector privado</label>
+        <label>Sector privado</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la empresa</strong>
@@ -2182,7 +2186,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico</label>
+        <label>Sector público</label>
     </div>
     <div class="form-group col-md-6">
         <label>Secretaría de Estado</label>
@@ -2304,7 +2308,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico segundo</label>
+        <label>Sector público segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2425,7 +2429,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Exp laboral sector publico tercero</label>
+        <label>Sector público tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
