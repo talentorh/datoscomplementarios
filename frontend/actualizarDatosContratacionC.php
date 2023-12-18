@@ -28,7 +28,7 @@
     .graficos2 {
         display: grid;
   gap: 1rem;
-  grid-auto-rows: 30rem;
+  grid-auto-rows: auto;
   grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
   margin-top: 0px;
   margin-left: 0px;
@@ -65,7 +65,7 @@
 </style>
 <div id="mensaje"></div>
   <form id="msform3" enctype="multipart/form-data">
-  <div style="border: 1px solid black; padding: 0px; border-radius: 0px;">
+  <div class="container" style="padding: 0px; border-radius: 0px;">
 <header style="width: 100%; height: auto;  padding: 3px; text-align: center; color: white; font-size: 25px; background: #1072b3; ">
         <p>Hospital Regional de Alta Especialidad de Ixtapaluca.</p>
     </header>
@@ -1520,6 +1520,85 @@ require_once 'claseConexion/conexion.php';
         </div>
     </div>
     <div class="graff">
+        <div class="row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <label style="text-align: center;">Diplomados</label>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar diplomado (Solo numeros)</strong>
+                    <input type="number" id="quantity5" name="diplomado" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity5").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity5 = event.target.value;
+
+                        for (let i = 0; i < quantity5; i++) {
+                            content += `<div class="row">
+                                    <h1 style="font-size:22px; text-align: center;">Información diplomado ${i +1}</h1>
+                                
+                            <div class="form-group col-md-6">
+                                <label>Nombre del diplomado ${i +1}</label>
+                                <input type="text" id="nombreformaciondiplomado[${i}]" name="nombreformaciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstituciondiplomado[${i}]" name="nombreinstituciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupdiplomado[${i}]" name="fechainiciosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupdiplomado[${i}]" name="fechaterminosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas ${i +1}</label>
+                                <input type="text" id="tiempocursadosupdiplomado[${i}]" name="tiempocursadosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad ${i +1}</label>
+                                <select name="modaldaddiplomado[]" id="modaldaddiplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <select name="documentorecibediplomado[]" id="documentorecibediplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Cosntancia">Cosntancia</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Reconocimiento">Reconocimiento</option>
+                                    <option value="Certificado">Certificado</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Asiste como:</label>
+                                    <select class="form-control" name="asistecomodiplomado[]" id="asistecomodiplomado[${i}]" required>
+                                        <option value="Sin dato">Seleccione</option>
+                                        <option value="Participante">Participante</option>
+                                        <option value="Ponente">Ponente</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Profesor titular">Profesor titular</option>
+                                        <option value="Profesor adjunto">Profesor adjunto</option>
+                                </select>
+                                </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests5").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests5"></div>
+        </div>
+    </div>
+    <div class="graff">
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
     <label style="text-align: center;">Agregar Otros estudios</label>
@@ -2464,52 +2543,8 @@ $(document).ready(function(){
     </div>
         </div>
   </div>
-  <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Producción cientifica(Ultima publicación)</label>
-    </div>
-    <div class="col-md-6">
-        <strong>Nombre del artículo o publicación</strong>
-    <input type="text" value="<?php echo $dataRegistro['nombrepublicacion'] ?>" class="form-control" name="nombrepublicacion">
-    </div>
-    <div class="col-md-6">
-        <strong>Año de publiación</strong>
-    <input type="text" value="<?php echo $dataRegistro['tiempopublicacion'] ?>" class="form-control" name="tiempopublicacion">
-    </div>
-    <div class="col-md-3">
-        <strong>Publicado en..</strong>
-    <input type="text" value="<?php echo $dataRegistro['publicadoen'] ?>" class="form-control" name="publicadoen">
-    </div>
-    <div class="col-md-3">
-        <strong>País de publicación</strong>
-    <input type="text" value="<?php echo $dataRegistro['paisdepublicacion'] ?>" class="form-control" name="paisdepublicacion">
-    </div>
-        </div>
-  </div>
-  <div class="graff">
-        <div class="form-row" style="padding: 25px;">
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-        <label>Idioma</label>
-    </div>
-    <div class="col-md-6">
-        <strong>Idioma</strong>
-    <input type="text" value="<?php echo $dataRegistro['nombreidioma'] ?>" class="form-control" name="nombreidioma">
-    </div>
-    <div class="col-md-6">
-        <strong>Nivel</strong>
-    <input type="text" value="<?php echo $dataRegistro['nivel'] ?>" class="form-control" name="nivel">
-    </div>
-    <div class="col-md-3">
-        <strong>Dominio</strong>
-    <input type="text" value="<?php echo $dataRegistro['niveldedominio'] ?>" class="form-control" name="niveldedominio">
-    </div>
-    <div class="col-md-3">
-        <strong>Documento que acredita tu idioma</strong>
-    <input type="text" value="<?php echo $dataRegistro['documentoacredita'] ?>" class="form-control" name="documentoacredita">
-    </div>
-        </div> 
-  </div>
+
+
   <div class="graff">
         <div class="form-row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
@@ -2519,7 +2554,7 @@ $(document).ready(function(){
         <strong>Otras habilidades</strong>
     <textarea rows="7" class="form-control" name="otrashabilidades"><?php echo $dataRegistro['nombreidioma'] ?></textarea>
     </div>
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+    <div style="width: 100%; display: flex; justify-content: center; align-items: center; margin-top: 10px;">
     <a href="closeSesion" class="btn btn-warning">Cerrar sesion</a>&nbsp;&nbsp;&nbsp;
     <input type="submit" name="guardar" class="btn btn-success" value="Guardar">  
         </div>

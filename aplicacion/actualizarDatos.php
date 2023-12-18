@@ -820,8 +820,8 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
         $arraymodaldaddiplomado = array_map("htmlspecialchars", $modaldaddiplomado);
         $arraydocumentorecibediplomado = array_map("htmlspecialchars", $documentorecibediplomado);
         $arrayasistecomodiplomado = array_map("htmlspecialchars", $asistecomodiplomado);
-        
-        
+    
+    
         foreach($arraynombreformaciondiplomado as $clavediplomado => $nombreformaciondiplomado){
             $nombreinstituciondiplomado = $arraynombreinstituciondiplomado[$clavediplomado];
             $fechainiciosupdiplomado = $arrayfechainiciosupdiplomado[$clavediplomado];
@@ -834,7 +834,7 @@ $sql = $conexion->prepare("UPDATE datospersonales set cargodocumento = 1 where c
             $sql = $conexionSeleccion->prepare("INSERT into diplomado(nombreDiplomado,nombreInstitucion,fechaInicio,fechaTermino,totalHoras,modalidad,documentoRecibe,asisteComo,id_empleado) values  " . implode(', ', $datoDiplomado));
         }
         $sql->execute();
-        } 
+    }
         if($nombreformacionaltaesp != '' and $nombrealtaespecialidad != ''){
         $arraynombreformacionaltaesp = array_map("htmlspecialchars", $nombreformacionaltaesp);
         $arraynombrealtaespecialidad = array_map("htmlspecialchars", $nombrealtaespecialidad);

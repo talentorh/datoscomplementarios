@@ -1276,7 +1276,7 @@ require_once 'claseConexion/conexion.php';
         foreach($row as $dataRegistroOtrosEstAltaEsp):
 
     ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
+<div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
         <label>Estudios alta especialidad</label>
     </div>
     <div class="col-md-6">
@@ -1356,6 +1356,311 @@ require_once 'claseConexion/conexion.php';
                 echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
             }
         }
+    ?>
+    </div>
+    <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="graff">
+        <div class="row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
+    <label style="text-align: center;">Diplomados</label>
+</div>
+<div class="form-group col-md-12">
+                    <strong>Agregar diplomado (Solo numeros)</strong>
+                    <input type="number" id="quantity5" name="diplomado" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity5").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity5 = event.target.value;
+
+                        for (let i = 0; i < quantity5; i++) {
+                            content += `<div class="row">
+                                    <h1 style="font-size:22px; text-align: center;">Información diplomado ${i +1}</h1>
+                                
+                            <div class="form-group col-md-6">
+                                <label>Nombre del diplomado ${i +1}</label>
+                                <input type="text" id="nombreformaciondiplomado[${i}]" name="nombreformaciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstituciondiplomado[${i}]" name="nombreinstituciondiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciosupdiplomado[${i}]" name="fechainiciosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino ${i +1}</label>
+                                <input type="date" id="fechaterminosupdiplomado[${i}]" name="fechaterminosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas ${i +1}</label>
+                                <input type="text" id="tiempocursadosupdiplomado[${i}]" name="tiempocursadosupdiplomado[]" class="form-control">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad ${i +1}</label>
+                                <select name="modaldaddiplomado[]" id="modaldaddiplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe ${i +1}</label>
+                                <select name="documentorecibediplomado[]" id="documentorecibediplomado[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Cosntancia">Cosntancia</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Reconocimiento">Reconocimiento</option>
+                                    <option value="Certificado">Certificado</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Asiste como:</label>
+                                    <select class="form-control" name="asistecomodiplomado[]" id="asistecomodiplomado[${i}]" required>
+                                        <option value="Sin dato">Seleccione</option>
+                                        <option value="Participante">Participante</option>
+                                        <option value="Ponente">Ponente</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Profesor titular">Profesor titular</option>
+                                        <option value="Profesor adjunto">Profesor adjunto</option>
+                                </select>
+                                </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests5").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests5"></div>
+                <?php
+$id = $dataRegistro['id_principal'];
+require_once 'claseConexion/conexion.php';
+    $sql = $conexionSeleccion->prepare("SELECT * from diplomado where id_empleado = :id_empleado");
+        $sql->execute(array(
+            ':id_empleado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataDiplomado):
+
+    ?>
+<div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
+        <label>Diplomados</label>
+    </div>
+    <div class="form-group col-md-6">
+                                <label>Nombre del diplomado</label>
+                                <input type="text" id="nombreformaciondiplomado" name="nombreformaciondiplomado[]" class="form-control" value="<?php echo $dataDiplomado['nombreDiplomado'] ?>">
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Nombre de la institución educativa</label>
+                                <input type="text" id="nombreinstituciondiplomado" name="nombreinstituciondiplomado[]" class="form-control" value="<?php echo $dataDiplomado['nombreInstitucion'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha de inicio</label>
+                                <input type="date" id="fechainiciosupdiplomado" name="fechainiciosupdiplomado[]" class="form-control" value="<?php echo $dataDiplomado['fechaInicio'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Fecha termino</label>
+                                <input type="date" id="fechaterminosupdiplomado" name="fechaterminosupdiplomado[]" class="form-control" value="<?php echo $dataDiplomado['fechaTermino'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Total de horas</label>
+                                <input type="text" id="tiempocursadosupdiplomado" name="tiempocursadosupdiplomado[]" class="form-control" value="<?php echo $dataDiplomado['totalHoras'] ?>">
+                                </div>
+                                <div class="form-group col-md-3">
+                                <label>Modalidad</label>
+                                <select name="modaldaddiplomado[]" id="modaldaddiplomado[${i}]" class="form-control" value="<?php echo $dataDiplomado['modalidad'] ?>">
+                                    <option value="<?php echo $dataDiplomado[''] ?>"><?php echo $dataDiplomado[''] ?></option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                <label>Documento que recibe</label>
+                                <select name="documentorecibediplomado[]" id="documentorecibediplomado" class="form-control">
+                                    <option value="<?php echo $dataDiplomado[''] ?>"><?php echo $dataDiplomado['documentoRecibe'] ?></option>
+                                    <option value="Cosntancia">Cosntancia</option>
+                                    <option value="Diploma">Diploma</option>
+                                    <option value="Reconocimiento">Reconocimiento</option>
+                                    <option value="Certificado">Certificado</option>
+                                </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Asiste como:</label>
+                                    <select class="form-control" name="asistecomodiplomado[]" id="asistecomodiplomado" required>
+                                        <option value="<?php echo $dataDiplomado[''] ?>"><?php echo $dataDiplomado['asisteComo'] ?></option>
+                                        <option value="Participante">Participante</option>
+                                        <option value="Ponente">Ponente</option>
+                                        <option value="Coordinador">Coordinador</option>
+                                        <option value="Profesor titular">Profesor titular</option>
+                                        <option value="Profesor adjunto">Profesor adjunto</option>
+                                </select>
+                                </div>
+
+    <div class="col-md-12" style="border: 1px solid #F0F0F0;">
+        <strong>Documento obtenido</strong>
+    <?php
+    $archivonombre = 'Titulo alta especialidad'.' '.$dataRegistroOtrosEstAltaEsp['nombreformacionaltaesp'];
+    $id_user = $dataRegistro['id_principal'];
+    $path = "documentos/" .$id_user.'/'.$archivonombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id_user/$archivonombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id_user/$archivonombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivonombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+    ?>
+    </div>
+
+    <?php endforeach; ?>
+        </div>
+    </div>
+    <div class="graff">
+        <div class="row" style="padding: 25px;">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
+    <label style="text-align: center;">Agregar certificaciones</label>
+</div>
+<div class="form-group col-md-12">
+                    <label>Agregar certificación (Solo numeros)</label>
+                    <input type="number" id="quantity6" name="certificaciones" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
+                </div>
+                <script>
+                    document.getElementById("quantity6").addEventListener("input", (event) => {
+                        let content = '';
+
+                        const quantity6 = event.target.value;
+
+                        for (let i = 0; i < quantity6; i++) {
+                            content += `<div class="row">
+                            <div class="col-md-12">
+                                    <h1 style="font-size:22px; text-align: center;">Información certificación ${i +1}</h1>
+                                </div>
+                            <div class="col-md-6">
+                                <label>Nombre de la certificación ${i +1}</label>
+                                <input type="text" id="nombrecertificacionuno[${i}]" name="nombrecertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                <label>Nombre de la institución educativa ${i +1}</label>
+                                <input type="text" id="nombreinstitucioncertificacion[${i}]" name="nombreinstitucioncertificacion[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                <label>Fecha de inicio ${i +1}</label>
+                                <input type="date" id="fechainiciocertificacionuno[${i}]" name="fechainiciocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                <label>Fecha término ${i +1}</label>
+                                <input type="date" id="fechaterminocertificacionuno[${i}]" name="fechaterminocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                <label>Total de horas ${i +1}</label>
+                                <input type="text" id="tiempocursadocertificacion[${i}]" name="tiempocursadocertificacion[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+                                <label>Modalidad ${i +1}</label>
+                                <select name="modalidadceertificacion[]" id="modalidadceertificacion[${i}]" class="form-control">
+                                    <option value="">Seleccione</option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+                                <div class="col-md-12">
+                                <label>Documento que recibe ${i +1}</label>
+                                <input type="text" id="documentocertificacionuno[${i}]" name="documentocertificacionuno[]" class="form-control">
+                                </div>
+                                <div class="col-md-3">
+        <strong>Sube tu documento</strong>
+    <input type="file" id="archivocertificacion[${i}]" class="form-control" name="archivocertificacion[]" accept=".pdf">
+    </div>
+                            
+                        </div>`;
+                        }
+                        document.getElementById("divGuests6").innerHTML = content;
+                    })
+                </script>
+
+                <div id="divGuests6"></div>
+    <?php
+$id = $dataRegistro['id_principal'];
+require_once 'claseConexion/conexion.php';
+    $sql = $conexionSeleccion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
+        $sql->execute(array(
+            ':id_postulado'=>$id
+        ));
+        $row = $sql->fetchAll();
+        foreach($row as $dataRegistroCertificacion):
+
+    ?>
+  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
+        <label>Certificación</label>
+    </div>
+    <div class="col-md-6">
+        <strong>Nombre de la institución educativa</strong>
+    <input type="text" value="<?php echo $dataRegistroCertificacion['nombreformacioncertificauno'] ?>" class="form-control" name="nombreinstitucioncertificacion[]">
+    </div>
+    <div class="col-md-6">
+        <strong>Nombre de la certificación</strong>
+    <input type="text" value="<?php echo $dataRegistroCertificacion['nombrecertificacionuno'] ?>" class="form-control" name="nombrecertificacionuno[]">
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de inicio</strong>
+    <input type="date" value="<?php echo $dataRegistroCertificacion['fechainiciocertificacionuno'] ?>" class="form-control" name="fechainiciocertificacionuno[]">
+    </div>
+    <div class="col-md-3">
+        <strong>Fecha de término</strong>
+    <input type="date" value="<?php echo $dataRegistroCertificacion['fechaterminocertificacionuno'] ?>" class="form-control" name="fechaterminocertificacionuno[]">
+    </div>
+    <div class="col-md-3">
+        <strong>Total de horas</strong>
+    <input type="text" value="<?php echo $dataRegistroCertificacion['tiempocursadosupcertificacion'] ?>" class="form-control" name="tiempocursadocertificacion[]">
+    </div>
+    <div class="form-group col-md-3">
+    <strong>Modalidad</strong>
+                                <select name="modalidadceertificacion[]" id="modalidadceertificacion" class="form-control">
+                                    <option value="<?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?>"><?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?></option>
+                                    <option value="Presencial">Presencial</option>
+                                    <option value="A distancia">A distancia</option>
+                                    <option value="Mixta">Mixta</option>
+                                </select>
+                                </div>
+    <div class="col-md-3">
+        <strong>Documento que acredita</strong>
+    <input type="text" value="<?php echo $dataRegistroCertificacion['documentorecibecertificacion'] ?>" class="form-control" name="documentocertificacionuno[]">
+    </div>
+    
+    <div class="col-md-3">
+        <strong>Sube tu documento</strong>
+    <input type="file"  class="form-control" name="archivocertificacion[]" accept=".pdf">
+    </div>
+    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
+        <strong>Documento certificación</strong>
+    <?php
+    $archivoNombre = 'Documento certificacion'.' '.$dataRegistroCertificacion['nombrecertificacionuno'];
+    $id = $dataRegistro['id_principal'];
+    $path = "documentos/".$id.'/'.$archivoNombre.'.pdf';
+    if (file_exists($path)) {
+        $directorio = opendir($path);
+        $archivo = readdir($directorio);
+            if (!is_dir($archivo)) {
+                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
+
+                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
+                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
+                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
+            }
+        }
+
     ?>
     </div>
     <?php endforeach; ?>
@@ -1585,150 +1890,14 @@ require_once 'claseConexion/conexion.php';
     </div>
         </div>
     </div>
-    <div class="graff">
-        <div class="row" style="padding: 25px;">
-    <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-    <label style="text-align: center;">Agregar certificaciones</label>
-</div>
-<div class="form-group col-md-12">
-                    <label>Agregar certificación (Solo numeros)</label>
-                    <input type="number" id="quantity6" name="certificaciones" autocomplete="off" class="form-control" min="0" max="5" placeholder="EJEMPLO: 1,2,3 etc">
-                </div>
-                <script>
-                    document.getElementById("quantity6").addEventListener("input", (event) => {
-                        let content = '';
-
-                        const quantity6 = event.target.value;
-
-                        for (let i = 0; i < quantity6; i++) {
-                            content += `<div class="row">
-                            <div class="col-md-12">
-                                    <h1 style="font-size:22px; text-align: center;">Información certificación ${i +1}</h1>
-                                </div>
-                            <div class="col-md-6">
-                                <label>Nombre de la certificación ${i +1}</label>
-                                <input type="text" id="nombrecertificacionuno[${i}]" name="nombrecertificacionuno[]" class="form-control">
-                                </div>
-                                <div class="col-md-6">
-                                <label>Nombre de la institución educativa ${i +1}</label>
-                                <input type="text" id="nombreinstitucioncertificacion[${i}]" name="nombreinstitucioncertificacion[]" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                <label>Fecha de inicio ${i +1}</label>
-                                <input type="date" id="fechainiciocertificacionuno[${i}]" name="fechainiciocertificacionuno[]" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                <label>Fecha término ${i +1}</label>
-                                <input type="date" id="fechaterminocertificacionuno[${i}]" name="fechaterminocertificacionuno[]" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                <label>Total de horas ${i +1}</label>
-                                <input type="text" id="tiempocursadocertificacion[${i}]" name="tiempocursadocertificacion[]" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-                                <label>Modalidad ${i +1}</label>
-                                <select name="modalidadceertificacion[]" id="modalidadceertificacion[${i}]" class="form-control">
-                                    <option value="">Seleccione</option>
-                                    <option value="Presencial">Presencial</option>
-                                    <option value="A distancia">A distancia</option>
-                                    <option value="Mixta">Mixta</option>
-                                </select>
-                                </div>
-                                <div class="col-md-12">
-                                <label>Documento que recibe ${i +1}</label>
-                                <input type="text" id="documentocertificacionuno[${i}]" name="documentocertificacionuno[]" class="form-control">
-                                </div>
-                                <div class="col-md-3">
-        <strong>Sube tu documento</strong>
-    <input type="file" id="archivocertificacion[${i}]" class="form-control" name="archivocertificacion[]" accept=".pdf">
-    </div>
-                            
-                        </div>`;
-                        }
-                        document.getElementById("divGuests6").innerHTML = content;
-                    })
-                </script>
-
-                <div id="divGuests6"></div>
-    <?php
-$id = $dataRegistro['id_principal'];
-require_once 'claseConexion/conexion.php';
-    $sql = $conexionSeleccion->prepare("SELECT * from cerficacion where id_postulado = :id_postulado");
-        $sql->execute(array(
-            ':id_postulado'=>$id
-        ));
-        $row = $sql->fetchAll();
-        foreach($row as $dataRegistroCertificacion):
-
-    ?>
-  <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Certificación</label>
-    </div>
-    <div class="col-md-6">
-        <strong>Nombre de la institución educativa</strong>
-    <input type="text" value="<?php echo $dataRegistroCertificacion['nombreformacioncertificauno'] ?>" class="form-control" name="nombreinstitucioncertificacion[]">
-    </div>
-    <div class="col-md-6">
-        <strong>Nombre de la certificación</strong>
-    <input type="text" value="<?php echo $dataRegistroCertificacion['nombrecertificacionuno'] ?>" class="form-control" name="nombrecertificacionuno[]">
-    </div>
-    <div class="col-md-3">
-        <strong>Fecha de inicio</strong>
-    <input type="date" value="<?php echo $dataRegistroCertificacion['fechainiciocertificacionuno'] ?>" class="form-control" name="fechainiciocertificacionuno[]">
-    </div>
-    <div class="col-md-3">
-        <strong>Fecha de término</strong>
-    <input type="date" value="<?php echo $dataRegistroCertificacion['fechaterminocertificacionuno'] ?>" class="form-control" name="fechaterminocertificacionuno[]">
-    </div>
-    <div class="col-md-3">
-        <strong>Total de horas</strong>
-    <input type="text" value="<?php echo $dataRegistroCertificacion['tiempocursadosupcertificacion'] ?>" class="form-control" name="tiempocursadocertificacion[]">
-    </div>
-    <div class="form-group col-md-3">
-    <strong>Modalidad</strong>
-                                <select name="modalidadceertificacion[]" id="modalidadceertificacion" class="form-control">
-                                    <option value="<?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?>"><?php echo $dataRegistroCertificacion['modalidadcertificacion'] ?></option>
-                                    <option value="Presencial">Presencial</option>
-                                    <option value="A distancia">A distancia</option>
-                                    <option value="Mixta">Mixta</option>
-                                </select>
-                                </div>
-    <div class="col-md-3">
-        <strong>Documento que acredita</strong>
-    <input type="text" value="<?php echo $dataRegistroCertificacion['documentorecibecertificacion'] ?>" class="form-control" name="documentocertificacionuno[]">
-    </div>
     
-    <div class="col-md-3">
-        <strong>Sube tu documento</strong>
-    <input type="file"  class="form-control" name="archivocertificacion[]" accept=".pdf">
-    </div>
-    <div class="col-md-6" style="border: 1px solid #F0F0F0;">
-        <strong>Documento certificación</strong>
-    <?php
-    $archivoNombre = 'Documento certificacion'.' '.$dataRegistroCertificacion['nombrecertificacionuno'];
-    $id = $dataRegistro['id_principal'];
-    $path = "documentos/".$id.'/'.$archivoNombre.'.pdf';
-    if (file_exists($path)) {
-        $directorio = opendir($path);
-        $archivo = readdir($directorio);
-            if (!is_dir($archivo)) {
-                echo "<div data='" . $path . "/" . $archivo . "'><a href='" . $path . "/" . $archivo . "' ></a></div><br>";
-
-                echo "<iframe src='documentos/$id/$archivoNombre.pdf' width='90' height='100' class='form-control'></iframe>";
-                echo "<a href='documentos/$id/$archivoNombre.pdf' target='_blank'> <i title='Ver Archivo Adjunto' id='guardar'class='fas fa-file-pdf'></i></a>";
-                echo "<a href='eliminarDocumentacion/eliminarDocumento?id=$id&titulo=$archivoNombre'> <i title='Eliminar archivo' id='guardar'class='fas fa-trash' style='color: red;'></i></a>";
-            }
-        }
-
-    ?>
-    </div>
-    <?php endforeach; ?>
-        </div>
-    </div>
     <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label>Experiencia laboral</label>
+    </div>
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-    <label style="text-align: center;">Exp. laboral sector privado</label>
+    <label style="text-align: center;">Sector privado</label>
     </div>
 <div class="col-md-12">
                     <strong>Agregar Exp. laboral sector privado (Solo numeros)</strong>
@@ -1814,7 +1983,7 @@ require_once 'claseConexion/conexion.php';
     ?>
 
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector privado</label>
+        <label>Sector privado</label>
     </div>
     <div class="col-md-6">
         <strong>Nombre de la empresa</strong>
@@ -1945,7 +2114,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="row" style="padding: 25px;">
   <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector público</label>
+        <label>Sector público</label>
     </div>
     <div class="form-group col-md-6">
         <label>Secretaría de Estado</label>
@@ -2067,7 +2236,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector público segundo</label>
+        <label>Sector público segundo</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
@@ -2188,7 +2357,7 @@ $(document).ready(function(){
   <div class="graff">
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
-        <label>Exp laboral sector público tercero</label>
+        <label>Sector público tercero</label>
     </div>
     <div class="col-md-6">
         <strong>Secretaría de Estado</strong>
