@@ -96,11 +96,12 @@
             </script>
 <div class="graficos2">
     <div class="graff">
+        
         <div class="form-row" style="padding: 25px;">
 
 <input type="hidden" value="<?php echo $dataRegistro['id_principal'] ?>" class="form-control" name="id_user"> 
-        <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
-            <label>Documentación complementaria</label>
+        <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+            <label style="color: white;">Documentación complementaria</label>
         </div>
         <div class="col-md-6">
         <strong>Actividad economica</strong>
@@ -257,6 +258,9 @@
         </div>
     </div>
     <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label style="color: white;">Información personal</label>
+    </div>
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;  ">
         <label>Datos personales</label>
@@ -420,6 +424,9 @@ function deleteSpmail() {
         </div>
     </div>
     <div class="graff">
+    <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
+        <label style="color: white;">Información academica</label>
+    </div>
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">
         <label>Educación Media Superior</label>
@@ -1965,7 +1972,7 @@ require_once 'claseConexion/conexion.php';
     </div>
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
-        <label>Experiencia laboral</label>
+        <label style="color: white;">Experiencia laboral</label>
     </div>
         <div class="form-row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">

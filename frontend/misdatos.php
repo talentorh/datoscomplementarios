@@ -94,7 +94,7 @@
 
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
-        <label>Información personal</label>
+        <label style="color: white;">Información personal</label>
     </div>
         <div class="row" style="padding: 15px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 2px;">
@@ -271,7 +271,7 @@ function deleteSpmail() {
     </div>
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
-        <label>Información academica</label>
+        <label style="color: white;">Información academica</label>
     </div>
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 2px;">
@@ -1696,7 +1696,7 @@ require_once 'claseConexion/conexion.php';
 </div>
 <div class="graff">
 <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
-        <label>Experiencia laboral</label>
+        <label style="color: white;">Experiencia laboral</label>
     </div>
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 5px;">

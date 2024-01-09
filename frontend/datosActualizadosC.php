@@ -66,7 +66,7 @@
                     var formData = new FormData(document.getElementById("msform"));
                     formData.append("dato", "valor");
                     $.ajax({
-                        url: "aplicacion/actualizarDatos.php",
+                        url: "aplicacion/modificacionDatos.php",
                         type: "post",
                         data: formData,
                         contentType: false,
@@ -157,7 +157,7 @@ function deleteSpmail() {
     }
 
     ?>
-    </div>
+    </div>-->
     <div class="col-md-3">
         <strong>R.F.C</strong>
     <input type="text" value="<?php echo $dataRegistro['rfcprincipal'] ?>" onkeyup="deleteSp();" class="form-control" name="rfc" minlength="13" maxlength="13">
@@ -166,6 +166,7 @@ function deleteSpmail() {
         <strong>Correo electronico</strong>
     <input type="email" value="<?php echo $dataRegistro['correoelectronico'] ?>" onkeyup="deleteSpmail();" class="form-control" name="correo">
     </div>
+    <!--
     <div class="col-md-3">
         <strong>Estado</strong>
     <input type="text" value="<?php echo $dataRegistro['estado'] ?>" class="form-control" name="estado">
@@ -1893,7 +1894,7 @@ require_once 'claseConexion/conexion.php';
     
     <div class="graff">
     <div class="col-md-12" style="text-align: center; font-size: 25px; background-color: #339DB2; padding: 2px;">
-        <label>Experiencia laboral</label>
+        <label style="color: white;">Experiencia laboral</label>
     </div>
         <div class="row" style="padding: 25px;">
     <div class="col-md-12" style="text-align: center; font-size: 25px; color: orange; background-color: #DCDCDB; padding: 3px;">
